@@ -34,7 +34,19 @@
                 CircleProgressView:cpv_unit="CT °C"
                 CircleProgressView:cpv_unitPosition="bottom"
                 CircleProgressView:cpv_textMode="Value"
-                CircleProgressView:cpv_startAngle="90" />
+                CircleProgressView:cpv_barColor="@color/color1"
+                CircleProgressView:cpv_barColor1="@color/color2"
+                CircleProgressView:cpv_barColor2="@color/color3"
+                CircleProgressView:cpv_barColor3="@color/color4"
+                CircleProgressView:cpv_barWidth="10dp"
+                CircleProgressView:cpv_fillColor="#293133"
+                CircleProgressView:cpv_innerContourSize="0dp"
+                CircleProgressView:cpv_blockCount="9"
+                CircleProgressView:cpv_outerContourSize="0dp"
+                CircleProgressView:cpv_rimWidth="0dp"
+                CircleProgressView:cpv_startAngle="0"
+                CircleProgressView:cpv_textColor="#ffffff"
+                CircleProgressView:cpv_unitColor="#ffffff"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,7 +66,19 @@
                 CircleProgressView:cpv_unit="IAT °C"
                 CircleProgressView:cpv_unitPosition="bottom"
                 CircleProgressView:cpv_textMode="Value"
-                CircleProgressView:cpv_startAngle="90"/>
+                CircleProgressView:cpv_barColor="@color/color1"
+                CircleProgressView:cpv_barColor1="@color/color2"
+                CircleProgressView:cpv_barColor2="@color/color3"
+                CircleProgressView:cpv_barColor3="@color/color4"
+                CircleProgressView:cpv_barWidth="10dp"
+                CircleProgressView:cpv_fillColor="#293133"
+                CircleProgressView:cpv_innerContourSize="0dp"
+                CircleProgressView:cpv_blockCount="9"
+                CircleProgressView:cpv_outerContourSize="0dp"
+                CircleProgressView:cpv_rimWidth="0dp"
+                CircleProgressView:cpv_startAngle="0"
+                CircleProgressView:cpv_textColor="#ffffff"
+                CircleProgressView:cpv_unitColor="#ffffff"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -74,7 +98,19 @@
                 CircleProgressView:cpv_unit="FUEL °C"
                 CircleProgressView:cpv_unitPosition="bottom"
                 CircleProgressView:cpv_textMode="Value"
-                CircleProgressView:cpv_startAngle="90"/>
+                CircleProgressView:cpv_barColor="@color/color1"
+                CircleProgressView:cpv_barColor1="@color/color2"
+                CircleProgressView:cpv_barColor2="@color/color3"
+                CircleProgressView:cpv_barColor3="@color/color4"
+                CircleProgressView:cpv_barWidth="10dp"
+                CircleProgressView:cpv_fillColor="#293133"
+                CircleProgressView:cpv_innerContourSize="0dp"
+                CircleProgressView:cpv_blockCount="9"
+                CircleProgressView:cpv_outerContourSize="0dp"
+                CircleProgressView:cpv_rimWidth="0dp"
+                CircleProgressView:cpv_startAngle="0"
+                CircleProgressView:cpv_textColor="#ffffff"
+                CircleProgressView:cpv_unitColor="#ffffff"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -103,7 +139,19 @@
                 CircleProgressView:cpv_unit="AAP kPa"
                 CircleProgressView:cpv_unitPosition="bottom"
                 CircleProgressView:cpv_textMode="Value"
-                CircleProgressView:cpv_startAngle="90" />
+                CircleProgressView:cpv_barColor="@color/color1"
+                CircleProgressView:cpv_barColor1="@color/color2"
+                CircleProgressView:cpv_barColor2="@color/color3"
+                CircleProgressView:cpv_barColor3="@color/color4"
+                CircleProgressView:cpv_barWidth="10dp"
+                CircleProgressView:cpv_fillColor="#293133"
+                CircleProgressView:cpv_innerContourSize="0dp"
+                CircleProgressView:cpv_blockCount="9"
+                CircleProgressView:cpv_outerContourSize="0dp"
+                CircleProgressView:cpv_rimWidth="0dp"
+                CircleProgressView:cpv_startAngle="0"
+                CircleProgressView:cpv_textColor="#ffffff"
+                CircleProgressView:cpv_unitColor="#ffffff" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -115,15 +163,28 @@
                 android:id="@+id/gMANIFOLD_AIR_PRESSURE"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                CircleProgressView:cpv_decimalFormat="#0.00"
                 android:padding="10sp"
                 CircleProgressView:cpv_autoTextSize="true"
-                CircleProgressView:cpv_value="125"
-                CircleProgressView:cpv_maxValue="250"
+                CircleProgressView:cpv_value="1.2"
+                CircleProgressView:cpv_maxValue="1.50"
                 CircleProgressView:cpv_showUnit="true"
-                CircleProgressView:cpv_unit="MAP kPa"
+                CircleProgressView:cpv_unit="MAP Bar"
                 CircleProgressView:cpv_unitPosition="bottom"
                 CircleProgressView:cpv_textMode="Value"
-                CircleProgressView:cpv_startAngle="90"/>
+                CircleProgressView:cpv_barColor="@color/color1"
+                CircleProgressView:cpv_barColor1="@color/color2"
+                CircleProgressView:cpv_barColor2="@color/color3"
+                CircleProgressView:cpv_barColor3="@color/color4"
+                CircleProgressView:cpv_barWidth="10dp"
+                CircleProgressView:cpv_fillColor="#293133"
+                CircleProgressView:cpv_innerContourSize="0dp"
+                CircleProgressView:cpv_blockCount="9"
+                CircleProgressView:cpv_outerContourSize="0dp"
+                CircleProgressView:cpv_rimWidth="0dp"
+                CircleProgressView:cpv_startAngle="0"
+                CircleProgressView:cpv_textColor="#ffffff"
+                CircleProgressView:cpv_unitColor="#ffffff"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -143,7 +204,19 @@
                 CircleProgressView:cpv_unit="MAF kg/h"
                 CircleProgressView:cpv_unitPosition="bottom"
                 CircleProgressView:cpv_textMode="Value"
-                CircleProgressView:cpv_startAngle="90"/>
+                CircleProgressView:cpv_barColor="@color/color1"
+                CircleProgressView:cpv_barColor1="@color/color2"
+                CircleProgressView:cpv_barColor2="@color/color3"
+                CircleProgressView:cpv_barColor3="@color/color4"
+                CircleProgressView:cpv_barWidth="10dp"
+                CircleProgressView:cpv_fillColor="#293133"
+                CircleProgressView:cpv_innerContourSize="0dp"
+                CircleProgressView:cpv_blockCount="9"
+                CircleProgressView:cpv_outerContourSize="0dp"
+                CircleProgressView:cpv_rimWidth="0dp"
+                CircleProgressView:cpv_startAngle="0"
+                CircleProgressView:cpv_textColor="#ffffff"
+                CircleProgressView:cpv_unitColor="#ffffff"/>
         </LinearLayout>
     </LinearLayout>
 

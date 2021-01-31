@@ -62,8 +62,8 @@ public class ConnectFragment extends BaseFragment {
 
     @BindView(R.id.tvInfo) TextView tvInfo;
     @BindView(R.id.btConnect) ImageButton btConnect;
-    @BindView(R.id.btFastInit) ImageButton btFastInit;
-    @BindView(R.id.btDashboard) ImageButton btDashboard;
+    /*@BindView(R.id.btFastInit) ImageButton btFastInit;
+    @BindView(R.id.btDashboard) ImageButton btDashboard;*/
 
     byte[] mReadBuffer = new byte[Consts.RESPONSE_BUFFER_SIZE];
     boolean mHaveUsbPermission = false;
@@ -137,8 +137,8 @@ public class ConnectFragment extends BaseFragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onToggleUIEvent(ToggleUIEvent event) {
         btConnect.setEnabled(event.enable);
-        btFastInit.setEnabled(event.enable);
-        btDashboard.setEnabled(event.enable);
+        /*btFastInit.setEnabled(event.enable);
+        btDashboard.setEnabled(event.enable);*/
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -152,8 +152,8 @@ public class ConnectFragment extends BaseFragment {
         super.onSaveInstanceState(savedInstanceState);
         log.debug("");
         Util.log_msg("onSaveInstanceState");
-        stopDashboard();
-        savedInstanceState.putStringArrayList(STATE__INFO_LINES, mInfoLines);
+        //stopDashboard();
+        //savedInstanceState.putStringArrayList(STATE__INFO_LINES, mInfoLines);
     }
 
     @Override public void onViewStateRestored(Bundle savedInstanceState) {
@@ -161,6 +161,7 @@ public class ConnectFragment extends BaseFragment {
         if (savedInstanceState != null) {
             mInfoLines = savedInstanceState.getStringArrayList((STATE__INFO_LINES));
             Util.log_msg("onViewStateRestored");
+            startDashboard();
         }
     }
 
@@ -181,19 +182,31 @@ public class ConnectFragment extends BaseFragment {
         Thread thread = new Thread(new Runnable() {
             @Override public void run() {
                 if (mUsbDeviceConnection != null || mFakeUsbDeviceConnection) {
+                    stopDashboard();
                     usb_close();
                 } else {
                     usb_open();
+                    fast_init();
+                    startDashboard();
                 }
             }
         });
         thread.start();
     }
 
-    @OnClick(R.id.btFastInit) public void fastinitHandler() {
+    /*@OnClick(R.id.btFastInit) public void fastinitHandler() {
         Thread thread = new Thread(new Runnable() {
             @Override public void run() {
                 fast_init();
+            }
+        });
+        thread.start();
+    }
+*/
+    @OnClick(R.id.btReadFaults) public void readFaultsHandler(View view) {
+        Thread thread = new Thread(new Runnable() {
+            @Override public void run() {
+                read_faults();
             }
         });
         thread.start();
@@ -207,6 +220,15 @@ public class ConnectFragment extends BaseFragment {
         });
         thread.start();
     }
+/*
+    @OnClick(R.id.btpulserev) public void pulserevHandler(View view) {
+        Thread thread = new Thread(new Runnable() {
+            @Override public void run() {
+                pulserev();
+            }
+        });
+        thread.start();
+    }
 
     @OnClick(R.id.btDashboard) public void dashboardHandler() {
         if (mDashboardRunning) {
@@ -215,7 +237,7 @@ public class ConnectFragment extends BaseFragment {
             startDashboard();
         }
     }
-
+*/
     private boolean usb_open() {
         EventBus.getDefault().post(new ToggleUIEvent(false));
         Util.log_msg("USB connecting ...");
@@ -654,7 +676,7 @@ public class ConnectFragment extends BaseFragment {
                         // 03 61 0D [00] 71
                         logRecord.VehicleSpeed = mReadBuffer[3];
 
-                        EventBus.getDefault().post(new DashboardEvent(DashboardEvent.DATA_TYPE.VEHICLE_SPEED, logRecord.VehicleSpeed * 0.621371));
+                        EventBus.getDefault().post(new DashboardEvent(DashboardEvent.DATA_TYPE.VEHICLE_SPEED, logRecord.VehicleSpeed ));
                         pid_count++;
                     }
                     if (mDashboardRunning && get_pid(Requests.RequestPidEnum.TEMPERATURES)) {
@@ -696,18 +718,26 @@ public class ConnectFragment extends BaseFragment {
                         logRecord.ManifoldAirPressure = Util.bytes2short(mReadBuffer[3], mReadBuffer[4]);
                         logRecord.ManifoldAirFlow = Util.bytes2short(mReadBuffer[7], mReadBuffer[8]);
 
-                        EventBus.getDefault().post(new DashboardEvent(DashboardEvent.DATA_TYPE.MANIFOLD_AIR_PRESSURE, logRecord.ManifoldAirPressure / 100.0));
+                        EventBus.getDefault().post(new DashboardEvent(DashboardEvent.DATA_TYPE.MANIFOLD_AIR_PRESSURE, logRecord.ManifoldAirPressure*Consts.KPA_TO_BAR));
                         EventBus.getDefault().post(new DashboardEvent(DashboardEvent.DATA_TYPE.AIR_FLOW, logRecord.ManifoldAirFlow / 10.0));
                         pid_count++;
                     }
-                    //if (mDashboardRunning && get_pid(Requests.RequestPidEnum.POWER_BALANCE)) {
-                    //    EventBus.getDefault().post(new DashboardEvent(DashboardEvent.DATA_TYPE.POWER_BALANCE_1, Util.bytes2short(mReadBuffer[ 3], mReadBuffer[ 4])));
-                    //    EventBus.getDefault().post(new DashboardEvent(DashboardEvent.DATA_TYPE.POWER_BALANCE_2, Util.bytes2short(mReadBuffer[ 5], mReadBuffer[ 6])));
-                    //    EventBus.getDefault().post(new DashboardEvent(DashboardEvent.DATA_TYPE.POWER_BALANCE_3, Util.bytes2short(mReadBuffer[ 7], mReadBuffer[ 8])));
-                    //    EventBus.getDefault().post(new DashboardEvent(DashboardEvent.DATA_TYPE.POWER_BALANCE_4, Util.bytes2short(mReadBuffer[ 9], mReadBuffer[10])));
-                    //    EventBus.getDefault().post(new DashboardEvent(DashboardEvent.DATA_TYPE.POWER_BALANCE_5, Util.bytes2short(mReadBuffer[11], mReadBuffer[12])));
-                    //    pid_count++;
-                    //}
+                    if (mDashboardRunning && get_pid(Requests.RequestPidEnum.POWER_BALANCE)) {
+                        logRecord.PowerBalance1      = Util.bytes2short(mReadBuffer[ 3], mReadBuffer[ 4]);
+                        logRecord.PowerBalance2      = Util.bytes2short(mReadBuffer[ 5], mReadBuffer[ 6]);
+                        logRecord.PowerBalance3      = Util.bytes2short(mReadBuffer[ 7], mReadBuffer[ 8]);
+                        logRecord.PowerBalance4      = Util.bytes2short(mReadBuffer[ 9], mReadBuffer[10]);
+                        logRecord.PowerBalance5      = Util.bytes2short(mReadBuffer[11], mReadBuffer[12]);
+
+                        EventBus.getDefault().post(new DashboardEvent(DashboardEvent.DATA_TYPE.POWER_BALANCE_1, logRecord.PowerBalance1 ));
+                        EventBus.getDefault().post(new DashboardEvent(DashboardEvent.DATA_TYPE.POWER_BALANCE_2, logRecord.PowerBalance2 ));
+                        EventBus.getDefault().post(new DashboardEvent(DashboardEvent.DATA_TYPE.POWER_BALANCE_3, logRecord.PowerBalance3 ));
+                        EventBus.getDefault().post(new DashboardEvent(DashboardEvent.DATA_TYPE.POWER_BALANCE_4, logRecord.PowerBalance4 ));
+                        EventBus.getDefault().post(new DashboardEvent(DashboardEvent.DATA_TYPE.POWER_BALANCE_5, logRecord.PowerBalance5 ));
+
+
+                        pid_count++;
+                    }
                     if (mDashboardRunning && get_pid(Requests.RequestPidEnum.GET_FUEL_DEMAND)) {
                         logRecord.DriverDemand      = Util.bytes2short(mReadBuffer[ 3], mReadBuffer[ 4]);
                         logRecord.MafAirMass        = Util.bytes2short(mReadBuffer[ 5], mReadBuffer[ 6]);
@@ -752,12 +782,12 @@ public class ConnectFragment extends BaseFragment {
         }
     }
 
-    private void clear_faults() {
+    private void read_faults() {
         EventBus.getDefault().post(new ToggleUIEvent(false));
         stopDashboard();
 
         if (mFastInitCompleted) {
-            Util.log_msg("Clearing faults ...");
+            Util.log_msg("Reading fault ...");
             if (Consts.DEBUG_UI) {
                 try { Thread.sleep(2000); } catch (Exception ex) {};
             } else {
@@ -772,6 +802,26 @@ public class ConnectFragment extends BaseFragment {
                         }
                     }
                 }
+                //get_pid(Requests.RequestPidEnum.CLEAR_FAULTS);
+            }
+            //Util.log_msg("Faults cleared");
+        } else {
+            Util.log_msg("You cannot read faults until FASTINIT has been successful!");
+        }
+
+        EventBus.getDefault().post(new ToggleUIEvent(true));
+    }
+
+    private void clear_faults() {
+        EventBus.getDefault().post(new ToggleUIEvent(false));
+        stopDashboard();
+
+        if (mFastInitCompleted) {
+            Util.log_msg("Clearing fault ...");
+            if (Consts.DEBUG_UI) {
+                try { Thread.sleep(2000); } catch (Exception ex) {};
+            } else {
+
                 get_pid(Requests.RequestPidEnum.CLEAR_FAULTS);
             }
             Util.log_msg("Faults cleared");
@@ -781,7 +831,28 @@ public class ConnectFragment extends BaseFragment {
 
         EventBus.getDefault().post(new ToggleUIEvent(true));
     }
+/*
+    private void pulserev() {
+        EventBus.getDefault().post(new ToggleUIEvent(false));
+        stopDashboard();
 
+        if (mFastInitCompleted) {
+            Util.log_msg("Test pulserev ...");
+            if (Consts.DEBUG_UI) {
+                try { Thread.sleep(2000); } catch (Exception ex) {};
+            } else {
+
+                get_pid(Requests.RequestPidEnum.GET_VIN);
+                Util.log_msg("Get vin test");
+            }
+            Util.log_msg("Get vin test");
+        } else {
+            Util.log_msg("You cannot test until FASTINIT has been successful!");
+        }
+
+        EventBus.getDefault().post(new ToggleUIEvent(true));
+    }
+*/
     public void addInfoLine(String msg) {
         if (msg.length() > 0) {
             mInfoLines.add(msg) ;

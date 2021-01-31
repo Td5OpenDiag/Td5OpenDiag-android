@@ -21,6 +21,8 @@ public class Consts {
     public static final double DIESEL_FUEL_DENSITY = 0.832;
     public static final double KPA_TO_PSI = 0.145038;
     public static final double LITER_TO_GALLON = 0.219969;
+    public static final double KPA_TO_BAR = 0.01;
+    public static final double MPH_TO_KMH = 1.60934;
 
     public static final boolean DEBUG_UI = false;
 

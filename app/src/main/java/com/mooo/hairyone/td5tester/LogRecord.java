@@ -27,4 +27,9 @@ public class LogRecord {
     public short MapAirMass;
     public short InjectionQuantity;
     public short AfRatio;
+    public short PowerBalance1;
+    public short PowerBalance2;
+    public short PowerBalance3;
+    public short PowerBalance4;
+    public short PowerBalance5;
 }

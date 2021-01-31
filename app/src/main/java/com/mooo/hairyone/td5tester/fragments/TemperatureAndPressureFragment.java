@@ -41,7 +41,9 @@ public class TemperatureAndPressureFragment extends BaseFragment {
                 gAMBIENT_PRESSURE.setValue(value);
                 break;
             case MANIFOLD_AIR_PRESSURE:
-                gMANIFOLD_AIR_PRESSURE.setValue(value);
+                double c = value * 0.01 - 1 ;
+                float d = (float) c ;
+                gMANIFOLD_AIR_PRESSURE.setValue(d);
                 break;
             case AIR_FLOW:
                 gAIR_FLOW.setValue(value);

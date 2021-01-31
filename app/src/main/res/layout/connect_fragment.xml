@@ -11,6 +11,52 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2892A6"
+        android:orientation="horizontal"
+        android:padding="1sp">
+
+        <!-- https://icons8.com/icon/set/key/material -->
+
+        <ImageButton
+            android:id="@+id/btConnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/usb_on" />
+<!--
+        <ImageButton
+            android:id="@+id/btFastInit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/key" />
+
+        <ImageButton
+            android:id="@+id/btDashboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/dashboard" />
+-->
+        <ImageButton
+            android:id="@+id/btReadFaults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/liste" />
+
+        <ImageButton
+            android:id="@+id/btClearFaults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/delete_document" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0sp"
         android:padding="1sp"
         android:orientation="horizontal"
@@ -28,44 +74,20 @@
             android:text="" />
 
     </LinearLayout>
-
+<!--
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#2892A6"
-        android:orientation="horizontal"
-        android:padding="1sp">
+        android:layout_height="101dp"
+        android:orientation="horizontal">
 
-        <!-- https://icons8.com/icon/set/key/material -->
+                <Button
+                    android:id="@+id/btpulserev"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PULSEREV" />
 
-        <ImageButton
-            android:id="@+id/btConnect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/usb_on" />
 
-        <ImageButton
-            android:id="@+id/btFastInit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/key" />
-
-        <ImageButton
-            android:id="@+id/btClearFaults"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/cross" />
-
-        <ImageButton
-            android:id="@+id/btDashboard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/dashboard" />
-
-    </LinearLayout>
-
-</LinearLayout>
+            </LinearLayout>
+-->
+        </LinearLayout>
