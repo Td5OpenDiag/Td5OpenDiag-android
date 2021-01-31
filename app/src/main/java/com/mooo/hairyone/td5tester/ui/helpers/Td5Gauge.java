@@ -16,6 +16,9 @@ public class Td5Gauge extends DeluxeSpeedView {
     protected final float   f_centerRadius  = getContext().getResources().getDimension( R.dimen.gauges_center_circle_radius);
     protected final float   f_section_width_factor    = 0.4f;
 
+    protected Indicator.Indicators  m_indicator         = Indicator.Indicators.KiteIndicator;
+    protected int                   m_indicatorColor    = Color.WHITE;
+
 
     public Td5Gauge(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -32,15 +35,33 @@ public class Td5Gauge extends DeluxeSpeedView {
     }
 
 
+    public void setIndicatorColor(int pColor)
+    {
+        this.m_indicatorColor   = pColor;
+        this.getIndicator().setColor(this.m_indicatorColor);
+    }
+
+
+    public void setIndicatorEnabled(boolean pEnabled)
+    {
+        if( pEnabled )
+        {
+            this.setIndicator(this.m_indicator);
+            this.getIndicator().setColor(this.m_indicatorColor);
+        }
+        else
+        {
+            this.setIndicator(Indicator.Indicators.NoIndicator);
+        }
+    }
+
+
     private void init()
     {
         /*
             Needle parameters
          */
-        //this.setIndicator(Indicator.Indicators.NeedleIndicator);
-        this.setIndicator(Indicator.Indicators.KiteIndicator);
-        this.getIndicator().setColor(Color.RED);
-        this.getIndicator().setColor(Color.WHITE);
+        this.setIndicatorEnabled(true);
 
         this.setCenterCircleColor(Color.DKGRAY);
         this.setCenterCircleRadius( f_centerRadius );
@@ -52,7 +73,6 @@ public class Td5Gauge extends DeluxeSpeedView {
 //        this.setMarkStyle(Paint.Cap.ROUND);
         this.setMarkColor(Color.LTGRAY);
         this.setMarksNumber(9);
-//        this.setMarksPadding()
 
         this.setTickNumber(6);
         this.setTickPadding((int)(this.getSpeedometerWidth() * 0.4f));
