@@ -17,7 +17,6 @@ import java.util.List;
 import com.mooo.hairyone.td5tester.fragments.ConnectFragment;
 import com.mooo.hairyone.td5tester.fragments.DashboardFragment;
 import com.mooo.hairyone.td5tester.fragments.EngineFragment;
-import com.mooo.hairyone.td5tester.fragments.FuelDemandFragment;
 import com.mooo.hairyone.td5tester.fragments.FuelFragment;
 import com.mooo.hairyone.td5tester.fragments.InjectorFragment;
 import com.mooo.hairyone.td5tester.fragments.IntakeFragment;
@@ -75,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new IntakeFragment(), "Intake");
         adapter.addFragment(new FuelFragment(), "Fuel");
         adapter.addFragment(new EngineFragment(), "Engine");
-        adapter.addFragment(new FuelDemandFragment(), "Fuel Demand");
         adapter.addFragment(new InjectorFragment(), "Injector");
         viewPager.setAdapter(adapter);
     }
