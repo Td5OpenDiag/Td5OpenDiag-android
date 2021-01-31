@@ -30,9 +30,6 @@ public class DashboardFragment extends Fragment {
 
     Logger log = Log4jHelper.getLogger(this.getClass());
 
-//    @BindView(R.id.gRPM) CircleProgressView gRPM; // Deprecated
-//    @BindView(R.id.gVOLT) CircleProgressView gVOLT; // Deprecated
-//    @BindView(R.id.gMPH) CircleProgressView gMPH;   // Deprecated
 
     private DashboardFragmentBinding m_binding;
 
@@ -57,10 +54,6 @@ public class DashboardFragment extends Fragment {
 
         m_binding   = DashboardFragmentBinding.inflate(inflater, container, false);
         View view   = m_binding.getRoot();
-
-        this.init_gauge_batteryVoltage();
-        this.init_gauge_ect();
-        //this.init_gauge_engineRPM();
 
         return view;
     }
@@ -171,65 +164,7 @@ public class DashboardFragment extends Fragment {
                 getContext().getResources().getInteger( R.integer.batteryVoltage_high_mV) / 1000.0f,
                 lGaugeValueMax,
                 Color.RED );
-    }
 
-
-    private void    init_gauge_ect()
-    {
-        int lGaugeValueMax   = getContext().getResources().getInteger( R.integer.ect_gauge_max);
-        int lGaugeValueMin   = getContext().getResources().getInteger( R.integer.ect_gauge_min);
-
-
-        Td5Gauge lGaugeEct   = m_binding.gaugeEct;
-
-
-        lGaugeEct.setMin( lGaugeValueMin );
-        lGaugeEct.setMax( lGaugeValueMax );
-
-        lGaugeEct.setUnit("°C");
-
-
-        /*
-            Sections definition
-         */
-
-        /* "Cold" section */
-        lGaugeEct.section_add(
-                lGaugeValueMin,
-                getContext().getResources().getInteger( R.integer.td5_ect_cold),
-                Color.BLUE);
-
-        /* "Thermostat closed" section */
-        lGaugeEct.section_add(
-                getContext().getResources().getInteger( R.integer.td5_ect_cold),
-                getContext().getResources().getInteger( R.integer.td5_ect_thermostat_closed),
-                Color.rgb(0,128,128) );
-        //Color.rgb(0,128,64) );
-
-        /* "Thermostat regulation" section */
-        lGaugeEct.section_add(
-                getContext().getResources().getInteger( R.integer.td5_ect_thermostat_closed),
-                getContext().getResources().getInteger( R.integer.td5_ect_thermostat_opened),
-                Color.GREEN );
-
-        /* "Thermostat opened" section */
-        lGaugeEct.section_add(
-                getContext().getResources().getInteger( R.integer.td5_ect_thermostat_opened),
-                getContext().getResources().getInteger( R.integer.td5_ect_load_reduction),
-                Color.rgb(255,255,0)/*Color.YELLOW*/ );
-        //Color.rgb(230,230,0)/*Color.YELLOW*/ );
-
-        /* "Load reduction" section */
-        lGaugeEct.section_add(
-                getContext().getResources().getInteger( R.integer.td5_ect_load_reduction),
-                getContext().getResources().getInteger( R.integer.td5_ect_dangerzone),
-                Color.rgb(255, 165, 0) );
-
-        /* "Overheat" section */
-        lGaugeEct.section_add(
-                getContext().getResources().getInteger( R.integer.td5_ect_dangerzone),
-                lGaugeValueMax,
-                Color.RED );
     }
 
 
