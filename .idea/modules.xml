@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Td5OpenDiag-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Td5OpenDiag-app.iml" group="Td5OpenDiag/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/projets_perso-TD5Tester.iml" filepath="$PROJECT_DIR$/.idea/modules/projets_perso-TD5Tester.iml" group="TD5Tester" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/speedviewlib/speedviewlib.iml" filepath="$PROJECT_DIR$/.idea/modules/speedviewlib/speedviewlib.iml" group="TD5Tester/speedviewlib" />
     </modules>
   </component>
 </project>
