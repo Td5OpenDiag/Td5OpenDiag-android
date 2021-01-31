@@ -31,7 +31,7 @@ public class FuelFragment extends Fragment {
 
     private FragmentFuelBinding m_binding;
 
-    private final float f_gauge_section_width_factor    = 0.4f;
+    private final String    f_strUnitSuffix_milliGrams   = " mg";
 
     public FuelFragment() {
         // Required empty public constructor
@@ -194,24 +194,6 @@ public class FuelFragment extends Fragment {
     }
 
 
-//    private void    init_gauge_injectionQuantity()
-//    {
-//        int lGaugeValueMax
-//                = getContext().getResources().getInteger( R.integer.gauge_injectionQuantity_max);
-//        int lGaugeValueMin
-//                = getContext().getResources().getInteger( R.integer.gauge_injectionQuantity_min);
-//
-//
-//        Td5Gauge lGauge = m_binding.gaugeInjectionQuantity;
-//
-//
-//        lGauge.setMin( lGaugeValueMin );
-//        lGauge.setMax( lGaugeValueMax );
-//
-//        lGauge.setUnit("mg");
-//    }
-
-
     private void    selectedFuelingValue_update()
     {
         boolean lSelectDemandDriver = false;
@@ -300,27 +282,27 @@ public class FuelFragment extends Fragment {
 
     private void    setFuelDemandDriver(float pValue)
     {
-        m_binding.fuelDemandDriverValue.setText( pValue + "mg");
+        m_binding.fuelDemandDriverValue.setText( pValue + f_strUnitSuffix_milliGrams);
     }
 
 
     private void    setFuelDemandIdle(float pValue)
     {
         //m_binding.gaugeIdleDemand.setValue(pValue);
-        m_binding.fuelDemandIdleValue.setText( pValue + "mg");
+        m_binding.fuelDemandIdleValue.setText( pValue + f_strUnitSuffix_milliGrams);
         //m_binding.textIdleDemandValue.setText(pValue + " rpm");
     }
 
 
     private void    setFuelLimiterSmoke(float pValue)
     {
-        m_binding.fuelLimiterSmokeValue.setText( pValue + "mg");
+        m_binding.fuelLimiterSmokeValue.setText( pValue + f_strUnitSuffix_milliGrams);
     }
 
 
     private void    setFuelLimiterTorque(float pValue)
     {
-        m_binding.fuelLimiterTorqueValue.setText( pValue + "mg");
+        m_binding.fuelLimiterTorqueValue.setText( pValue + f_strUnitSuffix_milliGrams);
     }
 
 
@@ -335,6 +317,6 @@ public class FuelFragment extends Fragment {
     {
         //m_binding.gaugeInjectionQuantity.setValue(pValue);
         //m_binding.textInjectionQuantityValue.setText(pValue + " mg");
-        m_binding.fuelInjectedQuantity.setText( pValue + " mg");
+        m_binding.fuelInjectedQuantity.setText( pValue + f_strUnitSuffix_milliGrams);
     }
 }
