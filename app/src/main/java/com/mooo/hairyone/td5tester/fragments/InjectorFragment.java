@@ -21,16 +21,6 @@ public class InjectorFragment extends BaseFragment {
 
     Logger log = Log4jHelper.getLogger(this.getClass());
 
-    /* Butterknife is now deprecated
-    @BindView(R.id.gACC_TRACK_1)      CircleProgressView gACC_TRACK_1;
-    @BindView(R.id.gACC_TRACK_2)       CircleProgressView gACC_TRACK_2;
-    @BindView(R.id.gACC_TRACK_3)       CircleProgressView gACC_TRACK_3;
-    @BindView(R.id.gPOWER_BALANCE_1) CircleProgressView gPOWER_BALANCE_1;
-    @BindView(R.id.gPOWER_BALANCE_2)           CircleProgressView gPOWER_BALANCE_2;
-    @BindView(R.id.gPOWER_BALANCE_3)       CircleProgressView gPOWER_BALANCE_3;
-    @BindView(R.id.gPOWER_BALANCE_4)        CircleProgressView gPOWER_BALANCE_4;
-    @BindView(R.id.gPOWER_BALANCE_5)        CircleProgressView gPOWER_BALANCE_5;
-     */
     private InjectorFragmentBinding m_binding;
 
 
@@ -78,25 +68,9 @@ public class InjectorFragment extends BaseFragment {
                 break;
 
 
-            case POWER_BALANCE_1:
-                m_binding.gPOWERBALANCE1.setValue(value);
-                break;
 
-            case POWER_BALANCE_2:
-                m_binding.gPOWERBALANCE2.setValue(value);
-                break;
 
-            case POWER_BALANCE_3:
-                m_binding.gPOWERBALANCE3.setValue(value);
-                break;
 
-            case POWER_BALANCE_4:
-                m_binding.gPOWERBALANCE4.setValue(value);
-                break;
-
-            case POWER_BALANCE_5:
-                m_binding.gPOWERBALANCE5.setValue(value);
-                break;
         }
     }
 

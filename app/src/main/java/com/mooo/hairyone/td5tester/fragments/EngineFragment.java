@@ -121,6 +121,27 @@ public class EngineFragment extends Fragment {
                 this.setEngineCoolantTemperature(value);
                 break;
 
+
+            case POWER_BALANCE_1:
+                m_binding.gPOWERBALANCE1.setValue(value);
+                break;
+
+            case POWER_BALANCE_2:
+                m_binding.gPOWERBALANCE2.setValue(value);
+                break;
+
+            case POWER_BALANCE_3:
+                m_binding.gPOWERBALANCE3.setValue(value);
+                break;
+
+            case POWER_BALANCE_4:
+                m_binding.gPOWERBALANCE4.setValue(value);
+                break;
+
+            case POWER_BALANCE_5:
+                m_binding.gPOWERBALANCE5.setValue(value);
+                break;
+
             default:
                 break;
         }
