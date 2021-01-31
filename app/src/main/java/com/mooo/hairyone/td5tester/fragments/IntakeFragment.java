@@ -16,7 +16,6 @@ import com.github.anastr.speedviewlib.components.indicators.Indicator;
 import com.mooo.hairyone.td5tester.Log4jHelper;
 import com.mooo.hairyone.td5tester.R;
 import com.mooo.hairyone.td5tester.databinding.FragmentIntakeBinding;
-import com.mooo.hairyone.td5tester.databinding.InjectorFragmentBinding;
 import com.mooo.hairyone.td5tester.events.DashboardEvent;
 import com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge;
 
@@ -238,7 +237,12 @@ public class IntakeFragment extends Fragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onDashboardEvent(DashboardEvent event) {
         float value = (float) event.value;
-        switch (event.data_type) {
+        switch (event.data_type)
+        {
+            case AIR_FLOW:
+                this.setMassAirflow(value * 10.0f);
+                break;
+
             case AMBIENT_PRESSURE:
                 this.setAmbientPressure(value);
                 break;
@@ -247,15 +251,21 @@ public class IntakeFragment extends Fragment {
                 this.setIntakeAirTemperature(value);
                 break;
 
-            case AIR_FLOW:
-            //case MAF_AIR_MASS:
-                this.setMassAirflow(value * 10.0f);
+            case MAF_AIR_MASS:
+                this.setMafAirMass(value);
                 break;
 
             case MANIFOLD_AIR_PRESSURE:
                 double c = value * 0.01 - 1 ;
                 float lValue_bar = (float) c ;
                 this.setManifoldAirPressure(lValue_bar);
+                break;
+
+            case MAP_AIR_MASS:
+                this.setMapAirMass(value);
+                break;
+
+            default:
                 break;
         }
     }
@@ -264,14 +274,20 @@ public class IntakeFragment extends Fragment {
     private void    setAmbientPressure(float pValue)
     {
         m_binding.gaugeAmbientPressure.setValue(pValue);
-        m_binding.textAmbientPressureValue.setText(pValue + " kPa");
+//        m_binding.textAmbientPressureValue.setText(pValue + " kPa");
     }
 
 
     private void    setIntakeAirTemperature(float pValue)
     {
         m_binding.gaugeIntakeAirTemp.setValue(pValue);
-        m_binding.textIntakeAirTempValue.setText(pValue + " °C");
+//        m_binding.textIntakeAirTempValue.setText(pValue + " °C");
+    }
+
+
+    private void    setMafAirMass(float pValue)
+    {
+        m_binding.gaugeMAFAirMass.setValue(pValue);
     }
 
 
@@ -279,6 +295,12 @@ public class IntakeFragment extends Fragment {
     {
         m_binding.gaugeManifoldTurboPressure.setValue(pValue);
         //m_binding.text.setText(pValue + " bar");
+    }
+
+
+    private void    setMapAirMass(float pValue)
+    {
+        m_binding.gaugeMAPAirMass.setValue(pValue);
     }
 
 

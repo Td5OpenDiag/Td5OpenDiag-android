@@ -71,10 +71,10 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new ConnectFragment(), "Connect");
         adapter.addFragment(new DashboardFragment(), "Dashboard");
+        adapter.addFragment(new InputsFragment(), "Inputs");
         adapter.addFragment(new IntakeFragment(), "Intake");
         adapter.addFragment(new FuelFragment(), "Fuel");
         adapter.addFragment(new EngineFragment(), "Engine");
-        adapter.addFragment(new InputsFragment(), "Injector");
         viewPager.setAdapter(adapter);
     }
 

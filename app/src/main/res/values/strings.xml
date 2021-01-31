@@ -53,11 +53,21 @@
     <string name="intake_air_temperature_label">In. Air Temp.</string>
     <string name="intake_air_temperature_short">IAT</string>
 
+    <string name="intake_maf_airMass_label">MAF air mass</string>
+    <string name="intake_maf_airMass_label_label">MAF air mass</string>
+    <string name="intake_maf_airMass_label_short">MAF AM</string>
+
+    <string name="intake_map_airMass_label">MAP air mass</string>
+    <string name="intake_map_airMass_label_label">MAP air mass</string>
+    <string name="intake_map_airMass_label_short">MAP AM</string>
+
     <string name="manifold_turbo_pressure">Manifold Air Pressure</string>
     <string name="manifold_turbo_pressure_label">MAP (turbo)</string>
     <string name="manifold_turbo_pressure_short">MAP</string>
 
     <string name="mass_airflow">Mass Airflow (mg/stroke)</string>
-    <string name="mass_airflow_label">Mass Airflow (mg/str)</string>
+    <string name="mass_airflow_label">Mass Airflow</string>
     <string name="mass_airflow_short">MAF</string>
+    <string name="mass_airflow_unit_short">mg/strk</string>
+
 </resources>
