@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:CircleProgressView="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    android:padding="6sp"
+    android:paddingStart="6sp"
+    android:paddingLeft="6sp"
+    android:paddingTop="6sp"
+    android:paddingEnd="6sp"
+    android:paddingRight="6sp"
+    android:paddingBottom="6sp"
+    tools:context="com.mooo.hairyone.td5tester.MainActivity">
+
+    <LinearLayout
+        android:layout_width="0sp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="1sp">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ACC track 1"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="24sp" />
+
+                <ProgressBar
+                    android:id="@+id/acceleratorTrack1_progress"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:maxHeight="36dip"
+                    android:minHeight="36dip" />
+
+                <TextView
+                    android:id="@+id/acceleratorTrack1_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="-.- V"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="24sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ACC track 2"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="24sp" />
+
+                <ProgressBar
+                    android:id="@+id/acceleratorTrack2_progress"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:maxHeight="36dip"
+                    android:minHeight="36dip"
+                    android:rotation="180" />
+
+                <TextView
+                    android:id="@+id/acceleratorTrack2_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="-.- V"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="24sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ACC track 3"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="24sp" />
+
+                <ProgressBar
+                    android:id="@+id/acceleratorTrack3_progress"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:maxHeight="36dip"
+                    android:minHeight="36dip"
+                    android:rotation="180" />
+
+                <TextView
+                    android:id="@+id/acceleratorTrack3_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="-.- V"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="24sp" />
+            </TableRow>
+        </TableLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

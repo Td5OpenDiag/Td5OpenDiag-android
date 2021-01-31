@@ -1,30 +1,30 @@
 package com.mooo.hairyone.td5tester.fragments;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.mooo.hairyone.td5tester.Log4jHelper;
 import com.mooo.hairyone.td5tester.R;
-import com.mooo.hairyone.td5tester.databinding.DashboardFragmentBinding;
-import com.mooo.hairyone.td5tester.databinding.InjectorFragmentBinding;
+import com.mooo.hairyone.td5tester.databinding.InputsFragmentBinding;
 import com.mooo.hairyone.td5tester.events.DashboardEvent;
 
 import org.apache.log4j.Logger;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import at.grabner.circleprogress.CircleProgressView;
-
-public class InjectorFragment extends BaseFragment {
+public class InputsFragment extends BaseFragment {
 
     Logger log = Log4jHelper.getLogger(this.getClass());
 
-    private InjectorFragmentBinding m_binding;
+    private InputsFragmentBinding   m_binding;
 
 
-    public InjectorFragment() { /* Required empty public constructor*/ }
+    public InputsFragment() { /* Required empty public constructor*/ }
 
 
     /**
@@ -33,8 +33,12 @@ public class InjectorFragment extends BaseFragment {
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         log.trace("");
 
-        m_binding   = InjectorFragmentBinding.inflate(inflater, container, false);
+        m_binding   = InputsFragmentBinding.inflate(inflater, container, false);
         View view   = m_binding.getRoot();
+
+        init_acceleratorProgressBar(this.m_binding.acceleratorTrack1Progress);
+        init_acceleratorProgressBar(this.m_binding.acceleratorTrack2Progress);
+        init_acceleratorProgressBar(this.m_binding.acceleratorTrack3Progress);
 
         return view;
     }
@@ -66,32 +70,42 @@ public class InjectorFragment extends BaseFragment {
                 //m_binding.gACCTRACK3.setValue(value);
                 this.setInputAccTrack3(value);
                 break;
-
-
-
-
-
         }
     }
 
-    @Override protected int getFragmentLayout() { return R.layout.injector_fragment; }
+    @Override protected int getFragmentLayout() { return R.layout.inputs_fragment; }
 
 
-    private void    setInputAccTrack1(float pValue)
+    private void    init_acceleratorProgressBar(ProgressBar pWidget)
     {
-        this.m_binding.gaugeInputAccTrack1.speedTo(pValue);
+        pWidget.setMin(0);
+        pWidget.setMax(5000);
+
+        pWidget.setProgress(1250);
+
+        pWidget.setProgressTintList(
+                ColorStateList.valueOf(Color.RED));
     }
 
 
-    private void    setInputAccTrack2(float pValue)
+    private void    setInputAccTrack1(float pValue_volts)
     {
-        this.m_binding.gaugeInputAccTrack2.speedTo(pValue);
+        this.m_binding.acceleratorTrack1Progress.setProgress((int)(pValue_volts * 1000.0f));
+        this.m_binding.acceleratorTrack1Value.setText(pValue_volts + " V");
     }
 
 
-    private void    setInputAccTrack3(float pValue)
+    private void    setInputAccTrack2(float pValue_volts)
     {
-        this.m_binding.gaugeInputAccTrack3.speedTo(pValue);
+        this.m_binding.acceleratorTrack2Progress.setProgress((int)(pValue_volts * 1000.0f));
+        this.m_binding.acceleratorTrack2Value.setText(pValue_volts + " V");
+    }
+
+
+    private void    setInputAccTrack3(float pValue_volts)
+    {
+        this.m_binding.acceleratorTrack3Progress.setProgress((int)(pValue_volts * 1000.0f));
+        this.m_binding.acceleratorTrack3Value.setText(pValue_volts + " V");
     }
 
 }

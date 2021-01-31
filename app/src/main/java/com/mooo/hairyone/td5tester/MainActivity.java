@@ -18,7 +18,7 @@ import com.mooo.hairyone.td5tester.fragments.ConnectFragment;
 import com.mooo.hairyone.td5tester.fragments.DashboardFragment;
 import com.mooo.hairyone.td5tester.fragments.EngineFragment;
 import com.mooo.hairyone.td5tester.fragments.FuelFragment;
-import com.mooo.hairyone.td5tester.fragments.InjectorFragment;
+import com.mooo.hairyone.td5tester.fragments.InputsFragment;
 import com.mooo.hairyone.td5tester.fragments.IntakeFragment;
 
 import org.apache.log4j.Logger;
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new IntakeFragment(), "Intake");
         adapter.addFragment(new FuelFragment(), "Fuel");
         adapter.addFragment(new EngineFragment(), "Engine");
-        adapter.addFragment(new InjectorFragment(), "Injector");
+        adapter.addFragment(new InputsFragment(), "Injector");
         viewPager.setAdapter(adapter);
     }
 
