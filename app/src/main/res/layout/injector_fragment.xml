@@ -22,101 +22,279 @@
             android:layout_height="0sp"
             android:layout_weight="1"
             android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="1sp"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:ignore="NestedWeights">
+
+                    <at.grabner.circleprogress.CircleProgressView
+                        android:id="@+id/gPOWER_BALANCE_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10sp"
+                        CircleProgressView:cpv_autoTextSize="true"
+                        CircleProgressView:cpv_minValueAllowed="-25"
+                        CircleProgressView:cpv_value="-2"
+                        CircleProgressView:cpv_maxValue="25"
+                        CircleProgressView:cpv_showUnit="true"
+                        CircleProgressView:cpv_unit="B CYL1"
+                        CircleProgressView:cpv_unitPosition="bottom"
+                        CircleProgressView:cpv_textMode="Value"
+                        CircleProgressView:cpv_barColor="@color/color1"
+                        CircleProgressView:cpv_barColor1="@color/color2"
+                        CircleProgressView:cpv_barColor2="@color/color3"
+                        CircleProgressView:cpv_barColor3="@color/color4"
+                        CircleProgressView:cpv_barWidth="10dp"
+                        CircleProgressView:cpv_fillColor="#293133"
+                        CircleProgressView:cpv_innerContourSize="0dp"
+                        CircleProgressView:cpv_blockCount="9"
+                        CircleProgressView:cpv_outerContourSize="0dp"
+                        CircleProgressView:cpv_rimWidth="0dp"
+                        CircleProgressView:cpv_startAngle="0"
+                        CircleProgressView:cpv_textColor="#ffffff"
+                        CircleProgressView:cpv_unitColor="#ffffff"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:ignore="NestedWeights">
+
+                    <at.grabner.circleprogress.CircleProgressView
+                        android:id="@+id/gPOWER_BALANCE_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10sp"
+                        CircleProgressView:cpv_autoTextSize="true"
+                        CircleProgressView:cpv_value="0"
+                        CircleProgressView:cpv_maxValue="25"
+                        CircleProgressView:cpv_showUnit="true"
+                        CircleProgressView:cpv_textMode="Value"
+                        CircleProgressView:cpv_unit="B CYL2"
+                        CircleProgressView:cpv_unitPosition="bottom"
+                        CircleProgressView:cpv_barColor="@color/color1"
+                        CircleProgressView:cpv_barColor1="@color/color2"
+                        CircleProgressView:cpv_barColor2="@color/color3"
+                        CircleProgressView:cpv_barColor3="@color/color4"
+                        CircleProgressView:cpv_barWidth="10dp"
+                        CircleProgressView:cpv_fillColor="#293133"
+                        CircleProgressView:cpv_innerContourSize="0dp"
+                        CircleProgressView:cpv_blockCount="9"
+                        CircleProgressView:cpv_outerContourSize="0dp"
+                        CircleProgressView:cpv_rimWidth="0dp"
+                        CircleProgressView:cpv_startAngle="0"
+                        CircleProgressView:cpv_textColor="#ffffff"
+                        CircleProgressView:cpv_unitColor="#ffffff"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="1sp"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <at.grabner.circleprogress.CircleProgressView
+                        android:id="@+id/gPOWER_BALANCE_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10sp"
+                        CircleProgressView:cpv_autoTextSize="true"
+                        CircleProgressView:cpv_maxValue="25"
+                        CircleProgressView:cpv_showUnit="true"
+                        CircleProgressView:cpv_textMode="Value"
+                        CircleProgressView:cpv_unit="B CYL3"
+                        CircleProgressView:cpv_unitPosition="bottom"
+                        CircleProgressView:cpv_value="0"
+                        CircleProgressView:cpv_barColor="@color/color1"
+                        CircleProgressView:cpv_barColor1="@color/color2"
+                        CircleProgressView:cpv_barColor2="@color/color3"
+                        CircleProgressView:cpv_barColor3="@color/color4"
+                        CircleProgressView:cpv_barWidth="10dp"
+                        CircleProgressView:cpv_fillColor="#293133"
+                        CircleProgressView:cpv_innerContourSize="0dp"
+                        CircleProgressView:cpv_blockCount="9"
+                        CircleProgressView:cpv_outerContourSize="0dp"
+                        CircleProgressView:cpv_rimWidth="0dp"
+                        CircleProgressView:cpv_startAngle="0"
+                        CircleProgressView:cpv_textColor="#ffffff"
+                        CircleProgressView:cpv_unitColor="#ffffff"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <at.grabner.circleprogress.CircleProgressView
+                        android:id="@+id/gPOWER_BALANCE_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10sp"
+                        CircleProgressView:cpv_autoTextSize="true"
+                        CircleProgressView:cpv_value="0"
+                        CircleProgressView:cpv_maxValue="25"
+                        CircleProgressView:cpv_showUnit="true"
+                        CircleProgressView:cpv_textMode="Value"
+                        CircleProgressView:cpv_unit="B CYL4"
+                        CircleProgressView:cpv_unitPosition="bottom"
+                        CircleProgressView:cpv_barColor="@color/color1"
+                        CircleProgressView:cpv_barColor1="@color/color2"
+                        CircleProgressView:cpv_barColor2="@color/color3"
+                        CircleProgressView:cpv_barColor3="@color/color4"
+                        CircleProgressView:cpv_barWidth="10dp"
+                        CircleProgressView:cpv_fillColor="#293133"
+                        CircleProgressView:cpv_innerContourSize="0dp"
+                        CircleProgressView:cpv_blockCount="9"
+                        CircleProgressView:cpv_outerContourSize="0dp"
+                        CircleProgressView:cpv_rimWidth="0dp"
+                        CircleProgressView:cpv_startAngle="0"
+                        CircleProgressView:cpv_textColor="#ffffff"
+                        CircleProgressView:cpv_unitColor="#ffffff"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="1sp"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <at.grabner.circleprogress.CircleProgressView
+                        android:id="@+id/gPOWER_BALANCE_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10sp"
+                        CircleProgressView:cpv_autoTextSize="true"
+                        CircleProgressView:cpv_value="0"
+                        CircleProgressView:cpv_maxValue="25"
+                        CircleProgressView:cpv_showUnit="true"
+                        CircleProgressView:cpv_unit="B CYL5"
+                        CircleProgressView:cpv_unitPosition="bottom"
+                        CircleProgressView:cpv_textMode="Value"
+                        CircleProgressView:cpv_barColor="@color/color1"
+                        CircleProgressView:cpv_barColor1="@color/color2"
+                        CircleProgressView:cpv_barColor2="@color/color3"
+                        CircleProgressView:cpv_barColor3="@color/color4"
+                        CircleProgressView:cpv_barWidth="10dp"
+                        CircleProgressView:cpv_fillColor="#293133"
+                        CircleProgressView:cpv_innerContourSize="0dp"
+                        CircleProgressView:cpv_blockCount="9"
+                        CircleProgressView:cpv_outerContourSize="0dp"
+                        CircleProgressView:cpv_rimWidth="0dp"
+                        CircleProgressView:cpv_startAngle="0"
+                        CircleProgressView:cpv_textColor="#ffffff"
+                        CircleProgressView:cpv_unitColor="#ffffff"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="1sp"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.github.anastr.speedviewlib.ProgressiveGauge
+                        android:id="@+id/gauge_input_acc_track1"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:padding="10sp"
+                        CircleProgressView:sv_maxSpeed="5"
+                        CircleProgressView:sv_speedometerColor="#FF0000"
+                        CircleProgressView:sv_textColor="#00FF00"
+                        CircleProgressView:sv_unit='V'
+                        CircleProgressView:sv_unitUnderSpeedText="false"
+                        CircleProgressView:sv_withTremble="false" />
+
+                    <com.github.anastr.speedviewlib.ProgressiveGauge
+                        android:id="@+id/gauge_input_acc_track2"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:padding="10sp"
+                        CircleProgressView:sv_maxSpeed="5"
+                        CircleProgressView:sv_speedometerColor="#FF0000"
+                        CircleProgressView:sv_textColor="#00FF00"
+                        CircleProgressView:sv_unit='V'
+                        CircleProgressView:sv_unitUnderSpeedText="false"
+                        CircleProgressView:sv_withTremble="false" />
+
+                    <com.github.anastr.speedviewlib.ProgressiveGauge
+                        android:id="@+id/gauge_input_acc_track3"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:padding="10sp"
+                        CircleProgressView:sv_maxSpeed="5"
+                        CircleProgressView:sv_speedometerColor="#FF0000"
+                        CircleProgressView:sv_textColor="#00FF00"
+                        CircleProgressView:sv_unit='V'
+                        CircleProgressView:sv_unitUnderSpeedText="false"
+                        CircleProgressView:sv_withTremble="false" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+<!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical"
             tools:ignore="NestedWeights">
-            <at.grabner.circleprogress.CircleProgressView
-                android:id="@+id/gPOWER_BALANCE_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10sp"
-                CircleProgressView:cpv_autoTextSize="true"
-                CircleProgressView:cpv_minValueAllowed="-25"
-                CircleProgressView:cpv_value="-2"
-                CircleProgressView:cpv_maxValue="25"
-                CircleProgressView:cpv_showUnit="true"
-                CircleProgressView:cpv_unit="B CYL1"
-                CircleProgressView:cpv_unitPosition="bottom"
-                CircleProgressView:cpv_textMode="Value"
-                CircleProgressView:cpv_barColor="@color/color1"
-                CircleProgressView:cpv_barColor1="@color/color2"
-                CircleProgressView:cpv_barColor2="@color/color3"
-                CircleProgressView:cpv_barColor3="@color/color4"
-                CircleProgressView:cpv_barWidth="10dp"
-                CircleProgressView:cpv_fillColor="#293133"
-                CircleProgressView:cpv_innerContourSize="0dp"
-                CircleProgressView:cpv_blockCount="9"
-                CircleProgressView:cpv_outerContourSize="0dp"
-                CircleProgressView:cpv_rimWidth="0dp"
-                CircleProgressView:cpv_startAngle="0"
-                CircleProgressView:cpv_textColor="#ffffff"
-                CircleProgressView:cpv_unitColor="#ffffff"/>
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0sp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <at.grabner.circleprogress.CircleProgressView
-                android:id="@+id/gPOWER_BALANCE_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10sp"
-                CircleProgressView:cpv_autoTextSize="true"
-                CircleProgressView:cpv_maxValue="25"
-                CircleProgressView:cpv_showUnit="true"
-                CircleProgressView:cpv_textMode="Value"
-                CircleProgressView:cpv_unit="B CYL3"
-                CircleProgressView:cpv_unitPosition="bottom"
-                CircleProgressView:cpv_value="0"
-                CircleProgressView:cpv_barColor="@color/color1"
-                CircleProgressView:cpv_barColor1="@color/color2"
-                CircleProgressView:cpv_barColor2="@color/color3"
-                CircleProgressView:cpv_barColor3="@color/color4"
-                CircleProgressView:cpv_barWidth="10dp"
-                CircleProgressView:cpv_fillColor="#293133"
-                CircleProgressView:cpv_innerContourSize="0dp"
-                CircleProgressView:cpv_blockCount="9"
-                CircleProgressView:cpv_outerContourSize="0dp"
-                CircleProgressView:cpv_rimWidth="0dp"
-                CircleProgressView:cpv_startAngle="0"
-                CircleProgressView:cpv_textColor="#ffffff"
-                CircleProgressView:cpv_unitColor="#ffffff"/>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0sp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <at.grabner.circleprogress.CircleProgressView
-                android:id="@+id/gPOWER_BALANCE_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10sp"
-                CircleProgressView:cpv_autoTextSize="true"
-                CircleProgressView:cpv_value="0"
-                CircleProgressView:cpv_maxValue="25"
-                CircleProgressView:cpv_showUnit="true"
-                CircleProgressView:cpv_unit="B CYL5"
-                CircleProgressView:cpv_unitPosition="bottom"
-                CircleProgressView:cpv_textMode="Value"
-                CircleProgressView:cpv_barColor="@color/color1"
-                CircleProgressView:cpv_barColor1="@color/color2"
-                CircleProgressView:cpv_barColor2="@color/color3"
-                CircleProgressView:cpv_barColor3="@color/color4"
-                CircleProgressView:cpv_barWidth="10dp"
-                CircleProgressView:cpv_fillColor="#293133"
-                CircleProgressView:cpv_innerContourSize="0dp"
-                CircleProgressView:cpv_blockCount="9"
-                CircleProgressView:cpv_outerContourSize="0dp"
-                CircleProgressView:cpv_rimWidth="0dp"
-                CircleProgressView:cpv_startAngle="0"
-                CircleProgressView:cpv_textColor="#ffffff"
-                CircleProgressView:cpv_unitColor="#ffffff"/>
-        </LinearLayout>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0sp"
@@ -166,64 +344,9 @@
             android:gravity="center"
             android:orientation="vertical"
             tools:ignore="NestedWeights">
-            <at.grabner.circleprogress.CircleProgressView
-                android:id="@+id/gPOWER_BALANCE_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10sp"
-                CircleProgressView:cpv_autoTextSize="true"
-                CircleProgressView:cpv_value="0"
-                CircleProgressView:cpv_maxValue="25"
-                CircleProgressView:cpv_showUnit="true"
-                CircleProgressView:cpv_textMode="Value"
-                CircleProgressView:cpv_unit="B CYL2"
-                CircleProgressView:cpv_unitPosition="bottom"
-                CircleProgressView:cpv_barColor="@color/color1"
-                CircleProgressView:cpv_barColor1="@color/color2"
-                CircleProgressView:cpv_barColor2="@color/color3"
-                CircleProgressView:cpv_barColor3="@color/color4"
-                CircleProgressView:cpv_barWidth="10dp"
-                CircleProgressView:cpv_fillColor="#293133"
-                CircleProgressView:cpv_innerContourSize="0dp"
-                CircleProgressView:cpv_blockCount="9"
-                CircleProgressView:cpv_outerContourSize="0dp"
-                CircleProgressView:cpv_rimWidth="0dp"
-                CircleProgressView:cpv_startAngle="0"
-                CircleProgressView:cpv_textColor="#ffffff"
-                CircleProgressView:cpv_unitColor="#ffffff"/>
+
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0sp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <at.grabner.circleprogress.CircleProgressView
-                android:id="@+id/gPOWER_BALANCE_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10sp"
-                CircleProgressView:cpv_autoTextSize="true"
-                CircleProgressView:cpv_value="0"
-                CircleProgressView:cpv_maxValue="25"
-                CircleProgressView:cpv_showUnit="true"
-                CircleProgressView:cpv_textMode="Value"
-                CircleProgressView:cpv_unit="B CYL4"
-                CircleProgressView:cpv_unitPosition="bottom"
-                CircleProgressView:cpv_barColor="@color/color1"
-                CircleProgressView:cpv_barColor1="@color/color2"
-                CircleProgressView:cpv_barColor2="@color/color3"
-                CircleProgressView:cpv_barColor3="@color/color4"
-                CircleProgressView:cpv_barWidth="10dp"
-                CircleProgressView:cpv_fillColor="#293133"
-                CircleProgressView:cpv_innerContourSize="0dp"
-                CircleProgressView:cpv_blockCount="9"
-                CircleProgressView:cpv_outerContourSize="0dp"
-                CircleProgressView:cpv_rimWidth="0dp"
-                CircleProgressView:cpv_startAngle="0"
-                CircleProgressView:cpv_textColor="#ffffff"
-                CircleProgressView:cpv_unitColor="#ffffff"/>
-        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0sp"
@@ -290,6 +413,7 @@
                 CircleProgressView:cpv_textColor="#ffffff"
                 CircleProgressView:cpv_unitColor="#ffffff"/>
         </LinearLayout>
+        -->
     </LinearLayout>
 
 </LinearLayout>

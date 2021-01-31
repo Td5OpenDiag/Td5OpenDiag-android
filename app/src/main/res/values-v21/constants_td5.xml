@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="td5_ect_cold">60</integer>
+    <integer name="td5_ect_thermostat_closed">82</integer>
+    <integer name="td5_ect_thermostat_opened">96</integer>
+    <integer name="td5_ect_load_reduction">110</integer>
+    <integer name="td5_ect_dangerzone">120</integer>
+
+    <integer name="ambientpressure_gauge_min">40</integer>
+    <integer name="ambientpressure_gauge_max">140</integer>
+
+    <integer name="batteryVoltage_gauge_min_V">10</integer>
+    <integer name="batteryVoltage_empty_mV">10800</integer>
+    <integer name="batteryVoltage_full_mV">12600</integer>
+    <integer name="batteryVoltage_charging_mV">13700</integer>
+    <integer name="batteryVoltage_high_mV">14700</integer>
+    <integer name="batteryVoltage_gauge_max_V">15</integer>
+
+    <integer name="engine_rpm_min">0</integer>
+    <integer name="engine_rpm_idle_low">740</integer>
+    <integer name="engine_rpm_idle_high">790</integer>
+    <integer name="engine_rpm_torque80_low">1300</integer>
+    <integer name="engine_rpm_torque90">1450</integer>
+    <integer name="engine_rpm_torqueMax">1950</integer>
+    <integer name="engine_rpm_torque80_high">3900</integer>
+    <integer name="engine_rpm_maxGovernedSpeed">4850</integer>
+    <integer name="engine_rpm_max">5000</integer>
+    <integer name="engine_rpm_maxOverrun">5460</integer>
+
+    <integer name="ect_gauge_min">40</integer>
+    <integer name="ect_gauge_max">140</integer>
+
+    <integer name="gauge_airFuelRatio_min">0</integer>
+    <integer name="gauge_airFuelRatio_max">30</integer>
+
+    <integer name="gauge_fuelTemperature_min">-40</integer>
+    <integer name="gauge_fuelTemperature_max">130</integer>
+
+    <integer name="engine_idleDemand_min">-5</integer>
+    <integer name="engine_idleDemand_max">25</integer>
+
+    <integer name="gauge_injectionQuantity_min">0</integer>
+    <integer name="gauge_injectionQuantity_max">100</integer>
+
+    <integer name="gauge_inletAirTemperature_min">-20</integer>
+    <integer name="gauge_inletAirTemperature_cold">10</integer>
+    <integer name="gauge_inletAirTemperature_hot">40</integer>
+    <integer name="gauge_inletAirTemperature_max">80</integer>
+
+    <integer name="intake_manifoldAirPressure_min_bar">-1</integer>
+    <integer name="intake_manifoldAirPressure_max_mBar">1190</integer>
+    <integer name="intake_manifoldAirPressure_max_bar">2</integer>
+
+    <integer name="gauge_massAirflow_min">0</integer>
+    <integer name="gauge_massAirflow_low">50</integer>
+    <integer name="gauge_massAirflow_max">500</integer>
+</resources>

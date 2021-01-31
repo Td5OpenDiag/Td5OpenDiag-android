@@ -28,6 +28,7 @@ import com.mooo.hairyone.td5tester.LogRecord;
 import com.mooo.hairyone.td5tester.R;
 import com.mooo.hairyone.td5tester.Requests;
 import com.mooo.hairyone.td5tester.Util;
+import com.mooo.hairyone.td5tester.databinding.ConnectFragmentBinding;
 import com.mooo.hairyone.td5tester.events.ConnectedEvent;
 import com.mooo.hairyone.td5tester.events.DashboardEvent;
 import com.mooo.hairyone.td5tester.events.MessageEvent;
@@ -50,9 +51,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
 
 public class ConnectFragment extends BaseFragment {
 
@@ -60,8 +59,11 @@ public class ConnectFragment extends BaseFragment {
 
     private static final String STATE__INFO_LINES = "INFO_LINES";
 
-    @BindView(R.id.tvInfo) TextView tvInfo;
-    @BindView(R.id.btConnect) ImageButton btConnect;
+    private ConnectFragmentBinding  m_binding;
+
+
+//    @BindView(R.id.tvInfo) TextView tvInfo; //deprecated
+//    @BindView(R.id.btConnect) ImageButton btConnect; // deprecated
     /*@BindView(R.id.btFastInit) ImageButton btFastInit;
     @BindView(R.id.btDashboard) ImageButton btDashboard;*/
 
@@ -130,20 +132,20 @@ public class ConnectFragment extends BaseFragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onNotConnectedEvent(NotConnectedEvent event) {
-        btConnect.setImageResource(R.drawable.usb_on);
+        m_binding.btConnect.setImageResource(R.drawable.usb_on);
         EventBus.getDefault().post(new ToggleUIEvent(true));
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onToggleUIEvent(ToggleUIEvent event) {
-        btConnect.setEnabled(event.enable);
+        m_binding.btConnect.setEnabled(event.enable);
         /*btFastInit.setEnabled(event.enable);
         btDashboard.setEnabled(event.enable);*/
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onConnectedEvent(ConnectedEvent event) {
-        btConnect.setImageResource(R.drawable.usb_off);
+        m_binding.btConnect.setImageResource(R.drawable.usb_off);
         EventBus.getDefault().post(new ToggleUIEvent(true));
     }
 
@@ -170,29 +172,87 @@ public class ConnectFragment extends BaseFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         log.trace("");
-        View view =  inflater.inflate(R.layout.connect_fragment, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        tvInfo.setMovementMethod(new ScrollingMovementMethod());
+
+        m_binding   = ConnectFragmentBinding.inflate(inflater, container, false);
+
+//        View view =  inflater.inflate(R.layout.connect_fragment, container, false);
+        View view   = m_binding.getRoot();
+
+//        unbinder = ButterKnife.bind(this, view); // Deprecated
+        m_binding.tvInfo.setMovementMethod(new ScrollingMovementMethod());
+
+        m_binding.btConnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Thread thread = new Thread(new Runnable() {
+                    @Override public void run() {
+                        if (mUsbDeviceConnection != null || mFakeUsbDeviceConnection) {
+                            stopDashboard();
+                            usb_close();
+                        } else {
+                            usb_open();
+                            fast_init();
+                            startDashboard();
+                        }
+                    }
+                });
+                thread.start();
+            }
+        });
+
+
+        m_binding.btReadFaults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Thread thread = new Thread(new Runnable() {
+                    @Override public void run() {
+                        read_faults();
+                    }
+                });
+                thread.start();
+            }
+        });
+
+        m_binding.btClearFaults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Thread thread = new Thread(new Runnable() {
+                    @Override public void run() {
+                        clear_faults();
+                    }
+                });
+                thread.start();
+            }
+        });
+
+
         return view;
    }
 
-    @OnClick(R.id.btConnect) public void connectHandler(View view) {
-        Thread thread = new Thread(new Runnable() {
-            @Override public void run() {
-                if (mUsbDeviceConnection != null || mFakeUsbDeviceConnection) {
-                    stopDashboard();
-                    usb_close();
-                } else {
-                    usb_open();
-                    fast_init();
-                    startDashboard();
-                }
-            }
-        });
-        thread.start();
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        m_binding   = null;
     }
+
+//    @OnClick(R.id.btConnect) public void connectHandler(View view) {
+//        Thread thread = new Thread(new Runnable() {
+//            @Override public void run() {
+//                if (mUsbDeviceConnection != null || mFakeUsbDeviceConnection) {
+//                    stopDashboard();
+//                    usb_close();
+//                } else {
+//                    usb_open();
+//                    fast_init();
+//                    startDashboard();
+//                }
+//            }
+//        });
+//        thread.start();
+//    }
 
     /*@OnClick(R.id.btFastInit) public void fastinitHandler() {
         Thread thread = new Thread(new Runnable() {
@@ -203,23 +263,23 @@ public class ConnectFragment extends BaseFragment {
         thread.start();
     }
 */
-    @OnClick(R.id.btReadFaults) public void readFaultsHandler(View view) {
-        Thread thread = new Thread(new Runnable() {
-            @Override public void run() {
-                read_faults();
-            }
-        });
-        thread.start();
-    }
-
-    @OnClick(R.id.btClearFaults) public void clearFaultsHandler(View view) {
-        Thread thread = new Thread(new Runnable() {
-            @Override public void run() {
-                clear_faults();
-            }
-        });
-        thread.start();
-    }
+//    @OnClick(R.id.btReadFaults) public void readFaultsHandler(View view) {
+//        Thread thread = new Thread(new Runnable() {
+//            @Override public void run() {
+//                read_faults();
+//            }
+//        });
+//        thread.start();
+//    }
+//
+//    @OnClick(R.id.btClearFaults) public void clearFaultsHandler(View view) {
+//        Thread thread = new Thread(new Runnable() {
+//            @Override public void run() {
+//                clear_faults();
+//            }
+//        });
+//        thread.start();
+//    }
 /*
     @OnClick(R.id.btpulserev) public void pulserevHandler(View view) {
         Thread thread = new Thread(new Runnable() {
@@ -860,7 +920,7 @@ public class ConnectFragment extends BaseFragment {
         if (mInfoLines.size() >= Consts.MAX_INFO_LINES) {
             mInfoLines.remove(0);
         }
-        tvInfo.setText(TextUtils.join("\n", mInfoLines));
+        m_binding.tvInfo.setText(TextUtils.join("\n", mInfoLines));
     }
 
     public void startDashboard() {

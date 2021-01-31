@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:CircleProgressView="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -15,7 +16,7 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:padding="1sp">
-
+<!--
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0sp"
@@ -52,39 +53,108 @@
                 CircleProgressView:cpv_maxValue="4500"
                 />
         </LinearLayout>
+-->
+
+        -->
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0sp"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:padding="1sp"
+            android:baselineAligned="false">
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:ignore="NestedWeights">
 
-            <at.grabner.circleprogress.CircleProgressView
-                android:id="@+id/gMPH"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10sp"
-                CircleProgressView:cpv_autoTextSize="true"
-                CircleProgressView:cpv_maxValue="175"
-                CircleProgressView:cpv_showUnit="true"
-                CircleProgressView:cpv_textMode="Value"
-                CircleProgressView:cpv_unit="KM/H"
-                CircleProgressView:cpv_unitPosition="bottom"
-                CircleProgressView:cpv_value="100"
-                CircleProgressView:cpv_barColor="@color/color1"
-                CircleProgressView:cpv_barColor1="@color/color2"
-                CircleProgressView:cpv_barColor2="@color/color3"
-                CircleProgressView:cpv_barColor3="@color/color4"
-                CircleProgressView:cpv_barWidth="10dp"
-                CircleProgressView:cpv_fillColor="#293133"
-                CircleProgressView:cpv_innerContourSize="0dp"
-                CircleProgressView:cpv_blockCount="9"
-                CircleProgressView:cpv_outerContourSize="0dp"
-                CircleProgressView:cpv_rimWidth="0dp"
-                CircleProgressView:cpv_startAngle="0"
-                CircleProgressView:cpv_textColor="#ffffff"
-                CircleProgressView:cpv_unitColor="#ffffff"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/engine_rpm_label"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="20sp"
+                    app:layout_gravity="fill"
+                    android:padding="1sp" />
+
+                <com.mooo.hairyone.td5tester.ui.helpers.gauge.EngineRPM
+                    android:id="@+id/gauge_engine_rpm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="0sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <at.grabner.circleprogress.CircleProgressView
+                    android:id="@+id/gMPH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10sp"
+                    CircleProgressView:cpv_autoTextSize="true"
+                    CircleProgressView:cpv_maxValue="175"
+                    CircleProgressView:cpv_showUnit="true"
+                    CircleProgressView:cpv_textMode="Value"
+                    CircleProgressView:cpv_unit="KM/H"
+                    CircleProgressView:cpv_unitPosition="bottom"
+                    CircleProgressView:cpv_value="100"
+                    CircleProgressView:cpv_barColor="@color/color1"
+                    CircleProgressView:cpv_barColor1="@color/color2"
+                    CircleProgressView:cpv_barColor2="@color/color3"
+                    CircleProgressView:cpv_barColor3="@color/color4"
+                    CircleProgressView:cpv_barWidth="10dp"
+                    CircleProgressView:cpv_fillColor="#293133"
+                    CircleProgressView:cpv_innerContourSize="0dp"
+                    CircleProgressView:cpv_blockCount="9"
+                    CircleProgressView:cpv_outerContourSize="0dp"
+                    CircleProgressView:cpv_rimWidth="0dp"
+                    CircleProgressView:cpv_startAngle="0"
+                    CircleProgressView:cpv_textColor="#ffffff"
+                    CircleProgressView:cpv_unitColor="#ffffff"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="1sp"
+            android:baselineAligned="false">
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:ignore="NestedWeights">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/manifold_turbo_pressure_label"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="20sp"
+                    app:layout_gravity="fill" />
+
+                <com.mooo.hairyone.td5tester.ui.helpers.gauge.ManifoldAirPressure
+                    android:id="@+id/gauge_manifold_turbo_pressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10sp" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -94,32 +164,89 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <at.grabner.circleprogress.CircleProgressView
-                android:id="@+id/gVOLT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10sp"
-                CircleProgressView:cpv_autoTextSize="true"
-                CircleProgressView:cpv_decimalFormat="#0.0"
-                CircleProgressView:cpv_maxValue="18"
-                CircleProgressView:cpv_showUnit="true"
-                CircleProgressView:cpv_textMode="Value"
-                CircleProgressView:cpv_unit="VOLT"
-                CircleProgressView:cpv_unitPosition="bottom"
-                CircleProgressView:cpv_value="15.0"
-                CircleProgressView:cpv_barColor="@color/color4"
-                CircleProgressView:cpv_barColor1="@color/color4"
-                CircleProgressView:cpv_barColor2="@color/color1"
-                CircleProgressView:cpv_barColor3="@color/color4"
-                CircleProgressView:cpv_barWidth="10dp"
-                CircleProgressView:cpv_fillColor="#293133"
-                CircleProgressView:cpv_innerContourSize="0dp"
-                CircleProgressView:cpv_blockCount="8"
-                CircleProgressView:cpv_outerContourSize="0dp"
-                CircleProgressView:cpv_rimWidth="0dp"
-                CircleProgressView:cpv_startAngle="0"
-                CircleProgressView:cpv_textColor="#ffffff"
-                CircleProgressView:cpv_unitColor="#ffffff"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="1sp"
+                android:baselineAligned="false">
+
+<!--                <at.grabner.circleprogress.CircleProgressView
+                    android:id="@+id/gVOLT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10sp"
+                    CircleProgressView:cpv_autoTextSize="true"
+                    CircleProgressView:cpv_decimalFormat="#0.0"
+                    CircleProgressView:cpv_maxValue="18"
+                    CircleProgressView:cpv_showUnit="true"
+                    CircleProgressView:cpv_textMode="Value"
+                    CircleProgressView:cpv_unit="VOLT"
+                    CircleProgressView:cpv_unitPosition="bottom"
+                    CircleProgressView:cpv_value="15.0"
+                    CircleProgressView:cpv_barColor="@color/color4"
+                    CircleProgressView:cpv_barColor1="@color/color4"
+                    CircleProgressView:cpv_barColor2="@color/color1"
+                    CircleProgressView:cpv_barColor3="@color/color4"
+                    CircleProgressView:cpv_barWidth="10dp"
+                    CircleProgressView:cpv_fillColor="#293133"
+                    CircleProgressView:cpv_innerContourSize="0dp"
+                    CircleProgressView:cpv_blockCount="8"
+                    CircleProgressView:cpv_outerContourSize="0dp"
+                    CircleProgressView:cpv_rimWidth="0dp"
+                    CircleProgressView:cpv_startAngle="0"
+                    CircleProgressView:cpv_textColor="#ffffff"
+                    CircleProgressView:cpv_unitColor="#ffffff"/>
+-->
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:ignore="NestedWeights">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/battery_voltage_label"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="20sp"
+                        app:layout_gravity="fill" />
+
+                    <com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge
+                        android:id="@+id/gauge_battery_voltage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:ignore="NestedWeights">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/engine_coolant_temperature_label"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="20sp"
+                        app:layout_gravity="fill" />
+
+                    <com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge
+                        android:id="@+id/gauge_ect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10sp" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

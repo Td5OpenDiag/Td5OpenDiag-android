@@ -1,3 +1,61 @@
 <resources>
     <string name="app_name">Td5OpenDiag</string>
+
+    <string name="air_fuel_ratio">Air/Fuel ratio</string>
+    <string name="air_fuel_ratio_label">Air/Fuel</string>
+    <string name="air_fuel_ratio_short">AFR</string>
+
+    <string name="ambient_pressure">Ambient Pressure</string>
+    <string name="ambient_pressure_label">Amb. Pressure</string>
+    <string name="ambient_pressure_short">AP</string>
+
+    <string name="battery_voltage">Battery voltage</string>
+    <string name="battery_voltage_label">Battery Volt.</string>
+    <string name="battery_voltage_short">Batt</string>
+
+    <string name="engine_coolant_temperature">Engine Coolant Temperature</string>
+    <string name="engine_coolant_temperature_label">Coolant Temp.</string>
+    <string name="engine_coolant_temperature_short">ECT</string>
+
+    <string name="engine_rpm">Engine RPM</string>
+    <string name="engine_rpm_label">Engine RPM</string>
+    <string name="engine_rpm_short">RPM</string>
+
+    <string name="fuel_temperature">Fuel Temperature</string>
+    <string name="fuel_temperature_label">Fuel Temp.</string>
+    <string name="fuel_temperature_short">FT</string>
+
+    <string name="fuel_demand_driver">Driver fuel demand</string>
+    <string name="fuel_demand_driver_label">Driver demand</string>
+    <string name="fuel_demand_driver_short">Driver dmd.</string>
+
+    <string name="fuel_demand_idle">Idle fuel Demand</string>
+    <string name="fuel_demand_idle_label">Idle demand</string>
+    <string name="fuel_demand_idle_short">IDLE DMD</string>
+
+    <string name="fuel_injection_quantity">Injection Quantity</string>
+    <string name="fuel_injection_quantity_label">Inj. Quantity</string>
+    <string name="fuel_injection_quantity_short">IQ</string>
+
+    <string name="fuel_limiter_smoke">Smoke fuel limiter</string>
+    <string name="fuel_limiter_smoke_label">Smoke limiter</string>
+    <string name="fuel_limiter_smoke_short">Smoke lim.</string>
+
+    <string name="fuel_limiter_torque">Torque fuel limiter</string>
+    <string name="fuel_limiter_torque_label">Torque limiter</string>
+    <string name="fuel_limiter_torque_short">Torque lim.</string>
+
+    <string name="intake_air_temperature">Intake Air Temperature</string>
+    <string name="intake_air_temperature_label">In. Air Temp.</string>
+    <string name="intake_air_temperature_short">IAT</string>
+
+    <string name="manifold_turbo_pressure">Manifold Air Pressure</string>
+    <string name="manifold_turbo_pressure_label">MAP (turbo)</string>
+    <string name="manifold_turbo_pressure_short">MAP</string>
+
+    <string name="mass_airflow">Mass Airflow (mg/stroke)</string>
+    <string name="mass_airflow_label">Mass Airflow (mg/str)</string>
+    <string name="mass_airflow_short">MAF</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

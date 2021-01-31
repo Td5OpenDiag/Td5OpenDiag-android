@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mooo.hairyone.td5tester.fragments.IntakeFragment"
+    android:padding="1sp"
+    android:orientation="vertical"
+    android:baselineAligned="false">
+
+    <!-- TODO: Update blank fragment layout -->
+
+<!--<androidx.gridlayout.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    app:columnCount="2"-->
+<!--    app:orientation="vertical"-->
+<!--    app:rowCount="2"-->
+<!--    tools:context="com.mooo.hairyone.td5tester.fragments.IntakeFragment">-->
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:padding="1sp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:ignore="NestedWeights">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/ambient_pressure_label"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="20sp"
+                app:layout_gravity="fill" />
+
+            <com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge
+                android:id="@+id/gauge_ambient_pressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10sp" />
+
+            <TextView
+                android:id="@+id/text_ambient_pressure_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xxx PlaceHolder xxx"
+                android:textAlignment="center"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:ignore="NestedWeights">
+
+            <TextView
+                android:id="@+id/weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/intake_air_temperature_label"
+                android:textAlignment="center"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="20sp" />
+
+            <com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge
+                android:id="@+id/gauge_intakeAirTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10sp" />
+
+            <TextView
+                android:id="@+id/text_intakeAirTemp_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xxx PlaceHolder xxx"
+                android:textAlignment="center"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:padding="1sp"
+        android:baselineAligned="false">
+        <LinearLayout
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:ignore="NestedWeights">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/mass_airflow_label"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="20sp"
+                app:layout_gravity="fill" />
+
+            <com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge
+                android:id="@+id/gauge_mass_airflow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:ignore="NestedWeights">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/manifold_turbo_pressure_label"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="20sp"
+                app:layout_gravity="fill" />
+
+            <com.mooo.hairyone.td5tester.ui.helpers.gauge.ManifoldAirPressure
+                android:id="@+id/gauge_manifold_turbo_pressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

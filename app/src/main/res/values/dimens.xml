@@ -7,4 +7,6 @@
     <dimen name="tab_padding_bottom">16dp</dimen>
     <dimen name="tab_label">14sp</dimen>
     <dimen name="custom_tab_layout_height">72dp</dimen>
+
+    <dimen name="gauges_center_circle_radius">10dp</dimen>
 </resources>

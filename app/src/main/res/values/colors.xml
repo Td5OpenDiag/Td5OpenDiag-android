@@ -10,4 +10,29 @@
     <color name="color2">#d8f900</color>
     <color name="color3">#fc8f00</color>
     <color name="color4">#ff0000</color>
+
+
+    <!--
+        Colors for incrementing gauges
+    -->
+
+    <color name="valueInc_invalid">#808080</color>
+
+    <!-- 0,0,255, 100% -->
+<!--    <color name="valueInc_veryLow">#0000ff</color>-->
+    <color name="valueInc_veryLow">#C800FF</color>
+    <!-- 0,255,255, 50% -->
+<!--    <color name="valueInc_low">#008080</color>-->
+    <color name="valueInc_low">#0000FF</color>
+    <!-- 0,255,128, 100% -->
+    <!--<color name="valueInc_ok_low">#00bf60</color>-->
+    <color name="valueInc_ok_low">#008080</color>
+    <!-- 0,255,0, 100% -->
+    <color name="valueInc_ok">#00CA00</color>
+    <!-- 255,255,0, 100% -->
+    <color name="valueInc_ok_high">#FFFF00</color>
+    <!-- 255, 165, 0, 100% -->
+    <color name="valueInc_high">#ffa500</color>
+    <!-- 255, 0, 0, 100% -->
+    <color name="valueInc_veryHigh">#ff0000</color>
 </resources>

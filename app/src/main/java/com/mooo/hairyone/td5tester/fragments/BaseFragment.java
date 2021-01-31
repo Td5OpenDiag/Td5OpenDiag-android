@@ -2,7 +2,7 @@ package com.mooo.hairyone.td5tester.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +12,11 @@ import com.mooo.hairyone.td5tester.Log4jHelper;
 import org.apache.log4j.Logger;
 import org.greenrobot.eventbus.EventBus;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
 public abstract class BaseFragment extends Fragment {
 
     Logger log = Log4jHelper.getLogger(this.getClass());
 
-    Unbinder unbinder;
+//    Unbinder unbinder; // Butterknife is deprecated
 
     @Override public void onAttach(Activity activity) {
         // This is where a fragment is associated with an activity. Keep in mind that when this
@@ -46,7 +43,7 @@ public abstract class BaseFragment extends Fragment {
         // for the fragment we must return a View Component from this method.
         log.trace("");
         View view =  inflater.inflate(getFragmentLayout(), container, false);
-        unbinder = ButterKnife.bind(this, view);
+//        unbinder = ButterKnife.bind(this, view);
         return view;
     }
 
@@ -99,9 +96,9 @@ public abstract class BaseFragment extends Fragment {
 
     @Override public void onDestroyView() {
         super.onDestroyView();
-        if (unbinder != null) {
-            unbinder.unbind();
-        }
+//        if (unbinder != null) {
+//            unbinder.unbind();
+//        }
     }
 
 
