@@ -35,7 +35,7 @@ public class DashboardFragment extends Fragment {
     private float   m_lastInjectedFuelQuantity_mg   = 0;
     private float   m_lastEngineRPM                 = 0;
     private float   m_lastRoadSpeed_kmh             = 0;
-    final float     f_dieselDensity                 = 0.860f;
+    final float     f_dieselDensity                 = 0.830f;
 
 
     public DashboardFragment() { /* Required empty public constructor */ }
@@ -194,7 +194,7 @@ public class DashboardFragment extends Fragment {
         /* We use a multiplication factor in the calculus for performance. */
         final float f_factor    = 0.017857143f;
 
-        String  lText   = "--";
+        String  lText   = "---.-";
 
 
         if(     m_lastRoadSpeed_kmh > 0 )
@@ -204,7 +204,7 @@ public class DashboardFragment extends Fragment {
                     = (m_lastInjectedFuelQuantity_mg * f_factor * m_lastEngineRPM)
                     / m_lastRoadSpeed_kmh;
 
-            lText = "" + lValue;
+            lText = "" + String.format("%.1f", lValue);
         }
 
 
