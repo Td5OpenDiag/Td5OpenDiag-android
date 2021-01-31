@@ -306,7 +306,7 @@
                 android:textSize="20sp"
                 app:layout_gravity="fill" />
 
-            <com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge
+            <com.mooo.hairyone.td5tester.ui.helpers.gauge.FuelTemperature
                 android:id="@+id/gauge_fuel_temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -339,11 +339,11 @@
                 android:textSize="20sp"
                 app:layout_gravity="fill" />
 
-            <com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge
+            <com.mooo.hairyone.td5tester.ui.helpers.gauge.AirFuelRatio
                 android:id="@+id/gauge_air_fuel_ratio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10sp" />
+                android:padding="0sp" />
 
             <TextView
                 android:id="@+id/text_air_fuel_ratio_value"

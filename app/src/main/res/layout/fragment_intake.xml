@@ -50,11 +50,11 @@
                 android:textSize="20sp"
                 app:layout_gravity="fill" />
 
-            <com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge
+            <com.mooo.hairyone.td5tester.ui.helpers.gauge.AmbientPressure
                 android:id="@+id/gauge_ambient_pressure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10sp" />
+                android:padding="0sp" />
 
 <!--            <TextView-->
 <!--                android:id="@+id/text_ambient_pressure_value"-->
@@ -83,11 +83,11 @@
                 android:textColor="@color/textColorPrimary"
                 android:textSize="20sp" />
 
-            <com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge
+            <com.mooo.hairyone.td5tester.ui.helpers.gauge.IntakeAirTemperature
                 android:id="@+id/gauge_intakeAirTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10sp" />
+                android:padding="0sp" />
 
 <!--            <TextView-->
 <!--                android:id="@+id/text_intakeAirTemp_value"-->
@@ -186,11 +186,11 @@
                 android:textSize="20sp"
                 app:layout_gravity="fill" />
 
-            <com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge
+            <com.mooo.hairyone.td5tester.ui.helpers.gauge.MassAirflow
                 android:id="@+id/gauge_mass_airflow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10sp" />
+                android:padding="0sp" />
         </LinearLayout>
 
         <LinearLayout

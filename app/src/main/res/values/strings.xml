@@ -4,14 +4,21 @@
     <string name="air_fuel_ratio">Air/Fuel ratio</string>
     <string name="air_fuel_ratio_label">Air/Fuel</string>
     <string name="air_fuel_ratio_short">AFR</string>
+    <string name="air_fuel_ratio_unit">ratio</string>
 
     <string name="ambient_pressure">Ambient Pressure</string>
     <string name="ambient_pressure_label">Amb. Pressure</string>
     <string name="ambient_pressure_short">AP</string>
+    <string name="ambient_pressure_unit_short">kPa</string>
 
     <string name="battery_voltage">Battery voltage</string>
-    <string name="battery_voltage_label">Battery Volt.</string>
-    <string name="battery_voltage_short">Batt</string>
+    <string name="battery_voltage_label">Bat. Volt.</string>
+    <string name="battery_voltage_short">BAT</string>
+
+    <string name="cylinder_balance">Cylinder balance</string>
+    <string name="cylinder_balance_label">Cyl. Bal.</string>
+    <string name="cylinder_balance_short">CB %d</string>
+    <string name="cylinder_balance_unit">Balance</string>
 
     <string name="engine_coolant_temperature">Engine Coolant Temperature</string>
     <string name="engine_coolant_temperature_label">Coolant Temp.</string>
@@ -48,10 +55,12 @@
     <string name="fuel_temperature">Fuel Temperature</string>
     <string name="fuel_temperature_label">Fuel Temp.</string>
     <string name="fuel_temperature_short">FT</string>
+    <string name="fuel_temperature_unit_short">°C</string>
 
     <string name="intake_air_temperature">Intake Air Temperature</string>
     <string name="intake_air_temperature_label">In. Air Temp.</string>
     <string name="intake_air_temperature_short">IAT</string>
+    <string name="intake_air_temperature_unit_short">°C</string>
 
     <string name="intake_maf_airMass_label">MAF air mass</string>
     <string name="intake_maf_airMass_label_label">MAF air mass</string>
@@ -64,10 +73,12 @@
     <string name="manifold_turbo_pressure">Manifold Air Pressure</string>
     <string name="manifold_turbo_pressure_label">MAP (turbo)</string>
     <string name="manifold_turbo_pressure_short">MAP</string>
+    <string name="manifold_turbo_pressure_unit_short">bar</string>
 
     <string name="mass_airflow">Mass Airflow (mg/stroke)</string>
     <string name="mass_airflow_label">Mass Airflow</string>
     <string name="mass_airflow_short">MAF</string>
+    <!--<string name="mass_airflow_unit_short">g/h</string>-->
     <string name="mass_airflow_unit_short">mg/strk</string>
 
 </resources>

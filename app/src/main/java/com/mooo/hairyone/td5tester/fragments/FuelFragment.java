@@ -76,14 +76,6 @@ public class FuelFragment extends Fragment {
         View view   = m_binding.getRoot();
 
 
-        this.init_gauge_airFuelRatio();
-        this.init_gauge_fuelTemperature();
-        //this.init_gauge_injectionQuantity();
-
-
-        setAirFuelRatio(0.0f);
-        setFuelTemperature(0.0f);
-
         this.selectedFuelingValue_update();
 
 
@@ -153,43 +145,6 @@ public class FuelFragment extends Fragment {
         }
 
         this.selectedFuelingValue_update();
-    }
-
-
-    private void    init_gauge_airFuelRatio()
-    {
-        int lGaugeValueMin
-                = getContext().getResources().getInteger( R.integer.fueling_airFuelRatio_gaugeMin);
-        int lGaugeValueMax
-                = getContext().getResources().getInteger( R.integer.fueling_airFuelRatio_gaugeMax);
-
-
-        Td5Gauge lGauge = m_binding.gaugeAirFuelRatio;
-
-
-        lGauge.setMin( lGaugeValueMin );
-        lGauge.setMax( lGaugeValueMax );
-
-        lGauge.setUnit(" : 1");
-        lGauge.setUnitUnderSpeedText(false);
-    }
-
-
-    private void    init_gauge_fuelTemperature()
-    {
-        int lGaugeValueMin
-                = getContext().getResources().getInteger( R.integer.fueling_fuelTemperature_gaugeMin);
-        int lGaugeValueMax
-                = getContext().getResources().getInteger( R.integer.fueling_fuelTemperature_gaugeMax);
-
-
-        Td5Gauge lGauge = m_binding.gaugeFuelTemperature;
-
-
-        lGauge.setMin( lGaugeValueMin );
-        lGauge.setMax( lGaugeValueMax );
-
-        lGauge.setUnit("°C");
     }
 
 

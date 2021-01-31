@@ -7,12 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-//import com.github.opentd5dashboard.R;
-import com.github.anastr.speedviewlib.DeluxeSpeedView;
-import com.github.anastr.speedviewlib.Gauge;
-import com.github.anastr.speedviewlib.components.Section;
-import com.github.anastr.speedviewlib.components.Style;
-import com.github.anastr.speedviewlib.components.indicators.Indicator;
 import com.mooo.hairyone.td5tester.Log4jHelper;
 import com.mooo.hairyone.td5tester.R;
 import com.mooo.hairyone.td5tester.databinding.FragmentIntakeBinding;
@@ -79,17 +73,6 @@ public class IntakeFragment extends Fragment {
         m_binding   = FragmentIntakeBinding.inflate(inflater, container, false);
         View view   = m_binding.getRoot();
 
-        this.init_gauge_ambientPressure();
-        this.init_gauge_iat();
-        //this.init_gauge_manifoldAirPressure();
-        this.init_gauge_massAirflow();
-
-        setAmbientPressure(40.0f);
-        //m_binding.gaugeIntakeAirTemp.setSpeedAt(0.0f);
-        setIntakeAirTemperature(0.0f);
-        setMassAirflow(0.0f);
-        setManifoldAirPressure(0.0f);
-
 
         return view;
     }
@@ -119,118 +102,6 @@ public class IntakeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         m_binding   = null;
-    }
-
-
-    private void    init_gauge_ambientPressure()
-    {
-
-        int lGaugeValueMin
-                = getContext().getResources().getInteger( R.integer.intake_ambientPressure_gaugeMin );
-        int lGaugeValueMax
-                = getContext().getResources().getInteger( R.integer.intake_ambientPressure_gaugeMax );
-
-
-        Td5Gauge lGaugeAP   = m_binding.gaugeAmbientPressure;
-
-
-        lGaugeAP.setMin( lGaugeValueMin );
-        lGaugeAP.setMax( lGaugeValueMax );
-
-        lGaugeAP.setUnit("kPa");
-
-
-        /*
-            Sections definition
-         */
-
-    }
-
-
-    private void    init_gauge_iat()
-    {
-        int lGaugeValueMin
-                = getContext().getResources().getInteger( R.integer.intake_inletAirTemperature_gaugeMin);
-        int lGaugeValueMax
-                = getContext().getResources().getInteger( R.integer.intake_inletAirTemperature_gaugeMax);
-
-
-        Td5Gauge lGauge = m_binding.gaugeIntakeAirTemp;
-
-
-        lGauge.setMin( lGaugeValueMin );
-        lGauge.setMax( lGaugeValueMax );
-
-        lGauge.setUnit("°C");
-
-
-        /*
-            Sections definition
-         */
-        /* "Cold" section */
-        lGauge.section_add(
-                lGaugeValueMin,
-                getContext().getResources().getInteger( R.integer.intake_inletAirTemperature_cold),
-                Color.BLUE );
-
-        /* "Hot" section */
-        lGauge.section_add(
-                getContext().getResources().getInteger( R.integer.intake_inletAirTemperature_hot),
-                lGaugeValueMax,
-                Color.rgb(255, 165, 0) );
-    }
-
-
-//    private void    init_gauge_manifoldAirPressure()
-//    {
-//        int lGaugeValueMax
-//                = getContext().getResources().getInteger( R.integer.gauge_manifoldAirPressure_max);
-//        int lGaugeValueMin
-//                = getContext().getResources().getInteger( R.integer.gauge_manifoldAirPressure_min);
-//
-//
-//        Td5Gauge lGauge = m_binding.gaugeManifoldTurboPressure;
-//
-//
-//        lGauge.setMin( lGaugeValueMin );
-//        lGauge.setMax( lGaugeValueMax );
-//
-//        lGauge.setUnit("bar");
-//
-//
-//        lGauge.setStartDegree(90);
-//        lGauge.setEndDegree(360);
-//
-//        lGauge.setMarksNumber(5);
-//        lGauge.setTickNumber(4);
-//    }
-
-
-    private void    init_gauge_massAirflow()
-    {
-        int lGaugeValueMin
-                = getContext().getResources().getInteger( R.integer.intake_massAirflow_gaugeMin);
-        int lGaugeValueMax
-                = getContext().getResources().getInteger( R.integer.intake_massAirflow_gaugeMax);
-
-
-        Td5Gauge lGauge = m_binding.gaugeMassAirflow;
-
-
-        lGauge.setMin( lGaugeValueMin );
-        lGauge.setMax( lGaugeValueMax );
-
-        lGauge.setUnit("g/h");
-
-
-        /*
-            Sections definition
-         */
-        /* "Low" section */
-        lGauge.section_add(
-                lGaugeValueMin,
-                getContext().getResources().getInteger( R.integer.intake_massAirflow_low),
-                getContext().getResources().getColor(R.color.valueInc_veryLow) );
     }
 
 
@@ -274,14 +145,12 @@ public class IntakeFragment extends Fragment {
     private void    setAmbientPressure(float pValue)
     {
         m_binding.gaugeAmbientPressure.setValue(pValue);
-//        m_binding.textAmbientPressureValue.setText(pValue + " kPa");
     }
 
 
     private void    setIntakeAirTemperature(float pValue)
     {
         m_binding.gaugeIntakeAirTemp.setValue(pValue);
-//        m_binding.textIntakeAirTempValue.setText(pValue + " °C");
     }
 
 
@@ -294,7 +163,6 @@ public class IntakeFragment extends Fragment {
     private void    setManifoldAirPressure(float pValue)
     {
         m_binding.gaugeManifoldTurboPressure.setValue(pValue);
-        //m_binding.text.setText(pValue + " bar");
     }
 
 
@@ -307,6 +175,5 @@ public class IntakeFragment extends Fragment {
     private void    setMassAirflow(float pValue)
     {
         m_binding.gaugeMassAirflow.setValue(pValue);
-        //m_binding.text.setText(pValue + " g/h");
     }
 }

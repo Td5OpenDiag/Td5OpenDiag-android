@@ -51,5 +51,6 @@ dependencies {
 //    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 
 
-    implementation project(path: ':speedviewlib')
+    /* Gauge library */
+    implementation 'com.github.aloike.libgauge:LibGauge:0.0.5'
 }

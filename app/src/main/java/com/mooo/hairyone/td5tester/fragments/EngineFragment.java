@@ -80,6 +80,12 @@ public class EngineFragment extends Fragment {
         setEngineCoolantTemperature(0.0f);
         //setIdleDemand(0.0f);
 
+        m_binding.gPOWERBALANCE1.setCylinderNumber( 1 );
+        m_binding.gPOWERBALANCE2.setCylinderNumber( 2 );
+        m_binding.gPOWERBALANCE3.setCylinderNumber( 3 );
+        m_binding.gPOWERBALANCE4.setCylinderNumber( 4 );
+        m_binding.gPOWERBALANCE5.setCylinderNumber( 5 );
+
 
         return view;
     }
@@ -172,6 +178,5 @@ public class EngineFragment extends Fragment {
     private void    setEngineCoolantTemperature(float pValue)
     {
         m_binding.gaugeEct.setValue(pValue);
-        //m_binding.textAmbientPressureValue.setText(pValue + " kPa");
     }
 }

@@ -11,6 +11,8 @@
     <color name="color3">#fc8f00</color>
     <color name="color4">#ff0000</color>
 
+    <color name="warning">#ffa500</color>
+
 
     <!--
         Colors for fueling selected quantity
