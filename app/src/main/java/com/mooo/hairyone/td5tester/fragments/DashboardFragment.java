@@ -116,54 +116,6 @@ public class DashboardFragment extends Fragment {
                 m_binding.gMPH.setValue(value);
                 break;
         }
-    }
-
-
-    private void    init_gauge_batteryVoltage()
-    {
-        int lGaugeValueMax   = getContext().getResources().getInteger( R.integer.batteryVoltage_gauge_max_V);
-        int lGaugeValueMin   = getContext().getResources().getInteger( R.integer.batteryVoltage_gauge_min_V);
-
-
-        Td5Gauge lGauge   = m_binding.gaugeBatteryVoltage;
-
-
-        lGauge.setMin( lGaugeValueMin );
-        lGauge.setMax( lGaugeValueMax );
-
-        lGauge.setUnit("V");
-
-        lGauge.setTickNumber(7);
-        lGauge.setMarksNumber(7 - 2);
-
-
-        /*
-            Sections definition
-         */
-
-        /* "Empty" section */
-        lGauge.section_add(
-                lGaugeValueMin,
-                getContext().getResources().getInteger( R.integer.batteryVoltage_empty_mV) / 1000.0f,
-                Color.RED);
-
-        /* "ok" section */
-        lGauge.section_add(
-                getContext().getResources().getInteger( R.integer.batteryVoltage_empty_mV) / 1000.0f,
-                getContext().getResources().getInteger( R.integer.batteryVoltage_full_mV) / 1000.0f,
-                Color.GRAY );
-
-        /* "Charging" section */
-        lGauge.section_add(
-                getContext().getResources().getInteger( R.integer.batteryVoltage_charging_mV) / 1000.0f,
-                getContext().getResources().getInteger( R.integer.batteryVoltage_high_mV) / 1000.0f,
-                Color.GREEN );
-
-        /* "high" section */
-        lGauge.section_add(
-                getContext().getResources().getInteger( R.integer.batteryVoltage_high_mV) / 1000.0f,
-                lGaugeValueMax,
-                Color.RED );
 
     }
 
