@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TD5Tester.iml" filepath="$PROJECT_DIR$/TD5Tester.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/TD5Tester-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/TD5Tester-app.iml" group="TD5Tester/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Td5OpenDiag.iml" filepath="$PROJECT_DIR$/.idea/modules/Td5OpenDiag.iml" group="Td5OpenDiag" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Td5OpenDiag-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Td5OpenDiag-app.iml" group="Td5OpenDiag/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/projets_perso-TD5Tester.iml" filepath="$PROJECT_DIR$/.idea/modules/projets_perso-TD5Tester.iml" group="TD5Tester" />
     </modules>
