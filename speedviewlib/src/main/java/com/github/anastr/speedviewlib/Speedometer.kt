@@ -178,6 +178,7 @@ abstract class Speedometer @JvmOverloads constructor(context: Context, attrs: At
 
     /** to rotate tick label  */
     private var tickRotation = true
+
     /**
      *  first padding, set by speedometer.
      *  this will not redraw background bitmap.
@@ -262,6 +263,13 @@ abstract class Speedometer @JvmOverloads constructor(context: Context, attrs: At
             for (i in 0 until tickNumber)
                 ticks.add(tickEach * i)
             this.ticks = ticks
+        }
+
+    var tickTextFormat : String = "%.0f"
+        //get()=tickTextFormat
+        set(tickTextFormat) {
+            field = tickTextFormat
+            invalidateGauge()
         }
 
     /**
@@ -505,7 +513,7 @@ abstract class Speedometer @JvmOverloads constructor(context: Context, attrs: At
                     Note.Position.CenterIndicator -> (indicator.getTop() + indicator.getBottom()) * .5f
                     Note.Position.BottomIndicator -> indicator.getBottom()
                     Note.Position.TopSpeedometer -> padding.toFloat()
-                    Note.Position.QuarterSpeedometer -> heightPa * .25f + padding
+                    Note.Position.QuarterSpeedometer -> viewHeightNoPadding * .25f + padding
                     Note.Position.CenterSpeedometer -> viewCenterY
                 }
                 canvas.save()
@@ -675,6 +683,7 @@ abstract class Speedometer @JvmOverloads constructor(context: Context, attrs: At
         c.restore()
     }
 
+
     /**
      * draw speed value at each tick point.
      * @param c canvas to draw.
@@ -697,8 +706,10 @@ abstract class Speedometer @JvmOverloads constructor(context: Context, attrs: At
             if (onPrintTickLabel != null)
                 tick = onPrintTickLabel!!.invoke(index, getSpeedAtDegree(d))
             // if (onPrintTickLabel is null or it returns null)
-            if (tick == null)
-                tick = "%.0f".format(locale, getSpeedAtDegree(d))
+            if (tick == null) {
+                //tick = "%.0f".format(locale, getSpeedAtDegree(d))
+                tick = tickTextFormat.format(getSpeedAtDegree(d))
+            }
 
             c.translate(0f, initTickPadding + padding.toFloat() + tickPadding.toFloat())
             StaticLayout(tick, textPaint, size, Layout.Alignment.ALIGN_CENTER, 1f, 0f, false)

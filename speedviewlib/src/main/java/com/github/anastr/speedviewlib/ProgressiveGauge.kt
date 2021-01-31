@@ -104,11 +104,11 @@ open class ProgressiveGauge @JvmOverloads constructor(context: Context, attrs: A
      */
     protected fun updateHorizontalPath() {
         path.reset()
-        path.moveTo(0f, heightPa.toFloat())
-        path.lineTo(0f, heightPa - heightPa * .1f)
-        path.quadTo(widthPa * .75f, heightPa * .75f, widthPa.toFloat(), 0f)
-        path.lineTo(widthPa.toFloat(), heightPa.toFloat())
-        path.lineTo(0f, heightPa.toFloat())
+        path.moveTo(0f, viewHeightNoPadding.toFloat())
+        path.lineTo(0f, viewHeightNoPadding - viewHeightNoPadding * .1f)
+        path.quadTo(viewWidthNoPadding * .75f, viewHeightNoPadding * .75f, viewWidthNoPadding.toFloat(), 0f)
+        path.lineTo(viewWidthNoPadding.toFloat(), viewHeightNoPadding.toFloat())
+        path.lineTo(0f, viewHeightNoPadding.toFloat())
     }
 
     /**
@@ -116,10 +116,10 @@ open class ProgressiveGauge @JvmOverloads constructor(context: Context, attrs: A
      */
     protected fun updateVerticalPath() {
         path.reset()
-        path.moveTo(0f, heightPa.toFloat())
-        path.lineTo(widthPa * .1f, heightPa.toFloat())
-        path.quadTo(widthPa * .25f, heightPa * .25f, widthPa.toFloat(), 0f)
+        path.moveTo(0f, viewHeightNoPadding.toFloat())
+        path.lineTo(viewWidthNoPadding * .1f, viewHeightNoPadding.toFloat())
+        path.quadTo(viewWidthNoPadding * .25f, viewHeightNoPadding * .25f, viewWidthNoPadding.toFloat(), 0f)
         path.lineTo(0f, 0f)
-        path.lineTo(0f, heightPa.toFloat())
+        path.lineTo(0f, viewHeightNoPadding.toFloat())
     }
 }

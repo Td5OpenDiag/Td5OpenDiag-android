@@ -1,7 +1,12 @@
 package com.mooo.hairyone.td5tester.ui.helpers;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 
 import com.github.anastr.speedviewlib.DeluxeSpeedView;
@@ -81,15 +86,31 @@ public class Td5Gauge extends DeluxeSpeedView {
         /*
             Text parameters
          */
-        this.setTextColor(Color.WHITE);
+        this.setTextTypeface(Typeface.MONOSPACE);
 
-        this.setSpeedTextSize(this.dpTOpx(10));
-        this.setSpeedBackgroundColor(Color.WHITE);
+        this.setTextColor(getContext().getResources().getColor( R.color.textColorPrimary));
+
+        //this.setGaugeNameBackgroundColor( getContext().getResources().getColor( R.color.windowBackground));
+        this.setGaugeNameTextColor(getContext().getResources().getColor( R.color.textColorPrimary));
+        this.setGaugeNameTextTypeface(Typeface.MONOSPACE);
+        this.setGaugeNameTextSize(this.dpTOpx(16));
+        //this.setGaugeNameTextSize(dpTOpx(this.getHeight() * 0.2f));
+        this.setGaugeNameTextPosition(Gauge.Position.MIDTOP_CENTER);
+
+        Paint lPaint    = getSpeedBackgroundPaint();
+        lPaint.setStyle( Paint.Style.STROKE );
+        lPaint.setColor(getContext().getResources().getColor( R.color.windowBackground));
+        lPaint.setStrokeWidth(5f);
+        setSpeedBackgroundPaint(lPaint);
+        this.setSpeedTextColor( getContext().getResources().getColor( R.color.textColorPrimary) );
         this.setSpeedTextPosition(Gauge.Position.BOTTOM_CENTER);
+        this.setSpeedTextSize(this.dpTOpx(24));
 
         this.setUnit("[unit]");
-        this.setUnitTextSize(this.dpTOpx(10));
+        this.setUnitTextColor( getContext().getResources().getColor( R.color.textColorPrimary) );
+        this.setUnitTextSize(this.dpTOpx(16));
         this.setUnitUnderSpeedText(true);
+
 
 
         /*
@@ -109,6 +130,30 @@ public class Td5Gauge extends DeluxeSpeedView {
 
         /* First, clear all existing sections */
         this.clearSections();
+    }
+
+    @Override
+    protected void  onDraw(Canvas canvas) {
+        super.onDrawSuper(canvas);
+
+        RectF speedBackgroundRect = getSpeedUnitTextBounds();
+        speedBackgroundRect.left -= dpTOpx(this.getViewWidthNoPadding() * 0.01f);
+        speedBackgroundRect.right += dpTOpx(this.getViewWidthNoPadding() * 0.01f);
+        speedBackgroundRect.top -= dpTOpx(this.getViewHeightNoPadding() * 0.005f);
+        speedBackgroundRect.bottom += dpTOpx(this.getViewHeightNoPadding() * 0.005f);
+        canvas.drawRect(speedBackgroundRect, getSpeedBackgroundPaint());
+
+        //this.setUnitTextSize(this.dpTOpx(this.getViewHeightNoPadding() * 0.03f));
+
+        drawGaugeNameText(canvas);
+        drawSpeedUnitText(canvas);
+        drawIndicator(canvas);
+        canvas.drawCircle(
+                getSize() * .5f,
+                getSize() * .5f,
+                getCenterCircleRadius(),
+                getCirclePaint() );
+        drawNotes(canvas);
     }
 
 
@@ -155,6 +200,23 @@ public class Td5Gauge extends DeluxeSpeedView {
     {
         //this.setSpeedAt(pValue);
         this.speedTo(pValue, 100);
+    }
+
+
+    @Override
+    protected void updateBackgroundBitmap()
+    {
+        super.updateBackgroundBitmap();
+
+/*        Canvas lCanvas  = new Canvas(this.getBackgroundBitmap());
+
+        RectF speedBackgroundRect = getSpeedUnitTextBounds();
+        speedBackgroundRect.left -= dpTOpx(this.getWidth() * 0.03f);
+        speedBackgroundRect.right += dpTOpx(this.getWidth() * 0.03f);
+        speedBackgroundRect.top -= dpTOpx(this.getViewHeightNoPadding() * 0.005f);
+        speedBackgroundRect.bottom += dpTOpx(this.getViewHeightNoPadding() * 0.005f);
+        lCanvas.drawRect(speedBackgroundRect, getSpeedBackgroundPaint());
+ */
     }
 
 

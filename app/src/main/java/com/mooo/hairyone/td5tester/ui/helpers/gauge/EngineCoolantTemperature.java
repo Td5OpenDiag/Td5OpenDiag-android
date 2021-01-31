@@ -32,7 +32,12 @@ public class EngineCoolantTemperature extends Td5Gauge
         this.setMin( lGaugeValueMin );
         this.setMax( lGaugeValueMax );
 
+        this.setValue(lGaugeValueMax);
+        this.setValueTextFormat("%3.0f");
+
         this.setUnit("°C");
+
+        this.setGaugeName(getContext().getResources().getString(R.string.engine_coolant_temperature_label));
 
 
         /*

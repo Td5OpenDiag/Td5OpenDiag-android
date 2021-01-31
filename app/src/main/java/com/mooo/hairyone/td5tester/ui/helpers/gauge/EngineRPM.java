@@ -2,6 +2,7 @@ package com.mooo.hairyone.td5tester.ui.helpers.gauge;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 
 import com.mooo.hairyone.td5tester.R;
@@ -28,8 +29,12 @@ public class EngineRPM extends Td5Gauge {
 
         this.setMin( lGaugeValueMin );
         this.setMax( lGaugeValueMax );
+        this.setValue(8888.0f);
+        this.setValueTextFormat("%4.0f");
 
         this.setUnit("RPM");
+
+        this.setGaugeName(getContext().getResources().getString(R.string.engine_rpm_short));
 
         this.setTickNumber( ((lGaugeValueMax - lGaugeValueMin) / 1000) + 1);
         this.setMarksNumber( ((lGaugeValueMax - lGaugeValueMin) / 1000) + 1 - 2);

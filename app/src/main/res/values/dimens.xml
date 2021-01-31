@@ -9,4 +9,5 @@
     <dimen name="custom_tab_layout_height">72dp</dimen>
 
     <dimen name="gauges_center_circle_radius">10dp</dimen>
+    <dimen name="layout_gauges_padding">2dip</dimen>
 </resources>

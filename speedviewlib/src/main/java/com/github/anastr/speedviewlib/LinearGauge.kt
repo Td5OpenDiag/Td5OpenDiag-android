@@ -69,9 +69,9 @@ abstract class LinearGauge @JvmOverloads constructor(context: Context, attrs: At
     }
 
     protected fun createForegroundBitmapCanvas(): Canvas {
-        if (widthPa == 0 || heightPa == 0)
+        if (viewWidthNoPadding == 0 || viewHeightNoPadding == 0)
             return Canvas()
-        foregroundBitmap = Bitmap.createBitmap(widthPa, heightPa, Bitmap.Config.ARGB_8888)
+        foregroundBitmap = Bitmap.createBitmap(viewWidthNoPadding, viewHeightNoPadding, Bitmap.Config.ARGB_8888)
         return Canvas(foregroundBitmap)
     }
 
@@ -79,9 +79,9 @@ abstract class LinearGauge @JvmOverloads constructor(context: Context, attrs: At
         super.onDraw(canvas)
 
         if (this.orientation == Orientation.HORIZONTAL)
-            rect.set(0, 0, (widthPa * getOffsetSpeed()).toInt(), heightPa)
+            rect.set(0, 0, (viewWidthNoPadding * getOffsetSpeed()).toInt(), viewHeightNoPadding)
         else
-            rect.set(0, heightPa - (heightPa * getOffsetSpeed()).toInt(), widthPa, heightPa)
+            rect.set(0, viewHeightNoPadding - (viewHeightNoPadding * getOffsetSpeed()).toInt(), viewWidthNoPadding, viewHeightNoPadding)
 
         canvas.translate(padding.toFloat(), padding.toFloat())
         canvas.drawBitmap(foregroundBitmap, rect, rect, paint)

@@ -10,8 +10,8 @@
     <string name="ambient_pressure_short">AP</string>
 
     <string name="battery_voltage">Battery voltage</string>
-    <string name="battery_voltage_label">Battery Volt.</string>
-    <string name="battery_voltage_short">Batt</string>
+    <string name="battery_voltage_label">Bat. Volt.</string>
+    <string name="battery_voltage_short">BAT</string>
 
     <string name="engine_coolant_temperature">Engine Coolant Temperature</string>
     <string name="engine_coolant_temperature_label">Coolant Temp.</string>

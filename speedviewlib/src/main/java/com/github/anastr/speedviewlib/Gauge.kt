@@ -28,10 +28,20 @@ typealias SpeedTextListener = (speed: Float) -> CharSequence
 
 abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : View(context, attrs, defStyleAttr), Observer {
 
+    private val gaugeNameTextBitmapPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val speedUnitTextBitmapPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     protected var textPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
+    private val gaugeNameTextPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
     private val speedTextPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
     private val unitTextPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
+
+    /** Gauge name.  */
+    var gaugeName = "[no_name]"
+        set(gaugeName) {
+            field = gaugeName
+            if (attachedToWindow)
+                invalidate()
+        }
 
     /** unit text, the text after speed text.  */
     var unit = "Km/h"
@@ -172,13 +182,13 @@ abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, 
      * view width without padding
      * @return View width without padding.
      */
-    var widthPa = 0
+    var viewWidthNoPadding = 0
         private set
     /**
      * View height without padding
      * @return View height without padding.
      */
-    var heightPa = 0
+    var viewHeightNoPadding = 0
         private set
 
     /** All sections -_Read Only_- */
@@ -262,6 +272,21 @@ abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, 
         }
 
     /**
+     * change position of gauge name (enum value).
+     */
+    var gaugeNameTextPosition = Position.MIDTOP_CENTER
+        set(gaugeNameTextPosition) {
+            field = gaugeNameTextPosition
+            invalidateGauge()
+        }
+
+    var valueTextFormat : String = "%.1f"
+        set(valueTextFormat) {
+            field = valueTextFormat
+            invalidateGauge()
+        }
+
+    /**
      * change position of speed and Unit Text (enum value).
      */
     var speedTextPosition = Position.BOTTOM_CENTER
@@ -275,6 +300,17 @@ abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, 
         set(unitSpeedInterval) {
             field = unitSpeedInterval
             invalidateGauge()
+        }
+
+    /**
+     * Gauge Name Text padding in pixel,
+     * this value will be ignored if `{ #gaugeNameTextPosition} == Position.CENTER`.
+     */
+    private var gaugeNameTextPadding = dpTOpx(20f)
+        set(gaugeNameTextPadding) {
+            field = gaugeNameTextPadding
+            if (attachedToWindow)
+                invalidate()
         }
 
     /**
@@ -308,6 +344,8 @@ abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, 
         }
 
     // just initialize to avoid NullPointerException
+    private var gaugeNameTextBitmap: Bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
+    private var gaugeNameTextCanvas: Canvas? = null
     private var speedUnitTextBitmap: Bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
     private var speedUnitTextCanvas: Canvas? = null
 
@@ -316,7 +354,7 @@ abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, 
      *
      * change speed text's format by custom text.
      */
-    var speedTextListener: SpeedTextListener = { speed -> "%.1f".format(locale, speed) }
+    var speedTextListener: SpeedTextListener = { speed -> valueTextFormat.format(speed) }
         set(speedTextFormat) {
             field = speedTextFormat
             invalidateGauge()
@@ -331,6 +369,8 @@ abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, 
         textPaint.color = 0xFF000000.toInt()
         textPaint.textSize = dpTOpx(10f)
         textPaint.textAlign = Paint.Align.CENTER
+        gaugeNameTextPaint.color = 0xFF000000.toInt()
+        gaugeNameTextPaint.textSize = dpTOpx(18f)
         speedTextPaint.color = 0xFF000000.toInt()
         speedTextPaint.textSize = dpTOpx(18f)
         unitTextPaint.color = 0xFF000000.toInt()
@@ -373,6 +413,8 @@ abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, 
         withTremble = a.getBoolean(R.styleable.Gauge_sv_withTremble, withTremble)
         textPaint.color = a.getColor(R.styleable.Gauge_sv_textColor, textPaint.color)
         textPaint.textSize = a.getDimension(R.styleable.Gauge_sv_textSize, textPaint.textSize)
+        //gaugeNameTextPaint.color = a.getColor(R.styleable.Gauge_sv_gaugeNameTextColor, gaugeNameTextPaint.color)
+        //gaugeNameTextPaint.textSize = a.getDimension(R.styleable.Gauge_sv_gaugeNameTextSize, gaugeNameTextPaint.textSize)
         speedTextPaint.color = a.getColor(R.styleable.Gauge_sv_speedTextColor, speedTextPaint.color)
         speedTextPaint.textSize = a.getDimension(R.styleable.Gauge_sv_speedTextSize, speedTextPaint.textSize)
         unitTextPaint.color = a.getColor(R.styleable.Gauge_sv_unitTextColor, unitTextPaint.color)
@@ -410,8 +452,11 @@ abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, 
     override fun onSizeChanged(w: Int, h: Int, oldW: Int, oldH: Int) {
         super.onSizeChanged(w, h, oldW, oldH)
         setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom)
-        if (widthPa > 0 && heightPa > 0)
-            speedUnitTextBitmap = Bitmap.createBitmap(widthPa, heightPa, Bitmap.Config.ARGB_8888)
+        if (viewWidthNoPadding > 0 && viewHeightNoPadding > 0) {
+            gaugeNameTextBitmap = Bitmap.createBitmap(viewWidthNoPadding, viewHeightNoPadding, Bitmap.Config.ARGB_8888)
+            speedUnitTextBitmap = Bitmap.createBitmap(viewWidthNoPadding, viewHeightNoPadding, Bitmap.Config.ARGB_8888)
+        }
+        gaugeNameTextCanvas = Canvas(gaugeNameTextBitmap)
         speedUnitTextCanvas = Canvas(speedUnitTextBitmap)
     }
 
@@ -476,20 +521,54 @@ abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, 
      */
     private fun updatePadding(left: Int, top: Int, right: Int, bottom: Int) {
         padding = max(max(left, right), max(top, bottom))
-        widthPa = width - padding * 2
-        heightPa = height - padding * 2
+        viewWidthNoPadding = width - padding * 2
+        viewHeightNoPadding = height - padding * 2
     }
+
+    /**
+     * Gauge name text position and size.
+     * @return GaugeName's rect.
+     */
+    protected fun getGaugeNameTextBounds(): RectF {
+        val left
+                = viewWidthNoPadding * gaugeNameTextPosition.x - translatedDx + padding - getGaugeNameTextWidth() * gaugeNameTextPosition.width + gaugeNameTextPadding * gaugeNameTextPosition.paddingH
+
+        val top
+                = viewHeightNoPadding * gaugeNameTextPosition.y - translatedDy + padding - getGaugeNameTextHeight() * gaugeNameTextPosition.height + gaugeNameTextPadding * gaugeNameTextPosition.paddingV
+
+        return RectF(
+                left,
+                top,
+                left + getGaugeNameTextWidth(),
+                top + getGaugeNameTextHeight())
+    }
+
+    /**
+     * @return the width of Gauge Name text at runtime.
+     */
+    private fun getGaugeNameTextWidth(): Float
+            = gaugeNameTextPaint.measureText( getGaugeNameText().toString() )
+
+    /**
+     * @return the height of Gauge Name text at runtime.
+     */
+    private fun getGaugeNameTextHeight(): Float =
+            gaugeNameTextPaint.textSize
 
     /**
      * speed-unit text position and size.
      * @return speed-unit's rect.
      */
     protected fun getSpeedUnitTextBounds(): RectF {
-        val left = widthPa * speedTextPosition.x - translatedDx + padding -
-                getSpeedUnitTextWidth() * speedTextPosition.width + speedTextPadding * speedTextPosition.paddingH
-        val top = heightPa * speedTextPosition.y - translatedDy + padding -
-                getSpeedUnitTextHeight() * speedTextPosition.height + speedTextPadding * speedTextPosition.paddingV
-        return RectF(left, top, left + getSpeedUnitTextWidth(), top + getSpeedUnitTextHeight())
+        val left = viewWidthNoPadding * speedTextPosition.x - translatedDx + padding - getSpeedUnitTextWidth() * speedTextPosition.width + speedTextPadding * speedTextPosition.paddingH
+
+        val top = viewHeightNoPadding * speedTextPosition.y - translatedDy + padding - getSpeedUnitTextHeight() * speedTextPosition.height + speedTextPadding * speedTextPosition.paddingV
+
+        return RectF(
+                left,
+                top,
+                left + getSpeedUnitTextWidth(),
+                top + getSpeedUnitTextHeight() )
     }
 
     /**
@@ -509,6 +588,11 @@ abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, 
             speedTextPaint.textSize + unitTextPaint.textSize + unitSpeedInterval
         else
             max(speedTextPaint.textSize, unitTextPaint.textSize)
+
+    /**
+     * get Gauge Name as string to **Draw**.
+     */
+    protected fun getGaugeNameText() = gaugeName
 
     /**
      * get current speed as string to **Draw**.
@@ -537,6 +621,21 @@ abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, 
         set(textColor) {
             textPaint.color = textColor
             invalidateGauge()
+        }
+
+    /**
+     * change just Gauge Name text color.
+     *
+     * @see gaugeNameTextColor
+     * @see textColor
+     * @see unitTextColor
+     */
+    var gaugeNameTextColor: Int
+        get() = gaugeNameTextPaint.color
+        set(gaugeNameTextColor) {
+            gaugeNameTextPaint.color = gaugeNameTextColor
+            if (attachedToWindow)
+                invalidate()
         }
 
     /**
@@ -583,6 +682,21 @@ abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, 
         }
 
     /**
+     * change just Gauge Name text size.
+     *
+     * @see dpTOpx
+     * @see textSize
+     * @see unitTextSize
+     */
+    var gaugeNameTextSize: Float
+        get() = gaugeNameTextPaint.textSize
+        set(gaugeNameTextSize) {
+            gaugeNameTextPaint.textSize = gaugeNameTextSize
+            if (attachedToWindow)
+                invalidate()
+        }
+
+    /**
      * change just speed text size.
      *
      * @see dpTOpx
@@ -615,7 +729,17 @@ abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, 
         get() = max(width, height)
 
     val viewSizePa: Int
-        get() = max(widthPa, heightPa)
+        get() = max(viewWidthNoPadding, viewHeightNoPadding)
+
+    /**
+     * Maybe null, change typeface for Gauge Name text.
+     */
+    var gaugeNameTextTypeface: Typeface?
+        get() = gaugeNameTextPaint.typeface
+        set(gaugeNameTextTypeface) {
+            gaugeNameTextPaint.typeface = gaugeNameTextTypeface
+            invalidateGauge()
+        }
 
     /**
      * Maybe null, change typeface for **speed and unit** text.
@@ -667,6 +791,22 @@ abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, 
     }
 
     /**
+     * draw gauge name at [gaugeNameTextPosition],
+     * this method must call in subSpeedometer's `onDraw` method.
+     * @param canvas view canvas to draw.
+     */
+    protected fun drawGaugeNameText(canvas: Canvas) {
+        val r = getGaugeNameTextBounds()
+        updateGaugeNameTextBitmap()
+        canvas.drawBitmap(
+                gaugeNameTextBitmap,
+                r.left - gaugeNameTextBitmap.width * 0.5f,
+                //r.left - gaugeNameTextBitmap.width * .5f + r.width() * .5f,
+                r.top - gaugeNameTextBitmap.height * .5f + r.height() * .5f,
+                gaugeNameTextBitmapPaint)
+    }
+
+    /**
      * draw speed and unit text at [speedTextPosition],
      * this method must call in subSpeedometer's `onDraw` method.
      * @param canvas view canvas to draw.
@@ -674,8 +814,32 @@ abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, 
     protected fun drawSpeedUnitText(canvas: Canvas) {
         val r = getSpeedUnitTextBounds()
         updateSpeedUnitTextBitmap(getSpeedText().toString())
-        canvas.drawBitmap(speedUnitTextBitmap, r.left - speedUnitTextBitmap.width * .5f + r.width() * .5f
-                , r.top - speedUnitTextBitmap.height * .5f + r.height() * .5f, speedUnitTextBitmapPaint)
+        canvas.drawBitmap(
+                speedUnitTextBitmap,
+                r.left - speedUnitTextBitmap.width * .5f + r.width() * .5f,
+                r.top - speedUnitTextBitmap.height * .5f + r.height() * .5f,
+                speedUnitTextBitmapPaint )
+    }
+
+    /**
+     * clear [gaugeNameTextBitmap] and draw GaugeName Text
+     * taking into consideration [speedometerTextRightToLeft].
+     */
+    private fun updateGaugeNameTextBitmap() {
+        gaugeNameTextBitmap.eraseColor(0)
+
+        val gaugeNameX: Float
+        /*if (speedometerTextRightToLeft) {*/
+            gaugeNameX = gaugeNameTextBitmap.width * .5f - getGaugeNameTextWidth() * .5f
+        /*} else {
+            gaugeNameX = gaugeNameTextBitmap.width * .5f - getSpeedUnitTextWidth() * .5f
+        }*/
+        val h = gaugeNameTextBitmap.height * .5f + getGaugeNameTextHeight() * .5f
+        gaugeNameTextCanvas?.drawText(
+                getGaugeNameText(),
+                gaugeNameX,
+                h,
+                gaugeNameTextPaint)
     }
 
     /**
@@ -1128,6 +1292,7 @@ abstract class Gauge constructor(context: Context, attrs: AttributeSet? = null, 
         RIGHT        (1f, .5f, 1f, .5f, -1, 0),
         BOTTOM_LEFT  (0f, 1f, 0f, 1f, 1, -1),
         BOTTOM_CENTER(.5f, 1f, .5f, 1f, 0, -1),
-        BOTTOM_RIGHT (1f, 1f, 1f, 1f, -1, -1)
+        BOTTOM_RIGHT (1f, 1f, 1f, 1f, -1, -1),
+        MIDTOP_CENTER(.5f, 0.25f, 0f, 0.5f, 0, 0),
     }
 }

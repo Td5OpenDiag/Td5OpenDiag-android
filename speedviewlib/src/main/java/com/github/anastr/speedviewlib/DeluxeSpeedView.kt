@@ -16,10 +16,10 @@ import com.github.anastr.speedviewlib.util.getRoundAngle
 open class DeluxeSpeedView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : Speedometer(context, attrs, defStyleAttr) {
 
     private val smallMarkPath = Path()
-    private val circlePaint = Paint(Paint.ANTI_ALIAS_FLAG)
+    protected val circlePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val speedometerPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val smallMarkPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val speedBackgroundPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+    //protected val speedBackgroundPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val speedometerRect = RectF()
 
     private var withEffects = true
@@ -40,6 +40,13 @@ open class DeluxeSpeedView @JvmOverloads constructor(context: Context, attrs: At
                 speedBackgroundPaint.maskFilter = null
                 circlePaint.maskFilter = null
             }
+            invalidateGauge()
+        }
+
+    protected  var speedBackgroundPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        //get() = speedBackgroundPaint
+        set(speedBackgroundPaint) {
+            field = speedBackgroundPaint
             invalidateGauge()
         }
 
@@ -133,6 +140,10 @@ open class DeluxeSpeedView @JvmOverloads constructor(context: Context, attrs: At
         smallMarkPaint.color = markColor
     }
 
+    fun onDrawSuper(canvas: Canvas) {
+        super.onDraw(canvas)
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
@@ -142,6 +153,7 @@ open class DeluxeSpeedView @JvmOverloads constructor(context: Context, attrs: At
         speedBackgroundRect.bottom += 2f
         canvas.drawRect(speedBackgroundRect, speedBackgroundPaint)
 
+        drawGaugeNameText(canvas)
         drawSpeedUnitText(canvas)
         drawIndicator(canvas)
         canvas.drawCircle(size * .5f, size * .5f, centerCircleRadius, circlePaint)

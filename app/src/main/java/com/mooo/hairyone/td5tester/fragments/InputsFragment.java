@@ -81,7 +81,7 @@ public class InputsFragment extends BaseFragment {
         pWidget.setMin(0);
         pWidget.setMax(5000);
 
-        pWidget.setProgress(1250);
+        pWidget.setProgress(0);
 
         pWidget.setProgressTintList(
                 ColorStateList.valueOf(Color.RED));
