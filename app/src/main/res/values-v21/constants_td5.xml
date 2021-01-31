@@ -16,6 +16,13 @@
     <integer name="engine_coolantTemperature_dangerzone">120</integer>
     <integer name="engine_coolantTemperature_gaugeMax">140</integer>
 
+    <integer name="engine_cylinder_balance_gaugeMin">-20</integer>
+    <integer name="engine_cylinder_balance_too_low">-15</integer>
+    <integer name="engine_cylinder_balance_ok_low">-4</integer>
+    <integer name="engine_cylinder_balance_ok_high">4</integer>
+    <integer name="engine_cylinder_balance_too_high">15</integer>
+    <integer name="engine_cylinder_balance_gaugeMax">20</integer>
+
     <integer name="engine_rpm_gaugeMin">0</integer>
     <integer name="engine_rpm_idle_low">740</integer>
     <integer name="engine_rpm_idle_high">790</integer>
@@ -30,14 +37,15 @@
     <integer name="fueling_airFuelRatio_gaugeMin">0</integer>
     <integer name="fueling_airFuelRatio_gaugeMax">30</integer>
 
-    <integer name="fueling_fuelTemperature_gaugeMin">-40</integer>
-    <integer name="fueling_fuelTemperature_gaugeMax">130</integer>
+    <integer name="fueling_fuelTemperature_gaugeMin">-20</integer>
+    <integer name="fueling_fuelTemperature_freeze">-10</integer><!-- This is the diesel fuel freeze point. -->
+    <integer name="fueling_fuelTemperature_gaugeMax">120</integer>
 
-    <integer name="intake_ambientPressure_gaugeMin">40</integer>
-    <integer name="intake_ambientPressure_gaugeMax">140</integer>
+    <integer name="intake_ambientPressure_gaugeMin">60</integer>
+    <integer name="intake_ambientPressure_gaugeMax">110</integer>
 
     <integer name="intake_inletAirTemperature_gaugeMin">-20</integer>
-    <integer name="intake_inletAirTemperature_cold">10</integer>
+    <integer name="intake_inletAirTemperature_cold">0</integer>
     <integer name="intake_inletAirTemperature_hot">40</integer>
     <integer name="intake_inletAirTemperature_gaugeMax">80</integer>
 

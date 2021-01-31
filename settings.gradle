@@ -1,2 +1,2 @@
-include ':speedviewlib'
+include ':libGauge'
 include ':app'

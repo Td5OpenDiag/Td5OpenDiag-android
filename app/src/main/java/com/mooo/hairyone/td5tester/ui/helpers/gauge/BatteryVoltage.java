@@ -3,12 +3,20 @@ package com.mooo.hairyone.td5tester.ui.helpers.gauge;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.Log;
 
+import com.github.aloike.libgauge.Gauge;
+import com.github.aloike.libgauge.parts.Graduation;
+import com.github.aloike.libgauge.parts.Label;
+import com.github.aloike.libgauge.parts.Section;
 import com.mooo.hairyone.td5tester.R;
 import com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge;
 
+import java.util.zip.DataFormatException;
+
 public class BatteryVoltage extends Td5Gauge
 {
+    private final String    LOG_TAG = new String("gauge.BatteryVoltage");
 
 
     public BatteryVoltage(Context context, AttributeSet attrs)
@@ -27,41 +35,95 @@ public class BatteryVoltage extends Td5Gauge
                 = getContext().getResources().getInteger( R.integer.batteryVoltage_gaugeMax_V);
 
 
-        this.setMin( lGaugeValueMin );
-        this.setMax( lGaugeValueMax );
+        this.setGraduationRange(
+                lGaugeValueMin,
+                lGaugeValueMax );
 
-        this.setUnit("V");
+        this.setValue(lGaugeValueMax);
 
-        this.setTickNumber( (lGaugeValueMax - lGaugeValueMin) + 1);
-        this.setMarksNumber( (lGaugeValueMax - lGaugeValueMin) + 1 - 2);
+
+        init_graduations(lGaugeValueMin, lGaugeValueMax);
+        init_labels();
+        init_sections(lGaugeValueMin, lGaugeValueMax);
+        init_valueDisplay();
+    }
+
+    private void    init_graduations(float pGaugeMin, float pGaugeMax)
+    {
+        Graduation  lGraduationMajor    = new Graduation();
+        lGraduationMajor.setCount((int)(pGaugeMax - pGaugeMin) + 1);
+        lGraduationMajor.setGraduationColor(Color.LTGRAY);
+        lGraduationMajor.setLinesLengthFactor(7.5f);
+//        lGraduationMajor.setLinesWidthFactor_pc();
+
+        this.getDial().getGraduationsList().clear();
+        this.getDial().getGraduationsList().add(lGraduationMajor);
+
+//        this.getDial().getGraduationsList().get(0).setCount((lGaugeValueMax - lGaugeValueMin) + 1);
+//        this.setTickNumber( (lGaugeValueMax - lGaugeValueMin) + 1);
+//        this.setMarksNumber( (lGaugeValueMax - lGaugeValueMin) + 1 - 2);
+    }
+
+    private void   init_labels()
+    {
+        Label lLabelGaugeName   = new Label();
+
+        lLabelGaugeName.setText(
+                getContext().getResources().getString(R.string.battery_voltage_short)
+        );
+        lLabelGaugeName.setPosX_pc(50.0f);
+        lLabelGaugeName.setPosY_pc(25.0f);
+        lLabelGaugeName.setTextSizeFactor(10.0f);
+
+        this.getDial().getLabelsList().clear();
+        this.getDial().getLabelsList().add(lLabelGaugeName);
+    }
+
+    private void    init_sections(float pGaugeMin, float pGaugeMax)
+    {
+        /*
+            Remove exinsting sections
+         */
+        this.getDial().getSectionsList().clear();
 
 
         /*
-            Sections definition
+            Add dial sections
          */
-
         /* "Empty" section */
         this.section_add(
-                lGaugeValueMin,
+                pGaugeMin,
                 getContext().getResources().getInteger( R.integer.batteryVoltage_empty_mV) / 1000.0f,
-                Color.RED);
+                Color.RED
+        );
 
         /* "ok" section */
         this.section_add(
                 getContext().getResources().getInteger( R.integer.batteryVoltage_empty_mV) / 1000.0f,
                 getContext().getResources().getInteger( R.integer.batteryVoltage_full_mV) / 1000.0f,
-                Color.GRAY );
+                Color.GRAY
+        );
 
         /* "Charging" section */
         this.section_add(
                 getContext().getResources().getInteger( R.integer.batteryVoltage_charging_mV) / 1000.0f,
                 getContext().getResources().getInteger( R.integer.batteryVoltage_high_mV) / 1000.0f,
-                Color.GREEN );
+                Color.GREEN
+        );
 
         /* "high" section */
         this.section_add(
                 getContext().getResources().getInteger( R.integer.batteryVoltage_high_mV) / 1000.0f,
-                lGaugeValueMax,
-                Color.RED );
+                pGaugeMax,
+                Color.RED
+        );
+    }
+
+    private void    init_valueDisplay()
+    {
+        this.getValueDisplay().setValueDisplayFormat("%2.1f");
+
+        this.getValueDisplay().setUnitText("V");
+        this.getValueDisplay().setValueTextSizeFactor_pc(12);
     }
 }

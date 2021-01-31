@@ -27,17 +27,26 @@ public class EngineRPM extends Td5Gauge {
                 = getContext().getResources().getInteger( R.integer.engine_rpm_gaugeMax);
 
 
-        this.setMin( lGaugeValueMin );
-        this.setMax( lGaugeValueMax );
-        this.setValue(8888.0f);
-        this.setValueTextFormat("%4.0f");
-
-        this.setUnit("RPM");
+        this.setGraduationMin( lGaugeValueMin );
+        this.setGraduationMax( lGaugeValueMax );
 
         this.setGaugeName(getContext().getResources().getString(R.string.engine_rpm_short));
+        this.setValue(8888.0f);
 
-        this.setTickNumber( ((lGaugeValueMax - lGaugeValueMin) / 1000) + 1);
-        this.setMarksNumber( ((lGaugeValueMax - lGaugeValueMin) / 1000) + 1 - 2);
+
+        this.getValueDisplay().setValueDisplayFormat("%4.0f");
+        this.getValueDisplay().setUnitText("RPM");
+
+
+        this.setDialValueRangeFactor(1000);
+
+        this.setGraduationCountMajor( ((lGaugeValueMax - lGaugeValueMin) / 1000) + 1);
+        this.getDial().getGraduationsList().get(EGraduationsIndex.GRAD_MAJOR.getIndex())
+                .setValuesTextFormat("%.0f");
+
+        this.setGraduationCountMinor( ((lGaugeValueMax - lGaugeValueMin) / 1000) + 1);
+
+//        this.setMarksNumber( ((lGaugeValueMax - lGaugeValueMin) / 1000) + 1 - 2);
 
 
         /*

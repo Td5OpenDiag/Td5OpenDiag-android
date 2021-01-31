@@ -1,6 +1,7 @@
 package com.mooo.hairyone.td5tester.fragments;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,13 +9,11 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.github.anastr.speedviewlib.components.note.Note;
-import com.github.anastr.speedviewlib.components.note.TextNote;
 import com.mooo.hairyone.td5tester.Log4jHelper;
-import com.mooo.hairyone.td5tester.R;
 import com.mooo.hairyone.td5tester.databinding.DashboardFragmentBinding;
+import com.mooo.hairyone.td5tester.events.ConnectedEvent;
 import com.mooo.hairyone.td5tester.events.DashboardEvent;
-import com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge;
+import com.mooo.hairyone.td5tester.events.NotConnectedEvent;
 
 import org.apache.log4j.Logger;
 import org.greenrobot.eventbus.EventBus;

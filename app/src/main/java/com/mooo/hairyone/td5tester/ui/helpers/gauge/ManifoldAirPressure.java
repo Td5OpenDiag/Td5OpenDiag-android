@@ -27,23 +27,32 @@ public class ManifoldAirPressure extends Td5Gauge {
                         R.integer.intake_manifoldAirPressure_gaugeMax_mBar) / 1000.0f;
 
 
-        this.setMin( lGaugeValueMin_bar );
-        this.setMax( lGaugeValueMax_bar );
-
-        this.setValue(lGaugeValueMax_bar);
-        this.setValueTextFormat("% 1.1f");
-
 
         this.setGaugeName(getContext().getResources().getString(R.string.manifold_turbo_pressure_short));
-        this.setUnit("bar");
+
+        this.setAngles(
+                -135,
+                90
+        );
+
+        this.setGraduationMin( lGaugeValueMin_bar );
+        this.setGraduationMax( lGaugeValueMax_bar );
+
+//        this.setValue(lGaugeValueMax_bar);
+        this.setValue(8.8f);
 
 
-        this.setStartDegree(135);
-        this.setEndDegree(360);
+        this.getValueDisplay().setValueDisplayFormat("% 1.1f");
+        this.getValueDisplay().setUnitText(getContext().getResources().getString(R.string.manifold_turbo_pressure_unit_short));
 
-        this.setMarksNumber(4);
-        this.setTickNumber(6);
-        this.setTickTextFormat("%.1f");
+
+        this.setGraduationCountMajor((int) ((lGaugeValueMax_bar - lGaugeValueMin_bar) / 0.5f) + 1);
+        this.getDial().getGraduationsList().get(EGraduationsIndex.GRAD_MAJOR.getIndex())
+                .setValuesTextFormat("%.1f");
+
+        this.setGraduationCountMinor((int) ((lGaugeValueMax_bar - lGaugeValueMin_bar) / 0.25f) + 1);
+        this.getDial().getGraduationsList().get(EGraduationsIndex.GRAD_MINOR.getIndex())
+                .setValuesTextFormat("");
 
 
         /*
