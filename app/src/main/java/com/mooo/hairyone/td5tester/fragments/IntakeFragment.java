@@ -126,8 +126,10 @@ public class IntakeFragment extends Fragment {
     private void    init_gauge_ambientPressure()
     {
 
-        int lGaugeValueMax   = getContext().getResources().getInteger( R.integer.ambientpressure_gauge_max );
-        int lGaugeValueMin   = getContext().getResources().getInteger( R.integer.ambientpressure_gauge_min );
+        int lGaugeValueMin
+                = getContext().getResources().getInteger( R.integer.intake_ambientPressure_gaugeMin );
+        int lGaugeValueMax
+                = getContext().getResources().getInteger( R.integer.intake_ambientPressure_gaugeMax );
 
 
         Td5Gauge lGaugeAP   = m_binding.gaugeAmbientPressure;
@@ -148,10 +150,10 @@ public class IntakeFragment extends Fragment {
 
     private void    init_gauge_iat()
     {
-        int lGaugeValueMax
-                = getContext().getResources().getInteger( R.integer.gauge_inletAirTemperature_max);
         int lGaugeValueMin
-                = getContext().getResources().getInteger( R.integer.gauge_inletAirTemperature_min);
+                = getContext().getResources().getInteger( R.integer.intake_inletAirTemperature_gaugeMin);
+        int lGaugeValueMax
+                = getContext().getResources().getInteger( R.integer.intake_inletAirTemperature_gaugeMax);
 
 
         Td5Gauge lGauge = m_binding.gaugeIntakeAirTemp;
@@ -169,12 +171,12 @@ public class IntakeFragment extends Fragment {
         /* "Cold" section */
         lGauge.section_add(
                 lGaugeValueMin,
-                getContext().getResources().getInteger( R.integer.gauge_inletAirTemperature_cold),
+                getContext().getResources().getInteger( R.integer.intake_inletAirTemperature_cold),
                 Color.BLUE );
 
         /* "Hot" section */
         lGauge.section_add(
-                getContext().getResources().getInteger( R.integer.gauge_inletAirTemperature_hot),
+                getContext().getResources().getInteger( R.integer.intake_inletAirTemperature_hot),
                 lGaugeValueMax,
                 Color.rgb(255, 165, 0) );
     }
@@ -207,10 +209,10 @@ public class IntakeFragment extends Fragment {
 
     private void    init_gauge_massAirflow()
     {
-        int lGaugeValueMax
-                = getContext().getResources().getInteger( R.integer.gauge_massAirflow_max);
         int lGaugeValueMin
-                = getContext().getResources().getInteger( R.integer.gauge_massAirflow_min);
+                = getContext().getResources().getInteger( R.integer.intake_massAirflow_gaugeMin);
+        int lGaugeValueMax
+                = getContext().getResources().getInteger( R.integer.intake_massAirflow_gaugeMax);
 
 
         Td5Gauge lGauge = m_binding.gaugeMassAirflow;
@@ -228,8 +230,8 @@ public class IntakeFragment extends Fragment {
         /* "Low" section */
         lGauge.section_add(
                 lGaugeValueMin,
-                getContext().getResources().getInteger( R.integer.gauge_massAirflow_low),
-                Color.rgb(255, 165, 0) );
+                getContext().getResources().getInteger( R.integer.intake_massAirflow_low),
+                getContext().getResources().getColor(R.color.valueInc_veryLow) );
     }
 
 

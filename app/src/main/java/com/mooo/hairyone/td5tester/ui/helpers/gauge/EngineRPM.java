@@ -20,8 +20,10 @@ public class EngineRPM extends Td5Gauge {
 
     protected void init()
     {
-        int lGaugeValueMax   = getContext().getResources().getInteger( R.integer.engine_rpm_max);
-        int lGaugeValueMin   = getContext().getResources().getInteger( R.integer.engine_rpm_min);
+        int lGaugeValueMin
+                = getContext().getResources().getInteger( R.integer.engine_rpm_gaugeMin);
+        int lGaugeValueMax
+                = getContext().getResources().getInteger( R.integer.engine_rpm_gaugeMax);
 
 
         this.setMin( lGaugeValueMin );

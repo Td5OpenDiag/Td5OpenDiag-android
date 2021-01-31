@@ -19,10 +19,12 @@ public class ManifoldAirPressure extends Td5Gauge {
 
     private void init()
     {
-        int lGaugeValueMax
-                = getContext().getResources().getInteger( R.integer.intake_manifoldAirPressure_max_bar);
         int lGaugeValueMin
-                = getContext().getResources().getInteger( R.integer.intake_manifoldAirPressure_min_bar);
+                = getContext().getResources().getInteger(
+                R.integer.intake_manifoldAirPressure_gaugeMin_bar);
+        int lGaugeValueMax
+                = getContext().getResources().getInteger(
+                        R.integer.intake_manifoldAirPressure_gaugeMax_bar);
 
 
         this.setMin( lGaugeValueMin );
@@ -36,5 +38,28 @@ public class ManifoldAirPressure extends Td5Gauge {
 
         this.setMarksNumber(5);
         this.setTickNumber(4);
+
+
+        /*
+            Sections definition
+         */
+
+        /* "Low" section */
+        this.section_add(
+                getContext().getResources().getInteger( R.integer.intake_manifoldAirPressure_gaugeMin_bar),
+                0,
+                getContext().getResources().getColor( R.color.valueInc_veryLow ) );
+
+        /* "Normal" section */
+        this.section_add(
+                0,
+                getContext().getResources().getInteger( R.integer.intake_manifoldAirPressure_max_mBar) / 1000.0f,
+                getContext().getResources().getColor( R.color.valueInc_ok ) );
+
+        /* "High" section */
+        this.section_add(
+                getContext().getResources().getInteger( R.integer.intake_manifoldAirPressure_max_mBar) / 1000.0f,
+                lGaugeValueMax,
+                getContext().getResources().getColor( R.color.valueInc_high ) );
     }
 }

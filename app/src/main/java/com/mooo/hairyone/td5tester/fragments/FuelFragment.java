@@ -159,10 +159,10 @@ public class FuelFragment extends Fragment {
 
     private void    init_gauge_airFuelRatio()
     {
-        int lGaugeValueMax
-                = getContext().getResources().getInteger( R.integer.gauge_airFuelRatio_max);
         int lGaugeValueMin
-                = getContext().getResources().getInteger( R.integer.gauge_airFuelRatio_min);
+                = getContext().getResources().getInteger( R.integer.fueling_airFuelRatio_gaugeMin);
+        int lGaugeValueMax
+                = getContext().getResources().getInteger( R.integer.fueling_airFuelRatio_gaugeMax);
 
 
         Td5Gauge lGauge = m_binding.gaugeAirFuelRatio;
@@ -178,10 +178,10 @@ public class FuelFragment extends Fragment {
 
     private void    init_gauge_fuelTemperature()
     {
-        int lGaugeValueMax
-                = getContext().getResources().getInteger( R.integer.gauge_fuelTemperature_max);
         int lGaugeValueMin
-                = getContext().getResources().getInteger( R.integer.gauge_fuelTemperature_min);
+                = getContext().getResources().getInteger( R.integer.fueling_fuelTemperature_gaugeMin);
+        int lGaugeValueMax
+                = getContext().getResources().getInteger( R.integer.fueling_fuelTemperature_gaugeMax);
 
 
         Td5Gauge lGauge = m_binding.gaugeFuelTemperature;
@@ -276,7 +276,7 @@ public class FuelFragment extends Fragment {
     private void    setAirFuelRatio(float pValue)
     {
         m_binding.gaugeAirFuelRatio.setValue(pValue);
-        m_binding.textAirFuelRatioValue.setText(pValue + ":1");
+        m_binding.textAirFuelRatioValue.setText(pValue + " : 1");
     }
 
 

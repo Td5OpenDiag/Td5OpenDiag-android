@@ -21,9 +21,9 @@
     <string name="engine_rpm_label">Engine RPM</string>
     <string name="engine_rpm_short">RPM</string>
 
-    <string name="fuel_temperature">Fuel Temperature</string>
-    <string name="fuel_temperature_label">Fuel Temp.</string>
-    <string name="fuel_temperature_short">FT</string>
+    <string name="fuel_consumption_label">Fuel consumption</string>
+    <string name="fuel_consumption_unit">l/100km</string>
+
 
     <string name="fuel_demand_driver">Driver fuel demand</string>
     <string name="fuel_demand_driver_label">Driver demand</string>
@@ -45,6 +45,10 @@
     <string name="fuel_limiter_torque_label">Torque limiter</string>
     <string name="fuel_limiter_torque_short">Torque lim.</string>
 
+    <string name="fuel_temperature">Fuel Temperature</string>
+    <string name="fuel_temperature_label">Fuel Temp.</string>
+    <string name="fuel_temperature_short">FT</string>
+
     <string name="intake_air_temperature">Intake Air Temperature</string>
     <string name="intake_air_temperature_label">In. Air Temp.</string>
     <string name="intake_air_temperature_short">IAT</string>
@@ -56,6 +60,4 @@
     <string name="mass_airflow">Mass Airflow (mg/stroke)</string>
     <string name="mass_airflow_label">Mass Airflow (mg/str)</string>
     <string name="mass_airflow_short">MAF</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
