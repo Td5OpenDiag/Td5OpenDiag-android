@@ -30,8 +30,12 @@ public class DashboardFragment extends Fragment {
 
     Logger log = Log4jHelper.getLogger(this.getClass());
 
-
     private DashboardFragmentBinding m_binding;
+
+    private float   m_lastInjectedFuelQuantity_mg   = 0;
+    private float   m_lastEngineRPM                 = 0;
+    private float   m_lastRoadSpeed_kmh             = 0;
+    final float     f_dieselDensity                 = 0.860f;
 
 
     public DashboardFragment() { /* Required empty public constructor */ }
@@ -96,6 +100,10 @@ public class DashboardFragment extends Fragment {
                 this.setEngineCoolantTemperature(value);
                 break;
 
+            case INJECTION_QUANTITY:
+                this.m_lastInjectedFuelQuantity_mg = value;
+                break;
+
             case MANIFOLD_AIR_PRESSURE:
                 double c = value * 0.01 - 1 ;
                 float lValue_bar = (float) c ;
@@ -105,6 +113,7 @@ public class DashboardFragment extends Fragment {
             case RPM:
                 //m_binding.gRPM.setValue(value);
                 this.setEngineRPM(value);
+                this.m_lastEngineRPM    = value;
                 break;
 
             case BATTERY_VOLTAGE:
@@ -114,9 +123,11 @@ public class DashboardFragment extends Fragment {
 
             case VEHICLE_SPEED:
                 m_binding.gMPH.setValue(value);
+                this.m_lastRoadSpeed_kmh    = value;
                 break;
         }
 
+        this.updateFuelConsumption();
     }
 
 
@@ -145,6 +156,31 @@ public class DashboardFragment extends Fragment {
     {
         m_binding.gaugeManifoldTurboPressure.setValue(pValue);
         //m_binding.text.setText(pValue + " bar");
+    }
+
+
+    private void    updateFuelConsumption()
+    {
+        String  lText   = "--";
+
+        if(     m_lastRoadSpeed_kmh > 0 )
+        {
+            /* Calculate injected quantity as liters per stroke */
+            float lValue
+                    = m_lastInjectedFuelQuantity_mg * 1000.0f
+                    * f_dieselDensity;
+
+            /* Calculate liters per hour */
+            lValue *= (m_lastEngineRPM / 2.0f) * 60.0f;
+
+            /* Calculate liters per 100km */
+            lValue /= m_lastRoadSpeed_kmh;
+
+            lText = "" + lValue;
+        }
+
+
+        this.m_binding.fuelConsumptionValue.setText( lText );
     }
 
 //    @Override protected int getFragmentLayout() { return R.layout.dashboard_fragment; }
