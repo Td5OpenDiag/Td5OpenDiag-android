@@ -83,7 +83,6 @@ public class FuelFragment extends Fragment {
 
         setAirFuelRatio(0.0f);
         setFuelTemperature(0.0f);
-        //setInjectionQuantity(0.0f);
 
         this.selectedFuelingValue_update();
 
@@ -206,22 +205,22 @@ public class FuelFragment extends Fragment {
         final int   lBackgroundResource_selectedLimit   = R.color.fueling_limit_selected;
 
 
-        if( m_binding.fuelInjectedQuantity.getText() == m_binding.fuelDemandDriverValue.getText() )
+        if( m_binding.fuelInjectedQuantity.getText().equals( m_binding.fuelDemandDriverValue.getText() ) )
         {
             lSelectDemandDriver = true;
         }
 
-        if( m_binding.fuelInjectedQuantity.getText() == m_binding.fuelDemandIdleValue.getText() )
+        if( m_binding.fuelInjectedQuantity.getText().equals( m_binding.fuelDemandIdleValue.getText() ) )
         {
             lSelectDemandIdle   = true;
         }
 
-        if( m_binding.fuelInjectedQuantity.getText() == m_binding.fuelLimiterSmokeValue.getText() )
+        if( m_binding.fuelInjectedQuantity.getText().equals( m_binding.fuelLimiterSmokeValue.getText() ) )
         {
             lSelectLimitSmoke   = true;
         }
 
-        if( m_binding.fuelInjectedQuantity.getText() == m_binding.fuelLimiterTorqueValue.getText() )
+        if( m_binding.fuelInjectedQuantity.getText().equals( m_binding.fuelLimiterTorqueValue.getText() ) )
         {
             lSelectLimitTorque  = true;
         }
