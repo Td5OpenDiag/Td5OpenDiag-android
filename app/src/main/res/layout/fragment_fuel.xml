@@ -191,7 +191,7 @@
                     android:textSize="24sp" />
 
                 <TextView
-                    android:id="@+id/fuel_injected_value"
+                    android:id="@+id/fuel_injected_quantity"
                     android:layout_width="142dp"
                     android:layout_height="wrap_content"
                     android:text="-- mg"

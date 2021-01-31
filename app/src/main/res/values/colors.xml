@@ -13,6 +13,13 @@
 
 
     <!--
+        Colors for fueling selected quantity
+    -->
+    <color name="fueling_demand_selected">#4CAF50</color>
+    <color name="fueling_limit_selected">#ffa500</color>
+
+
+    <!--
         Colors for incrementing gauges
     -->
 

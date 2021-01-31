@@ -85,6 +85,8 @@ public class FuelFragment extends Fragment {
         setFuelTemperature(0.0f);
         //setInjectionQuantity(0.0f);
 
+        this.selectedFuelingValue_update();
+
 
         return view;
     }
@@ -150,6 +152,8 @@ public class FuelFragment extends Fragment {
                 this.setFuelLimiterTorque(value);
                 break;
         }
+
+        this.selectedFuelingValue_update();
     }
 
 
@@ -208,6 +212,85 @@ public class FuelFragment extends Fragment {
 //    }
 
 
+    private void    selectedFuelingValue_update()
+    {
+        boolean lSelectDemandDriver = false;
+        boolean lSelectDemandIdle   = false;
+        boolean lSelectLimitTorque  = false;
+        boolean lSelectLimitSmoke   = false;
+
+        final int   lBackgroundResource_default         = android.R.color.transparent;
+        final int   lBackgroundResource_selectedDemand  = R.color.fueling_demand_selected;
+        final int   lBackgroundResource_selectedLimit   = R.color.fueling_limit_selected;
+
+
+        if( m_binding.fuelInjectedQuantity.getText() == m_binding.fuelDemandDriverValue.getText() )
+        {
+            lSelectDemandDriver = true;
+        }
+
+        if( m_binding.fuelInjectedQuantity.getText() == m_binding.fuelDemandIdleValue.getText() )
+        {
+            lSelectDemandIdle   = true;
+        }
+
+        if( m_binding.fuelInjectedQuantity.getText() == m_binding.fuelLimiterSmokeValue.getText() )
+        {
+            lSelectLimitSmoke   = true;
+        }
+
+        if( m_binding.fuelInjectedQuantity.getText() == m_binding.fuelLimiterTorqueValue.getText() )
+        {
+            lSelectLimitTorque  = true;
+        }
+
+
+        if( lSelectDemandDriver )
+        {
+            m_binding.fuelDemandDriverValue
+                    .setBackgroundResource( lBackgroundResource_selectedDemand );
+        }
+        else
+        {
+            m_binding.fuelDemandDriverValue
+                    .setBackgroundResource(lBackgroundResource_default);
+        }
+
+        if( lSelectDemandIdle )
+        {
+            m_binding.fuelDemandIdleValue
+                    .setBackgroundResource( lBackgroundResource_selectedDemand );
+        }
+        else
+        {
+            m_binding.fuelDemandIdleValue
+                    .setBackgroundResource(lBackgroundResource_default);
+        }
+
+        if( lSelectLimitSmoke )
+        {
+            m_binding.fuelLimiterSmokeValue
+                    .setBackgroundResource( lBackgroundResource_selectedLimit );
+        }
+        else
+        {
+            m_binding.fuelLimiterSmokeValue
+                    .setBackgroundResource(lBackgroundResource_default);
+        }
+
+        if( lSelectLimitTorque )
+        {
+            m_binding.fuelLimiterTorqueValue
+                    .setBackgroundResource( lBackgroundResource_selectedLimit );
+        }
+        else
+        {
+            m_binding.fuelLimiterTorqueValue
+                    .setBackgroundResource(lBackgroundResource_default);
+        }
+    }
+
+
     private void    setAirFuelRatio(float pValue)
     {
         m_binding.gaugeAirFuelRatio.setValue(pValue);
@@ -252,6 +335,6 @@ public class FuelFragment extends Fragment {
     {
         //m_binding.gaugeInjectionQuantity.setValue(pValue);
         //m_binding.textInjectionQuantityValue.setText(pValue + " mg");
-        m_binding.fuelInjectedValue.setText( pValue + " mg");
+        m_binding.fuelInjectedQuantity.setText( pValue + " mg");
     }
 }
