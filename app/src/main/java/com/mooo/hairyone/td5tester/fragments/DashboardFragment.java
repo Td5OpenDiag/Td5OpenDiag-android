@@ -159,22 +159,50 @@ public class DashboardFragment extends Fragment {
     }
 
 
+    /**
+     *  This method calculates the fuel consumption then updates its display.
+     *
+     *  @par Detailed calculation
+     *
+     *  The step-by-step calculus is as follows:
+     *  + kilograms_per_stroke equals the injection_quantity divided
+     *    by 1,000,000 (mg to kg);
+     *  + Liters_per_stroke equals kilograms_per_stroke divided by diesel_density;
+     *  + Liters_per_rotation equals liters_per_stroke multiplied by 2.5 (5 cylinders firing every
+     *    two rotations);
+     *  + Liters_per_minute : liters_per_rotation multiplied by engine_rpm;
+     *  + Liters_per_hour : liters_per_minute multiplied by 60;
+     *  + Liters_per_km : liters_per_hour divided by speed_kmh;
+     *  + Liters_per_100km : liters_per_km * 100.
+     *
+     *  This calculation is simplified by using a multiplication factor obtained from all the
+     *  constants, as follows:
+     * @<code>
+     *               strokes_per_rotation * minutes_in_an_hour * 100km
+     * factor  = --------------------------------------------------------
+     *            miligrams_in_gram * grams_in_kilogram * diesel_density
+     *
+     *              2.5 * 60 * 100         15000
+     *         = --------------------- = --------
+     *            1000 * 1000 * 0.840     840000
+     *
+     *         = 0.017857143
+     * </code>
+     */
     private void    updateFuelConsumption()
     {
+        /* We use a multiplication factor in the calculus for performance. */
+        final float f_factor    = 0.017857143f;
+
         String  lText   = "--";
+
 
         if(     m_lastRoadSpeed_kmh > 0 )
         {
             /* Calculate injected quantity as liters per stroke */
             float lValue
-                    = m_lastInjectedFuelQuantity_mg * 1000.0f
-                    * f_dieselDensity;
-
-            /* Calculate liters per hour */
-            lValue *= (m_lastEngineRPM / 2.0f) * 60.0f;
-
-            /* Calculate liters per 100km */
-            lValue /= m_lastRoadSpeed_kmh;
+                    = (m_lastInjectedFuelQuantity_mg * f_factor * m_lastEngineRPM)
+                    / m_lastRoadSpeed_kmh;
 
             lText = "" + lValue;
         }
