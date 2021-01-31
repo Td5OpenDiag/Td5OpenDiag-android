@@ -37,7 +37,7 @@
                 android:textSize="20sp"
                 app:layout_gravity="fill" />
 
-            <com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge
+            <com.mooo.hairyone.td5tester.ui.helpers.gauge.EngineCoolantTemperature
                 android:id="@+id/gauge_ect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
