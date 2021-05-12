@@ -74,12 +74,6 @@ public class EngineFragment extends Fragment {
         m_binding   = FragmentEngineBinding.inflate(inflater, container, false);
         View view   = m_binding.getRoot();
 
-
-        //this.init_gauge_idleDemand();
-
-        setEngineCoolantTemperature(0.0f);
-        //setIdleDemand(0.0f);
-
         m_binding.gPOWERBALANCE1.setCylinderNumber( 1 );
         m_binding.gPOWERBALANCE2.setCylinderNumber( 2 );
         m_binding.gPOWERBALANCE3.setCylinderNumber( 3 );
@@ -125,6 +119,11 @@ public class EngineFragment extends Fragment {
         {
             case COOLANT_TEMP:
                 this.setEngineCoolantTemperature(value);
+                break;
+
+
+            case RPM:
+                this.setEngineRPM(value);
                 break;
 
 
@@ -178,5 +177,11 @@ public class EngineFragment extends Fragment {
     private void    setEngineCoolantTemperature(float pValue)
     {
         m_binding.gaugeEct.setValue(pValue);
+    }
+
+
+    private void    setEngineRPM(float pValue)
+    {
+        m_binding.gaugeEngineRpm.setValue(pValue);
     }
 }

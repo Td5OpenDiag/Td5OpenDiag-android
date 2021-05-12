@@ -305,14 +305,21 @@
             android:orientation="vertical"
             tools:ignore="NestedWeights">
 
-            <TextView
+            <com.mooo.hairyone.td5tester.ui.helpers.gauge.EngineRPM
+                android:id="@+id/gauge_engine_rpm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10sp"
+                android:layout_margin="20dp"/>
+
+            <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/engine_coolant_temperature_label"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="20sp"
-                app:layout_gravity="fill" />
+                app:layout_gravity="fill" />-->
 
             <com.mooo.hairyone.td5tester.ui.helpers.gauge.EngineCoolantTemperature
                 android:id="@+id/gauge_ect"
