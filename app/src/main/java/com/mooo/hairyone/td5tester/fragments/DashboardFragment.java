@@ -1,7 +1,5 @@
 package com.mooo.hairyone.td5tester.fragments;
 
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,18 +9,13 @@ import androidx.fragment.app.Fragment;
 
 import com.mooo.hairyone.td5tester.Log4jHelper;
 import com.mooo.hairyone.td5tester.databinding.DashboardFragmentBinding;
-import com.mooo.hairyone.td5tester.events.ConnectedEvent;
 import com.mooo.hairyone.td5tester.events.DashboardEvent;
-import com.mooo.hairyone.td5tester.events.NotConnectedEvent;
 
 import org.apache.log4j.Logger;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import at.grabner.circleprogress.CircleProgressView;
-//import butterknife.BindView;
-//import butterknife.Unbinder;
 
 //public class DashboardFragment extends BaseFragment {
 public class DashboardFragment extends Fragment {

@@ -17,8 +17,6 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.mooo.hairyone.td5tester.Consts;
 import com.mooo.hairyone.td5tester.FTDI;
@@ -42,7 +40,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.InterruptedIOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

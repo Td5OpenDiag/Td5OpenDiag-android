@@ -1,8 +1,6 @@
 package com.mooo.hairyone.td5tester.ui.helpers.gauge;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.util.AttributeSet;
 
 import com.mooo.hairyone.td5tester.R;

@@ -3,16 +3,12 @@ package com.mooo.hairyone.td5tester.ui.helpers.gauge;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
-import android.util.Log;
 
-import com.github.aloike.libgauge.Gauge;
 import com.github.aloike.libgauge.parts.Graduation;
 import com.github.aloike.libgauge.parts.Label;
-import com.github.aloike.libgauge.parts.Section;
 import com.mooo.hairyone.td5tester.R;
 import com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge;
 
-import java.util.zip.DataFormatException;
 
 public class BatteryVoltage extends Td5Gauge
 {

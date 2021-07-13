@@ -1,7 +1,6 @@
 package com.mooo.hairyone.td5tester.ui.helpers;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
@@ -9,7 +8,6 @@ import android.util.Log;
 
 import com.github.aloike.libgauge.Gauge;
 
-import com.github.aloike.libgauge.attributes.Range;
 import com.github.aloike.libgauge.parts.Graduation;
 import com.github.aloike.libgauge.parts.Label;
 import com.github.aloike.libgauge.parts.Section;

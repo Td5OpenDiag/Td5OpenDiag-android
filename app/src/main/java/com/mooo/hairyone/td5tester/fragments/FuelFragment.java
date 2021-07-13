@@ -11,9 +11,7 @@ import android.view.ViewGroup;
 import com.mooo.hairyone.td5tester.Log4jHelper;
 import com.mooo.hairyone.td5tester.R;
 import com.mooo.hairyone.td5tester.databinding.FragmentFuelBinding;
-import com.mooo.hairyone.td5tester.databinding.FragmentIntakeBinding;
 import com.mooo.hairyone.td5tester.events.DashboardEvent;
-import com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge;
 
 import org.apache.log4j.Logger;
 import org.greenrobot.eventbus.EventBus;
