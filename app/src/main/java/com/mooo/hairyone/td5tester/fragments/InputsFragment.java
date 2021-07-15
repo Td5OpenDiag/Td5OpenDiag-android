@@ -8,18 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.mooo.hairyone.td5tester.Log4jHelper;
 import com.mooo.hairyone.td5tester.R;
 import com.mooo.hairyone.td5tester.databinding.InputsFragmentBinding;
 import com.mooo.hairyone.td5tester.events.DashboardEvent;
 
-import org.apache.log4j.Logger;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 public class InputsFragment extends BaseFragment {
-
-    Logger log = Log4jHelper.getLogger(this.getClass());
 
     private InputsFragmentBinding   m_binding;
 
@@ -31,7 +27,6 @@ public class InputsFragment extends BaseFragment {
      *  OnCreateView gets called when Android is ready draw fragment user interface. To draw UI
      *  for the fragment we must return a View Component from this method. */
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        log.trace("");
 
         m_binding   = InputsFragmentBinding.inflate(inflater, container, false);
         View view   = m_binding.getRoot();

@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 import com.mooo.hairyone.td5tester.Consts;
 import com.mooo.hairyone.td5tester.FTDI;
 import com.mooo.hairyone.td5tester.FaultCodes;
-import com.mooo.hairyone.td5tester.Log4jHelper;
 import com.mooo.hairyone.td5tester.LogRecord;
 import com.mooo.hairyone.td5tester.R;
 import com.mooo.hairyone.td5tester.Requests;
@@ -33,7 +32,6 @@ import com.mooo.hairyone.td5tester.events.MessageEvent;
 import com.mooo.hairyone.td5tester.events.NotConnectedEvent;
 import com.mooo.hairyone.td5tester.events.ToggleUIEvent;
 
-import org.apache.log4j.Logger;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -51,8 +49,6 @@ import java.util.Random;
 
 
 public class ConnectFragment extends BaseFragment {
-
-    Logger log = Log4jHelper.getLogger(this.getClass());
 
     private static final String STATE__INFO_LINES = "INFO_LINES";
 
@@ -171,7 +167,6 @@ public class ConnectFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        log.trace("");
 
         m_binding   = ConnectFragmentBinding.inflate(inflater, container, false);
 

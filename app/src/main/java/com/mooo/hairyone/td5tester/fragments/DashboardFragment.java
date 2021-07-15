@@ -7,11 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.mooo.hairyone.td5tester.Log4jHelper;
 import com.mooo.hairyone.td5tester.databinding.DashboardFragmentBinding;
 import com.mooo.hairyone.td5tester.events.DashboardEvent;
 
-import org.apache.log4j.Logger;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -19,8 +17,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 //public class DashboardFragment extends BaseFragment {
 public class DashboardFragment extends Fragment {
-
-    Logger log = Log4jHelper.getLogger(this.getClass());
 
     private DashboardFragmentBinding m_binding;
 
@@ -38,7 +34,6 @@ public class DashboardFragment extends Fragment {
      *  Groups, Initialization are generally done in OnCreate Method. */
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        log.trace("");
     }
 
 
@@ -46,7 +41,6 @@ public class DashboardFragment extends Fragment {
      *  OnCreateView gets called when Android is ready draw fragment user interface. To draw UI
      *  for the fragment we must return a View Component from this method. */
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        log.trace("");
 
         m_binding   = DashboardFragmentBinding.inflate(inflater, container, false);
         View view   = m_binding.getRoot();
@@ -68,7 +62,6 @@ public class DashboardFragment extends Fragment {
      */
     @Override public void onStart() {
         super.onStart();
-        log.trace("");
         EventBus.getDefault().register(this);
     }
 
@@ -78,7 +71,6 @@ public class DashboardFragment extends Fragment {
      */
     @Override public void onStop() {
         EventBus.getDefault().unregister(this);
-        log.trace("");
         super.onStop();
     }
 

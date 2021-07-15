@@ -8,12 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mooo.hairyone.td5tester.Log4jHelper;
 import com.mooo.hairyone.td5tester.R;
 import com.mooo.hairyone.td5tester.databinding.FragmentFuelBinding;
 import com.mooo.hairyone.td5tester.events.DashboardEvent;
 
-import org.apache.log4j.Logger;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -24,8 +22,6 @@ import org.greenrobot.eventbus.ThreadMode;
  * create an instance of this fragment.
  */
 public class FuelFragment extends Fragment {
-
-    Logger log = Log4jHelper.getLogger(this.getClass());
 
     private FragmentFuelBinding m_binding;
 
@@ -68,7 +64,6 @@ public class FuelFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        log.trace("");
 
         m_binding   = FragmentFuelBinding.inflate(inflater, container, false);
         View view   = m_binding.getRoot();
@@ -87,7 +82,6 @@ public class FuelFragment extends Fragment {
     @Override public void onStart()
     {
         super.onStart();
-        log.trace("");
         EventBus.getDefault().register(this);
     }
 
@@ -96,7 +90,6 @@ public class FuelFragment extends Fragment {
      */
     @Override public void onStop() {
         EventBus.getDefault().unregister(this);
-        log.trace("");
         super.onStop();
     }
 
