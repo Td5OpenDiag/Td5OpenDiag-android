@@ -44,8 +44,6 @@ public class EngineRPM extends Td5Gauge {
 
         this.setGraduationCountMinor( ((lGaugeValueMax - lGaugeValueMin) / 1000) + 1);
 
-//        this.setMarksNumber( ((lGaugeValueMax - lGaugeValueMin) / 1000) + 1 - 2);
-
 
         /*
             Sections definition
@@ -80,7 +78,6 @@ public class EngineRPM extends Td5Gauge {
         this.section_add(
                 getContext().getResources().getInteger( R.integer.engine_rpm_torque90),
                 getContext().getResources().getInteger( R.integer.engine_rpm_torqueMax),
-//                Color.GREEN
                 getContext().getResources().getColor( R.color.valueInc_ok )
         );
 

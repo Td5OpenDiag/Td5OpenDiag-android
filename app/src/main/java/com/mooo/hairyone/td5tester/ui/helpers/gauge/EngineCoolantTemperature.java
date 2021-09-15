@@ -31,7 +31,6 @@ public class EngineCoolantTemperature extends Td5Gauge
         this.setGraduationMin( lGaugeValueMin );
         this.setGraduationMax( lGaugeValueMax );
 
-//        this.setValue(lGaugeValueMax);
         this.setValue(888);
 
         this.getValueDisplay().setValueDisplayFormat("%3.0f");
@@ -55,7 +54,6 @@ public class EngineCoolantTemperature extends Td5Gauge
                 getContext().getResources().getInteger( R.integer.engine_coolantTemperature_cold),
                 getContext().getResources().getInteger( R.integer.engine_coolantTemperature_thermostat_closed),
                 getContext().getResources().getColor(R.color.valueInc_ok_low) );
-        //Color.rgb(0,128,64) );
 
         /* "Thermostat regulation" section */
         this.section_add(
