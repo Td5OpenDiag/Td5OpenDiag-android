@@ -209,9 +209,7 @@ public class FuelFragment extends Fragment {
 
     private void    setFuelDemandIdle(float pValue)
     {
-        //m_binding.gaugeIdleDemand.setValue(pValue);
         m_binding.fuelDemandIdleValue.setText( pValue + f_strUnitSuffix_milliGrams);
-        //m_binding.textIdleDemandValue.setText(pValue + " rpm");
     }
 
 
@@ -236,8 +234,6 @@ public class FuelFragment extends Fragment {
 
     private void    setInjectionQuantity(float pValue)
     {
-        //m_binding.gaugeInjectionQuantity.setValue(pValue);
-        //m_binding.textInjectionQuantityValue.setText(pValue + " mg");
         m_binding.fuelInjectedQuantity.setText( pValue + f_strUnitSuffix_milliGrams);
     }
 }

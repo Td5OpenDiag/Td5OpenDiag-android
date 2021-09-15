@@ -54,12 +54,6 @@ public class ConnectFragment extends BaseFragment {
 
     private ConnectFragmentBinding  m_binding;
 
-
-//    @BindView(R.id.tvInfo) TextView tvInfo; //deprecated
-//    @BindView(R.id.btConnect) ImageButton btConnect; // deprecated
-    /*@BindView(R.id.btFastInit) ImageButton btFastInit;
-    @BindView(R.id.btDashboard) ImageButton btDashboard;*/
-
     byte[] mReadBuffer = new byte[Consts.RESPONSE_BUFFER_SIZE];
     boolean mHaveUsbPermission = false;
     boolean mFastInitCompleted = false;
@@ -132,8 +126,6 @@ public class ConnectFragment extends BaseFragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onToggleUIEvent(ToggleUIEvent event) {
         m_binding.btConnect.setEnabled(event.enable);
-        /*btFastInit.setEnabled(event.enable);
-        btDashboard.setEnabled(event.enable);*/
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -173,7 +165,6 @@ public class ConnectFragment extends BaseFragment {
 //        View view =  inflater.inflate(R.layout.connect_fragment, container, false);
         View view   = m_binding.getRoot();
 
-//        unbinder = ButterKnife.bind(this, view); // Deprecated
         m_binding.tvInfo.setMovementMethod(new ScrollingMovementMethod());
 
         m_binding.btConnect.setOnClickListener(new View.OnClickListener() {
@@ -304,7 +295,7 @@ public class ConnectFragment extends BaseFragment {
 
         boolean result = false;
         mFastInitCompleted = false;
-        // mDashboardRunning = false;
+//         mDashboardRunning = false;
         mFakeUsbDeviceConnection = false;
         mUsbDevice = null;
         mUsbInterface = null;
@@ -445,7 +436,7 @@ public class ConnectFragment extends BaseFragment {
     private int bulk_transfer_read(byte[] data, int len) {
         int rc = mUsbDeviceConnection.bulkTransfer(mUsbEndpointIn, data, len, FTDI.READ_TIMEOUT);
         if (rc < 0) {
-           //log.error(String.format("data=%s, rc=%d", Util.byte_array_to_hex(data, len), rc));
+//           log.error(String.format("data=%s, rc=%d", Util.byte_array_to_hex(data, len), rc));
         }
         return rc;
     }
@@ -854,7 +845,7 @@ public class ConnectFragment extends BaseFragment {
                         }
                     }
                 }
-                //get_pid(Requests.RequestPidEnum.CLEAR_FAULTS);
+//                get_pid(Requests.RequestPidEnum.CLEAR_FAULTS);
             }
             //Util.log_msg("Faults cleared");
         } else {

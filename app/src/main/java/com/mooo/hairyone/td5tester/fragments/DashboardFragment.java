@@ -14,8 +14,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-
-//public class DashboardFragment extends BaseFragment {
 public class DashboardFragment extends Fragment {
 
     private DashboardFragmentBinding m_binding;
@@ -118,28 +116,24 @@ public class DashboardFragment extends Fragment {
     private void    setBatteryVoltage(float pValue)
     {
         m_binding.gaugeBatteryVoltage.setValue(pValue);
-        //m_binding.textAmbientPressureValue.setText(pValue + " kPa");
     }
 
 
     private void    setEngineCoolantTemperature(float pValue)
     {
         m_binding.gaugeEct.setValue(pValue);
-        //m_binding.textAmbientPressureValue.setText(pValue + " kPa");
     }
 
 
     private void    setEngineRPM(float pValue)
     {
         m_binding.gaugeEngineRpm.setValue(pValue);
-        //m_binding.textAmbientPressureValue.setText(pValue + " kPa");
     }
 
 
     private void    setManifoldAirPressure(float pValue)
     {
         m_binding.gaugeManifoldTurboPressure.setValue(pValue);
-        //m_binding.text.setText(pValue + " bar");
     }
 
 
@@ -194,7 +188,5 @@ public class DashboardFragment extends Fragment {
 
         this.m_binding.fuelConsumptionValue.setText( lText );
     }
-
-//    @Override protected int getFragmentLayout() { return R.layout.dashboard_fragment; }
 
 }

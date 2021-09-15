@@ -16,8 +16,6 @@ public abstract class BaseFragment extends Fragment {
 
     Logger log = Log4jHelper.getLogger(this.getClass());
 
-//    Unbinder unbinder; // Butterknife is deprecated
-
     @Override public void onAttach(Activity activity) {
         // This is where a fragment is associated with an activity. Keep in mind that when this
         // method is called, your Fragment, and or, Activity is not fully initialized and you will
@@ -40,7 +38,6 @@ public abstract class BaseFragment extends Fragment {
         // OnCreateView gets called when Android is ready draw fragment user interface. To draw UI
         // for the fragment we must return a View Component from this method.
         View view =  inflater.inflate(getFragmentLayout(), container, false);
-//        unbinder = ButterKnife.bind(this, view);
         return view;
     }
 
@@ -86,9 +83,6 @@ public abstract class BaseFragment extends Fragment {
 
     @Override public void onDestroyView() {
         super.onDestroyView();
-//        if (unbinder != null) {
-//            unbinder.unbind();
-//        }
     }
 
 

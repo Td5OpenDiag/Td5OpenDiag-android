@@ -52,17 +52,14 @@ public class InputsFragment extends BaseFragment {
         switch (event.data_type)
         {
             case ACC_TRACK_1:
-                //m_binding.gACCTRACK1.setValue(value);
                 this.setInputAccTrack1(value);
                 break;
 
             case ACC_TRACK_2:
-                //m_binding.gACCTRACK2.setValue(value);
                 this.setInputAccTrack2(value);
                 break;
 
             case ACC_TRACK_3:
-                //m_binding.gACCTRACK3.setValue(value);
                 this.setInputAccTrack3(value);
                 break;
         }
