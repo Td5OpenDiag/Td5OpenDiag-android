@@ -2,6 +2,7 @@ package com.mooo.hairyone.td5tester.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -17,8 +18,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link EngineFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class EngineFragment extends Fragment {
 
@@ -29,48 +28,22 @@ public class EngineFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EngineFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static EngineFragment newInstance(String param1, String param2) {
-        EngineFragment fragment = new EngineFragment();
-        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     /**
      *  OnCreateView gets called when Android is ready draw fragment user interface. To draw UI
      *  for the fragment we must return a View Component from this method. */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         m_binding   = FragmentEngineBinding.inflate(inflater, container, false);
         View view   = m_binding.getRoot();
 
-
-        //this.init_gauge_idleDemand();
-
         setEngineCoolantTemperature(0.0f);
-        //setIdleDemand(0.0f);
 
         m_binding.gPOWERBALANCE1.setCylinderNumber( 1 );
         m_binding.gPOWERBALANCE2.setCylinderNumber( 2 );
@@ -142,28 +115,6 @@ public class EngineFragment extends Fragment {
                 break;
         }
     }
-
-
-//    private void    init_gauge_idleDemand()
-//    {
-//        int lGaugeValueMax
-//                = getContext().getResources().getInteger( R.integer.engine_idleDemand_max);
-//        int lGaugeValueMin
-//                = getContext().getResources().getInteger( R.integer.engine_idleDemand_min);
-//
-//
-//        Td5Gauge lGauge = m_binding.gaugeIdleDemand;
-//
-//
-//        lGauge.setMin( lGaugeValueMin );
-//        lGauge.setMax( lGaugeValueMax );
-//
-//        lGauge.setTickNumber( ((lGaugeValueMax - lGaugeValueMin) / 5) + 1);
-//        lGauge.setMarksNumber( ((lGaugeValueMax - lGaugeValueMin) / 5) + 1 - 2);
-//
-//        lGauge.setUnit("mg");
-//    }
-
 
     private void    setEngineCoolantTemperature(float pValue)
     {
