@@ -3,21 +3,15 @@ package com.mooo.hairyone.td5tester.ui.helpers.gauge;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
-import android.util.Log;
 
-import com.github.aloike.libgauge.Gauge;
 import com.github.aloike.libgauge.parts.Graduation;
 import com.github.aloike.libgauge.parts.Label;
-import com.github.aloike.libgauge.parts.Section;
 import com.mooo.hairyone.td5tester.R;
 import com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge;
 
-import java.util.zip.DataFormatException;
 
 public class BatteryVoltage extends Td5Gauge
 {
-    private final String    LOG_TAG = new String("gauge.BatteryVoltage");
-
 
     public BatteryVoltage(Context context, AttributeSet attrs)
     {
@@ -54,14 +48,9 @@ public class BatteryVoltage extends Td5Gauge
         lGraduationMajor.setCount((int)(pGaugeMax - pGaugeMin) + 1);
         lGraduationMajor.setGraduationColor(Color.LTGRAY);
         lGraduationMajor.setLinesLengthFactor(7.5f);
-//        lGraduationMajor.setLinesWidthFactor_pc();
 
         this.getDial().getGraduationsList().clear();
         this.getDial().getGraduationsList().add(lGraduationMajor);
-
-//        this.getDial().getGraduationsList().get(0).setCount((lGaugeValueMax - lGaugeValueMin) + 1);
-//        this.setTickNumber( (lGaugeValueMax - lGaugeValueMin) + 1);
-//        this.setMarksNumber( (lGaugeValueMax - lGaugeValueMin) + 1 - 2);
     }
 
     private void   init_labels()

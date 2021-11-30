@@ -8,26 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mooo.hairyone.td5tester.Log4jHelper;
 import com.mooo.hairyone.td5tester.R;
 import com.mooo.hairyone.td5tester.databinding.FragmentFuelBinding;
-import com.mooo.hairyone.td5tester.databinding.FragmentIntakeBinding;
 import com.mooo.hairyone.td5tester.events.DashboardEvent;
-import com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge;
 
-import org.apache.log4j.Logger;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FuelFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class FuelFragment extends Fragment {
-
-    Logger log = Log4jHelper.getLogger(this.getClass());
 
     private FragmentFuelBinding m_binding;
 
@@ -37,31 +29,9 @@ public class FuelFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FuelFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FuelFragment newInstance(String param1, String param2) {
-        FuelFragment fragment = new FuelFragment();
-        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     /**
@@ -70,7 +40,6 @@ public class FuelFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        log.trace("");
 
         m_binding   = FragmentFuelBinding.inflate(inflater, container, false);
         View view   = m_binding.getRoot();
@@ -89,7 +58,6 @@ public class FuelFragment extends Fragment {
     @Override public void onStart()
     {
         super.onStart();
-        log.trace("");
         EventBus.getDefault().register(this);
     }
 
@@ -98,7 +66,6 @@ public class FuelFragment extends Fragment {
      */
     @Override public void onStop() {
         EventBus.getDefault().unregister(this);
-        log.trace("");
         super.onStop();
     }
 
@@ -242,9 +209,7 @@ public class FuelFragment extends Fragment {
 
     private void    setFuelDemandIdle(float pValue)
     {
-        //m_binding.gaugeIdleDemand.setValue(pValue);
         m_binding.fuelDemandIdleValue.setText( pValue + f_strUnitSuffix_milliGrams);
-        //m_binding.textIdleDemandValue.setText(pValue + " rpm");
     }
 
 
@@ -269,8 +234,6 @@ public class FuelFragment extends Fragment {
 
     private void    setInjectionQuantity(float pValue)
     {
-        //m_binding.gaugeInjectionQuantity.setValue(pValue);
-        //m_binding.textInjectionQuantityValue.setText(pValue + " mg");
         m_binding.fuelInjectedQuantity.setText( pValue + f_strUnitSuffix_milliGrams);
     }
 }

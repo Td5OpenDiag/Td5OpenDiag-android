@@ -1,6 +1,5 @@
 package com.mooo.hairyone.td5tester;
 
-import java.util.EnumMap;
 
 public class FaultCodes {
 

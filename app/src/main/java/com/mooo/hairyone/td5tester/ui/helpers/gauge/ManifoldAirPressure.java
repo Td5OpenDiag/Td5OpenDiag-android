@@ -38,7 +38,6 @@ public class ManifoldAirPressure extends Td5Gauge {
         this.setGraduationMin( lGaugeValueMin_bar );
         this.setGraduationMax( lGaugeValueMax_bar );
 
-//        this.setValue(lGaugeValueMax_bar);
         this.setValue(8.8f);
 
 

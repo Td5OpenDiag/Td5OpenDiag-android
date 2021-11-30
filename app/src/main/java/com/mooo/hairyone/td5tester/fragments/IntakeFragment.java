@@ -1,31 +1,22 @@
 package com.mooo.hairyone.td5tester.fragments;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mooo.hairyone.td5tester.Log4jHelper;
-import com.mooo.hairyone.td5tester.R;
 import com.mooo.hairyone.td5tester.databinding.FragmentIntakeBinding;
 import com.mooo.hairyone.td5tester.events.DashboardEvent;
-import com.mooo.hairyone.td5tester.ui.helpers.Td5Gauge;
 
-import org.apache.log4j.Logger;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link IntakeFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class IntakeFragment extends Fragment {
-
-    Logger log = Log4jHelper.getLogger(this.getClass());
 
     private FragmentIntakeBinding   m_binding;
 
@@ -35,31 +26,10 @@ public class IntakeFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment IntakeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static IntakeFragment newInstance(String param1, String param2) {
-        IntakeFragment fragment = new IntakeFragment();
-        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     /**
@@ -68,7 +38,6 @@ public class IntakeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        log.trace("");
 
         m_binding   = FragmentIntakeBinding.inflate(inflater, container, false);
         View view   = m_binding.getRoot();
@@ -84,7 +53,6 @@ public class IntakeFragment extends Fragment {
     @Override public void onStart()
     {
         super.onStart();
-        log.trace("");
         EventBus.getDefault().register(this);
     }
 
@@ -93,7 +61,6 @@ public class IntakeFragment extends Fragment {
      */
     @Override public void onStop() {
         EventBus.getDefault().unregister(this);
-        log.trace("");
         super.onStop();
     }
 

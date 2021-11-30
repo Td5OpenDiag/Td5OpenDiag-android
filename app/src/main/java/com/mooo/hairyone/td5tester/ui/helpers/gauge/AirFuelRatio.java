@@ -35,7 +35,6 @@ public class AirFuelRatio extends Td5Gauge
         this.setGraduationMin( lGaugeValueMin );
         this.setGraduationMax( lGaugeValueMax );
 
-//        this.setValue(lGaugeValueMax);
         this.setValue(88f);
 
 
@@ -45,8 +44,7 @@ public class AirFuelRatio extends Td5Gauge
 
 
         this.setGraduationCountMajor((int) ((lGaugeValueMax - lGaugeValueMin) / 5.0f) + 1);
-        //this.getDial().getGraduationsList().get(EGraduationsIndex.GRAD_MAJOR.getIndex())
-        //       .setValuesTextFormat("%.0f");
+
         this.getDial().getGraduationsList().get(EGraduationsIndex.GRAD_MAJOR.getIndex())
                 .setGraduationColor(Color.LTGRAY);
 
@@ -55,10 +53,5 @@ public class AirFuelRatio extends Td5Gauge
                 .setValuesTextFormat("");
         this.getDial().getGraduationsList().get(EGraduationsIndex.GRAD_MINOR.getIndex())
                 .setLinesLengthFactor(5.0f);
-
-
-        /*
-            Sections definition
-         */
     }
 }

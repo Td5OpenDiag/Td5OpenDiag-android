@@ -1,7 +1,6 @@
 package com.mooo.hairyone.td5tester.ui.helpers;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
@@ -9,7 +8,6 @@ import android.util.Log;
 
 import com.github.aloike.libgauge.Gauge;
 
-import com.github.aloike.libgauge.attributes.Range;
 import com.github.aloike.libgauge.parts.Graduation;
 import com.github.aloike.libgauge.parts.Label;
 import com.github.aloike.libgauge.parts.Section;
@@ -61,17 +59,7 @@ public class Td5Gauge extends Gauge {
     private String      LOG_TAG = new String("Td5Gauge");
 
     protected float     m_section_width_factor_pc   = 7.5f;
-//    protected float     m_dialValueRangeFactor      = 1.0f;
 
-//    protected final float   f_centerRadius  = getContext().getResources().getDimension( R.dimen.gauges_center_circle_radius);
-
-//    protected Indicator.Indicators  m_indicator         = Indicator.Indicators.KiteIndicator;
-//    protected int                   m_indicatorColor    = Color.WHITE;
-
-
-//    public Td5Gauge(Context context, AttributeSet attrs, int defStyleAttr) {
-//        super(context, attrs, defStyleAttr);
-//    }
 
     public Td5Gauge(Context context, AttributeSet attrs)
     {
@@ -79,32 +67,6 @@ public class Td5Gauge extends Gauge {
 
         this.init();
     }
-
-//    public Td5Gauge(Context context) {
-//        super(context);
-//    }
-
-
-//    public void setIndicatorColor(int pColor)
-//    {
-//        this.m_indicatorColor   = pColor;
-//        this.getIndicator().setColor(this.m_indicatorColor);
-//    }
-
-
-//    public void setIndicatorEnabled(boolean pEnabled)
-//    {
-//        if( pEnabled )
-//        {
-//            this.setIndicator(this.m_indicator);
-//            this.getIndicator().setColor(this.m_indicatorColor);
-//        }
-//        else
-//        {
-//            this.setIndicator(Indicator.Indicators.NoIndicator);
-//        }
-//    }
-
 
     private void init()
     {
@@ -116,54 +78,15 @@ public class Td5Gauge extends Gauge {
          */
         this.setEnabled(true);
 
-//        this.setCenterCircleColor(Color.DKGRAY);
-//        this.setCenterCircleRadius( f_centerRadius );
-
-
         this.init_graduations();
         this.init_labels();
         this.init_sections();
         this.init_valueDisplay();
-
-
-        /*
-            Text parameters
-         */
-//        this.setTextTypeface(Typeface.MONOSPACE);
-
-//        this.setTextColor(getContext().getResources().getColor( R.color.textColorPrimary));
-
-
-
-//        Paint lPaint    = getSpeedBackgroundPaint();
-//        lPaint.setStyle( Paint.Style.STROKE );
-//        lPaint.setColor(getContext().getResources().getColor( R.color.windowBackground));
-//        lPaint.setStrokeWidth(5f);
-//        setSpeedBackgroundPaint(lPaint);
-//        this.setSpeedTextColor( getContext().getResources().getColor( R.color.textColorPrimary) );
-//        this.setSpeedTextPosition(Gauge.Position.BOTTOM_CENTER);
-//        this.setSpeedTextSize(this.dpTOpx(24));
-
-
-
-
-//        /*
-//            Effects
-//         */
-//        // Add/remove blur effect
-//        this.setWithEffects(false);
-//
-//        this.setWithTremble(false);
-//        this.setTrembleDegree(5);
-//        this.setTrembleDuration(500);
     }
 
 
     private void    init_graduations()
     {
-//        this.setMarkStyle(Paint.Cap.ROUND);
-//        this.setMarkColor(Color.LTGRAY);
-//        this.setMarksNumber(9);
 
         /* Clear existing graduations */
         this.getDial().getGraduationsList().clear();
@@ -189,9 +112,6 @@ public class Td5Gauge extends Gauge {
 
         this.getDial().getGraduationsList().add( lGraduationMajor );
 
-//        this.setTickNumber(6);
-//        this.setTickPadding((int)(this.getSpeedometerWidth() * 0.4f));
-//        this.getDial().getGraduationsList().get(0).setLinesLengthFactor();
     }
 
 
@@ -204,14 +124,9 @@ public class Td5Gauge extends Gauge {
         Label   lLabelGaugeName = new Label();
         this.getDial().getLabelsList().add(lLabelGaugeName);
 
-        //this.setGaugeNameBackgroundColor( getContext().getResources().getColor( R.color.windowBackground));
-//        this.setGaugeNameTextColor(getContext().getResources().getColor( R.color.textColorPrimary));
         lLabelGaugeName.setColor(getContext().getResources().getColor( R.color.textColorPrimary));
         lLabelGaugeName.setTypeface(Typeface.MONOSPACE);
-//        this.setGaugeNameTextSize(this.dpTOpx(16));
         lLabelGaugeName.setTextSizeFactor(10.0f);
-
-//        this.setGaugeNameTextPosition(Gauge.Position.MIDTOP_CENTER);
         lLabelGaugeName.setPosX_pc(50.0f);
         lLabelGaugeName.setPosY_pc(25.0f);
 
@@ -255,79 +170,7 @@ public class Td5Gauge extends Gauge {
         this.getValueDisplay().setUnitText("[unit]");
         this.getValueDisplay().setUnitTextColor(
                 getContext().getResources().getColor( R.color.textColorPrimary) );
-//        this.setUnitTextSize(this.dpTOpx(16));
-//        this.setUnitUnderSpeedText(true);
     }
-
-
-//    @Override
-//    protected void  onDraw(Canvas canvas) {
-//        super.onDrawSuper(canvas);
-//
-//        RectF speedBackgroundRect = getSpeedUnitTextBounds();
-//        speedBackgroundRect.left -= dpTOpx(this.getViewWidthNoPadding() * 0.01f);
-//        speedBackgroundRect.right += dpTOpx(this.getViewWidthNoPadding() * 0.01f);
-//        speedBackgroundRect.top -= dpTOpx(this.getViewHeightNoPadding() * 0.005f);
-//        speedBackgroundRect.bottom += dpTOpx(this.getViewHeightNoPadding() * 0.005f);
-//        canvas.drawRect(speedBackgroundRect, getSpeedBackgroundPaint());
-//
-//        //this.setUnitTextSize(this.dpTOpx(this.getViewHeightNoPadding() * 0.03f));
-//
-//        drawGaugeNameText(canvas);
-//        drawSpeedUnitText(canvas);
-//        drawIndicator(canvas);
-//        canvas.drawCircle(
-//                getSize() * .5f,
-//                getSize() * .5f,
-//                getCenterCircleRadius(),
-//                getCirclePaint() );
-//        drawNotes(canvas);
-//    }
-
-
-//    @Override
-//    protected void onDraw(Canvas canvas) {
-//        super.onDraw(canvas);
-//
-//        /* Take into account the dial value range factor */
-//        Range   lRangeWithFactor    = new Range();
-//        lRangeWithFactor.setValueDisplayRange(
-//                this.m_range.getValueDisplayMin(),
-//                this.m_range.getValueDisplayMax() );
-//        lRangeWithFactor.setGraduationRange(
-//                this.m_range.getGraduationMin() / this.m_dialValueRangeFactor,
-//                this.m_range.getGraduationMax() / this.m_dialValueRangeFactor );
-//
-//
-//        /* Draw the gauge dial */
-//        this.m_dial.draw(
-//                canvas,
-//                lRangeWithFactor,
-//                this.m_angles
-//        );
-//
-//        /* Draw the value display */
-//        this.m_valueDisplay.draw(
-//                canvas,
-//                lRangeWithFactor,
-//                this.m_valueCurrent
-//        );
-//
-//        /* Draw the needle */
-//        if(this.isEnabled()) {
-//            this.m_needle.draw(
-//                    canvas,
-//                    lRangeWithFactor,
-//                    this.m_angles,
-//                    this.m_valueCurrent / this.m_dialValueRangeFactor
-//            );
-//        }
-//
-//        /* Draw the needle axis */
-//        this.m_needleAxis.draw(
-//                canvas
-//        );
-//    }
 
 
     public void
@@ -417,33 +260,4 @@ public class Td5Gauge extends Gauge {
         this.getValueDisplay().setUnitText( pText );
     }
 
-
-//    @Override
-//    protected void updateBackgroundBitmap()
-//    {
-//        super.updateBackgroundBitmap();
-//
-///*        Canvas lCanvas  = new Canvas(this.getBackgroundBitmap());
-//
-//        RectF speedBackgroundRect = getSpeedUnitTextBounds();
-//        speedBackgroundRect.left -= dpTOpx(this.getWidth() * 0.03f);
-//        speedBackgroundRect.right += dpTOpx(this.getWidth() * 0.03f);
-//        speedBackgroundRect.top -= dpTOpx(this.getViewHeightNoPadding() * 0.005f);
-//        speedBackgroundRect.bottom += dpTOpx(this.getViewHeightNoPadding() * 0.005f);
-//        lCanvas.drawRect(speedBackgroundRect, getSpeedBackgroundPaint());
-// */
-//    }
-
-
-//    private float
-//            valueToGaugePercent(float pValue)
-//    {
-//        float   lGaugeMin   = getMinSpeed();
-//        float   lGaugeMax   = getMaxSpeed();
-//        float retval    = 0.0f;
-//
-//        retval  = (pValue - lGaugeMin) / (lGaugeMax - lGaugeMin);
-//
-//        return retval;
-//    }
 }

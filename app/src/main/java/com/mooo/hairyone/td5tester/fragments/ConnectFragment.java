@@ -17,13 +17,10 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.mooo.hairyone.td5tester.Consts;
 import com.mooo.hairyone.td5tester.FTDI;
 import com.mooo.hairyone.td5tester.FaultCodes;
-import com.mooo.hairyone.td5tester.Log4jHelper;
 import com.mooo.hairyone.td5tester.LogRecord;
 import com.mooo.hairyone.td5tester.R;
 import com.mooo.hairyone.td5tester.Requests;
@@ -35,14 +32,12 @@ import com.mooo.hairyone.td5tester.events.MessageEvent;
 import com.mooo.hairyone.td5tester.events.NotConnectedEvent;
 import com.mooo.hairyone.td5tester.events.ToggleUIEvent;
 
-import org.apache.log4j.Logger;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.InterruptedIOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -55,17 +50,9 @@ import java.util.Random;
 
 public class ConnectFragment extends BaseFragment {
 
-    Logger log = Log4jHelper.getLogger(this.getClass());
-
     private static final String STATE__INFO_LINES = "INFO_LINES";
 
     private ConnectFragmentBinding  m_binding;
-
-
-//    @BindView(R.id.tvInfo) TextView tvInfo; //deprecated
-//    @BindView(R.id.btConnect) ImageButton btConnect; // deprecated
-    /*@BindView(R.id.btFastInit) ImageButton btFastInit;
-    @BindView(R.id.btDashboard) ImageButton btDashboard;*/
 
     byte[] mReadBuffer = new byte[Consts.RESPONSE_BUFFER_SIZE];
     boolean mHaveUsbPermission = false;
@@ -139,8 +126,6 @@ public class ConnectFragment extends BaseFragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onToggleUIEvent(ToggleUIEvent event) {
         m_binding.btConnect.setEnabled(event.enable);
-        /*btFastInit.setEnabled(event.enable);
-        btDashboard.setEnabled(event.enable);*/
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -174,14 +159,12 @@ public class ConnectFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        log.trace("");
 
         m_binding   = ConnectFragmentBinding.inflate(inflater, container, false);
 
 //        View view =  inflater.inflate(R.layout.connect_fragment, container, false);
         View view   = m_binding.getRoot();
 
-//        unbinder = ButterKnife.bind(this, view); // Deprecated
         m_binding.tvInfo.setMovementMethod(new ScrollingMovementMethod());
 
         m_binding.btConnect.setOnClickListener(new View.OnClickListener() {
@@ -312,7 +295,7 @@ public class ConnectFragment extends BaseFragment {
 
         boolean result = false;
         mFastInitCompleted = false;
-        // mDashboardRunning = false;
+//         mDashboardRunning = false;
         mFakeUsbDeviceConnection = false;
         mUsbDevice = null;
         mUsbInterface = null;
@@ -453,7 +436,7 @@ public class ConnectFragment extends BaseFragment {
     private int bulk_transfer_read(byte[] data, int len) {
         int rc = mUsbDeviceConnection.bulkTransfer(mUsbEndpointIn, data, len, FTDI.READ_TIMEOUT);
         if (rc < 0) {
-           //log.error(String.format("data=%s, rc=%d", Util.byte_array_to_hex(data, len), rc));
+//           log.error(String.format("data=%s, rc=%d", Util.byte_array_to_hex(data, len), rc));
         }
         return rc;
     }
@@ -862,7 +845,7 @@ public class ConnectFragment extends BaseFragment {
                         }
                     }
                 }
-                //get_pid(Requests.RequestPidEnum.CLEAR_FAULTS);
+//                get_pid(Requests.RequestPidEnum.CLEAR_FAULTS);
             }
             //Util.log_msg("Faults cleared");
         } else {

@@ -81,4 +81,9 @@
     <!--<string name="mass_airflow_unit_short">g/h</string>-->
     <string name="mass_airflow_unit_short">mg/strk</string>
 
+    <string name="accelerator_track_1">ACC track 1</string>
+    <string name="accelerator_track_2">ACC track 2</string>
+    <string name="accelerator_track_3">ACC track 3</string>
+    <string name="accelerator_track_unit">-.- V</string>
+
 </resources>

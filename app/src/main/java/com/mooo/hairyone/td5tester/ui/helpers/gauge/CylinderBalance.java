@@ -34,15 +34,11 @@ public class CylinderBalance extends Td5Gauge
                 getContext().getResources().getString(
                         R.string.cylinder_balance_short,
                         this.m_cylinderNumber )
-                //String.format(
-                //        getContext().getResources().getString(R.string.cylinder_balance_short),
-                //        42d )
         );
 
         this.setGraduationMin( lGaugeValueMin );
         this.setGraduationMax( lGaugeValueMax );
 
-//        this.setValue(lGaugeValueMax);
         this.setValue(88f);
 
 
@@ -52,8 +48,7 @@ public class CylinderBalance extends Td5Gauge
 
 
         this.setGraduationCountMajor((int) ((lGaugeValueMax - lGaugeValueMin) / 5.0f) + 1);
-        //this.getDial().getGraduationsList().get(EGraduationsIndex.GRAD_MAJOR.getIndex())
-        //       .setValuesTextFormat("%.0f");
+
         this.getDial().getGraduationsList().get(EGraduationsIndex.GRAD_MAJOR.getIndex())
                 .setGraduationColor(Color.LTGRAY);
 

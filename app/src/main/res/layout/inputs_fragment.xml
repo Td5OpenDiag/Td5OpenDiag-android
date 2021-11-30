@@ -32,13 +32,13 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="ACC track 1"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/accelerator_track_1"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="24sp" />
 
                 <ProgressBar
                     android:id="@+id/acceleratorTrack1_progress"
@@ -50,14 +50,14 @@
                     android:minHeight="36dip" />
 
                 <TextView
-                    android:id="@+id/acceleratorTrack1_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="-.- V"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
+                        android:id="@+id/acceleratorTrack1_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/accelerator_track_unit"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="24sp" />
             </TableRow>
 
             <TableRow
@@ -65,13 +65,13 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="ACC track 2"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/accelerator_track_2"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="24sp" />
 
                 <ProgressBar
                     android:id="@+id/acceleratorTrack2_progress"
@@ -84,14 +84,14 @@
                     android:rotation="180" />
 
                 <TextView
-                    android:id="@+id/acceleratorTrack2_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="-.- V"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
+                        android:id="@+id/acceleratorTrack2_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/accelerator_track_unit"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="24sp" />
             </TableRow>
 
             <TableRow
@@ -99,13 +99,13 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="ACC track 3"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/accelerator_track_3"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="24sp" />
 
                 <ProgressBar
                     android:id="@+id/acceleratorTrack3_progress"
@@ -118,14 +118,14 @@
                     android:rotation="180" />
 
                 <TextView
-                    android:id="@+id/acceleratorTrack3_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="-.- V"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
+                        android:id="@+id/acceleratorTrack3_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/accelerator_track_unit"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="24sp" />
             </TableRow>
         </TableLayout>
 

@@ -1,23 +1,10 @@
 package com.mooo.hairyone.td5tester;
 
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.widget.ImageButton;
-
 import com.mooo.hairyone.td5tester.events.MessageEvent;
 
 import org.greenrobot.eventbus.EventBus;
 
 public  class Util {
-
-    public static void setImageButtonState(ImageButton imageButton, boolean enabled) {
-        imageButton.setEnabled(enabled);
-        if (enabled) {
-            imageButton.getBackground().setColorFilter(null);
-        } else {
-            imageButton.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
-        }
-    }
 
     public static String byte_array_to_hex(byte[] data, int len) {
         StringBuilder sb = new StringBuilder();

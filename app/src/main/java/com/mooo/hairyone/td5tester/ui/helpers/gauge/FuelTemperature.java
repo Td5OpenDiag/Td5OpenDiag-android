@@ -35,7 +35,6 @@ public class FuelTemperature extends Td5Gauge
         this.setGraduationMin( lGaugeValueMin );
         this.setGraduationMax( lGaugeValueMax );
 
-//        this.setValue(lGaugeValueMax);
         this.setValue(888.8f);
 
 
@@ -45,8 +44,7 @@ public class FuelTemperature extends Td5Gauge
 
 
         this.setGraduationCountMajor((int) ((lGaugeValueMax - lGaugeValueMin) / 20.0f) + 1);
-        //this.getDial().getGraduationsList().get(EGraduationsIndex.GRAD_MAJOR.getIndex())
-        //       .setValuesTextFormat("%.0f");
+
         this.getDial().getGraduationsList().get(EGraduationsIndex.GRAD_MAJOR.getIndex())
                 .setGraduationColor(Color.LTGRAY);
 

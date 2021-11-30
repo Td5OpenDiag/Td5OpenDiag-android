@@ -1,11 +1,7 @@
 package com.mooo.hairyone.td5tester;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.Environment;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import java.io.File;
 
 import de.mindpipe.android.logging.log4j.LogConfigurator;
 

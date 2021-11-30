@@ -36,7 +36,6 @@ public class MassAirflow extends Td5Gauge
         this.setGraduationMin( lGaugeValueMin );
         this.setGraduationMax( lGaugeValueMax );
 
-//        this.setValue(lGaugeValueMax);
         this.setValue(888.8f);
 
 
@@ -46,8 +45,7 @@ public class MassAirflow extends Td5Gauge
 
 
         this.setGraduationCountMajor((int) ((lGaugeValueMax - lGaugeValueMin) / 100.0f) + 1);
-        //this.getDial().getGraduationsList().get(EGraduationsIndex.GRAD_MAJOR.getIndex())
-        //       .setValuesTextFormat("%.0f");
+
         this.getDial().getGraduationsList().get(EGraduationsIndex.GRAD_MAJOR.getIndex())
                 .setGraduationColor(Color.LTGRAY);
 
