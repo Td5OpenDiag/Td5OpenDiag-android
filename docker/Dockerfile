@@ -7,6 +7,11 @@ FROM ubuntu:latest
 SHELL ["/bin/bash", "-c"]
 
 
+# Fixup for tzdata data-enter request
+ENV TZ=Europe/London
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+
 # ##############################################################################
 #   Install SDK Packages
 # ##############################################################################
