@@ -12,8 +12,8 @@ source variables.sh
 
 # Build the image
 docker build \
-	--tag ${DOCKER_IMAGE_NAME} \
-	.
+    --tag ${DOCKER_IMAGE_NAME} \
+    ${PROJECT_DIR_TOPLEVEL}/docker/
 
 
 

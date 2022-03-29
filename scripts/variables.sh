@@ -16,10 +16,11 @@ DOCKER_IMAGE_NAME=android-env
 
 ##  @brief Absolute path to the cache root directory.
 ##  The cache root directory groups various temporary directories used for speeding up the build.
-DIR_CACHE=`echo "${MY_PATH}/.cache"`
-mkdir -p "${DIR_CACHE}"
-echo "#    DIR_CACHE='${DIR_CACHE}'"
+DOCKER_DIR_CACHE=`echo "${MY_PATH}/../.cache_docker_tmp"`
+mkdir -p "${DOCKER_DIR_CACHE}"
+echo "#    DOCKER_DIR_CACHE='${DOCKER_DIR_CACHE}'"
 
 
 ##  @brief  Absolute path to the Project's root directory.
 PROJECT_DIR_TOPLEVEL=`cd ${MY_PATH}/.. && pwd`
+echo "#    PROJECT_DIR_TOPLEVEL='${PROJECT_DIR_TOPLEVEL}'"

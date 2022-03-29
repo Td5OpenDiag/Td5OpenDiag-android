@@ -1,4 +1,5 @@
 *.iml
+.cache_docker_tmp/
 .gradle
 /local.properties
 /.idea/workspace.xml

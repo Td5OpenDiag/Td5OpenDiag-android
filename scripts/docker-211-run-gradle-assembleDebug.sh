@@ -4,7 +4,7 @@
 # set -e
 
 
-./210-run-command.sh \
+./docker-210-run-command.sh \
     bash gradlew assembleDebug
 
 exit $?

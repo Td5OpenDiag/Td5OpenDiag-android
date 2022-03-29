@@ -18,10 +18,10 @@ echo "########################################"
 #PROJECT_DIR_TOPLEVEL=../
 echo "#    PROJECT_DIR_TOPLEVEL=${PROJECT_DIR_TOPLEVEL}"
 
-DIR_CACHE_ANDROID=${DIR_CACHE}/android
+DIR_CACHE_ANDROID=${DOCKER_DIR_CACHE}/android
 echo "#    DIR_CACHE_ANDROID='${DIR_CACHE_ANDROID}'"
 
-DIR_CACHE_GRADLE=${DIR_CACHE}/gradle
+DIR_CACHE_GRADLE=${DOCKER_DIR_CACHE}/gradle
 echo "#    DIR_CACHE_GRADLE='${DIR_CACHE_GRADLE}'"
 
 echo "########################################"
