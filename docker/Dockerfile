@@ -66,6 +66,14 @@ RUN     cd /tmp \
 #   Complementary steps
 # ##################################################################################################
 
+# Update SDK
+RUN     yes Y | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --update
+
+# Install complementary SDK packages
+COPY    rsrc/sdkmanager /workspace/rsrc_sdkmanager
+RUN     cd /workspace/rsrc_sdkmanager \
+    &&  bash sdkmanager_installPackagesFromList.sh
+
 # Accept Android SDK licenses
 RUN yes Y | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --licenses
 
