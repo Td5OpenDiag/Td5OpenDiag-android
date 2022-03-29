@@ -21,6 +21,10 @@ mkdir -p "${DOCKER_DIR_CACHE}"
 echo "#    DOCKER_DIR_CACHE='${DOCKER_DIR_CACHE}'"
 
 
+##  @brief  Name of the default user to be created in the Docker image.
+DOCKER_IMAGE_USERNAME_DEFAULT=user
+
+
 ##  @brief  Absolute path to the Project's root directory.
 PROJECT_DIR_TOPLEVEL=`cd ${MY_PATH}/.. && pwd`
 echo "#    PROJECT_DIR_TOPLEVEL='${PROJECT_DIR_TOPLEVEL}'"

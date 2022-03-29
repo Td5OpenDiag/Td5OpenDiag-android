@@ -82,5 +82,18 @@ WORKDIR /workspace/project
 
 
 
+# ##################################################################################################
+#   Setup a new non-root user
+# ##################################################################################################
+##  @see https://stackoverflow.com/a/27703359/1303262
+
+ARG USER_NAME=worker
+
+# Create the default user and set its shell to Bash
+RUN useradd --create-home --shell /bin/bash ${USER_NAME}
+
+# Set the default user
+USER ${USER_NAME}
+
 
 
